@@ -19,8 +19,8 @@
     },
     {
       "id": 3,
-      "titulo": "Sesión 3: Instrumentación y observación astronómica",
-      "descripcion": "Prismáticos, tipos de telescopios (refractores, reflectores, catadióptricos), monturas, oculares y filtros.",
+      "titulo": "Sessió 3: Objectes del sistema solar i l'univers, òptica, mitjans d'observació i tipus de telescopis",
+      "descripcion": "Dotze preguntes sobre objectes del sistema solar i l'univers i vuit sobre òptica, observació i telescopis (@Ferran).",
       "archivo": "data/sesion-3.json",
       "icono": "telescope"
     },

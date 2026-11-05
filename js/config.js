@@ -5,9 +5,9 @@
 
 const CONFIG = {
   // Datos institucionales
-  ORGANIZATION_NAME: "Cosmos Mataró",
+  ORGANIZATION_NAME: "Cosmos, Grup d'Astronomia de Mataró",
   ORGANIZATION_SUBTITLE: "Agrupació Astronòmica",
-  COURSE_TITLE: "Curso de Iniciación a la Astronomía",
+  COURSE_TITLE: "Curs d'iniciació a l'astronomia",
 
   // Criterios de evaluación (sobre 20 preguntas)
   TOTAL_QUESTIONS: 20,

@@ -1,147 +1,247 @@
 {
   "sesionId": 3,
-  "titulo": "Sesión 3: Instrumentación y observación astronómica",
-  "descripcion": "Evaluación sobre tipos de telescopios, prismáticos, monturas astronómicas, oculares, aumentos y técnicas de observación.",
+  "titulo": "Sessió 3: Objectes del sistema solar i l'univers, òptica, mitjans d'observació i tipus de telescopis",
+  "descripcion": "Qüestionari oficial del Curs d'iniciació a l'astronomia 2026 (@Ferran) · Cosmos, Grup d'Astronomia de Mataró.",
   "preguntas": [
     {
       "id": 1,
-      "pregunta": "¿Qué tipo de telescopio utiliza como elemento óptico principal una o más lentes para concentrar la luz?",
-      "opciones": ["Reflector (Newtoniano)", "Refractor (Dióptrico)", "Catadióptrico (Schmidt-Cassegrain)", "Radiotelescopio"],
-      "correcta": 1,
-      "explicacion": "Los telescopios refractores utilizan un conjunto de lentes objetivo en la parte frontal para enfocar la luz hacia el ocular en la parte posterior."
+      "pregunta": "Quant tarda a arribar-nos la llum del Sol?",
+      "opciones": [
+        "1,3 segons",
+        "4,2 anys",
+        "8 minuts i 20 segons",
+        "Una hora"
+      ],
+      "correcta": 2,
+      "explicacion": "A la velocitat de la llum (300.000 km/s) i a una distància mitjana d'uns 150 milions de km (1 UA), la llum solar triga aproximadament 500 segons (8 minuts i 20 segons) en arribar a la Terra."
     },
     {
       "id": 2,
-      "pregunta": "¿Cuál es la característica más importante de un telescopio astronómico?",
-      "opciones": ["La cantidad máxima de aumentos que promete", "El diámetro (apertura) de su objetivo o espejo primario", "La longitud física del tubo", "El color de la pintura exterior"],
-      "correcta": 1,
-      "explicacion": "La apertura (diámetro) determina la cantidad de luz que capta el telescopio y su límite de resolución angular. Los aumentos dependen del ocular que se instale."
+      "pregunta": "Què és un any llum?",
+      "opciones": [
+        "La distància que recorre la llum en un any",
+        "Una unitat de temps equivalent a 365 dies",
+        "La distància mitjana entre la Terra i el Sol",
+        "El temps que tarda la Terra a fer una volta al Sol"
+      ],
+      "correcta": 0,
+      "explicacion": "Un any llum és una unitat de distància astronòmica (no de temps): correspon a la distància que recorre un fotó en el buit durant un any, aproximadament 9,46 bilions de quilòmetres."
     },
     {
       "id": 3,
-      "pregunta": "¿Cómo se calculan los aumentos que proporciona un telescopio con un ocular determinado?",
-      "opciones": ["Diámetro del objetivo multiplicado por la focal", "Distancia focal del telescopio dividida por la distancia focal del ocular", "Distancia focal del ocular dividida por la apertura", "Apertura dividida por el peso del telescopio"],
-      "correcta": 1,
-      "explicacion": "La fórmula es: Aumentos = F_telescopio / f_ocular. Por ejemplo, un telescopio de 1000 mm de focal con un ocular de 10 mm proporciona 100x."
+      "pregunta": "Quina és la manera segura d'observar el Sol amb un telescopi?",
+      "opciones": [
+        "Posar un filtre fosc a l'ocular",
+        "Mirar-hi amb ulleres de sol",
+        "Esperar la posta, quan és vermell, i mirar-hi sense filtre",
+        "Posar un filtre solar homologat davant de l'objectiu"
+      ],
+      "correcta": 3,
+      "explicacion": "El filtre ha de ser homologat i col·locar-se sempre davant de l'objectiu del tub abans que la llum es concentri. Un filtre a l'ocular es pot esquerdar instantàniament per la calor i provocar ceguesa irreversible."
     },
     {
       "id": 4,
-      "pregunta": "¿Qué problema óptico presentan los refractores simples (acromáticos) al enfocar diferentes longitudes de onda de luz?",
-      "opciones": ["Coma", "Aberración cromática (halos coloreados alrededor de objetos brillantes)", "Astigmatismo central", "Efecto viñeteo"],
-      "correcta": 1,
-      "explicacion": "Debido a la dispersión de las lentes, cada color del espectro tiene un foco ligeramente diferente, provocando halos violáceos o azulados (aberración cromática)."
+      "pregunta": "Per què la Lluna té fases?",
+      "opciones": [
+        "Perquè l'ombra de la Terra en tapa una part",
+        "Perquè els núvols en tapen una part",
+        "Perquè en veiem una part diferent de la meitat il·luminada segons on és de la seva òrbita",
+        "Perquè la Lluna canvia de mida al llarg del mes"
+      ],
+      "correcta": 2,
+      "explicacion": "La meitat de la Lluna sempre està il·luminada pel Sol. Segons la posició relativa de la Lluna al voltant de la Terra, des de la nostra perspectiva observem una porció major o menor d'aquesta meitat il·luminada."
     },
     {
       "id": 5,
-      "pregunta": "¿Qué tipo de telescopio utiliza un espejo primario cóncavo parabólico o esférico para reflejar la luz?",
-      "opciones": ["Telescopio Refractor", "Telescopio Reflector (tipo Newton)", "Microscopio astronómico", "Prismático Porro"],
+      "pregunta": "Quan es veuen millor els cràters de la Lluna amb un telescopi?",
+      "opciones": [
+        "Amb lluna plena",
+        "A prop dels quarts creixent i minvant",
+        "Amb lluna nova",
+        "És igual: es veuen sempre de la mateixa manera"
+      ],
       "correcta": 1,
-      "explicacion": "Inventado por Isaac Newton en 1668, el telescopio reflector emplea un espejo primario para recoger la luz y un espejo secundario plano inclinado a 45°."
+      "explicacion": "A prop del terminador (la línia divisòria entre el dia i la nit lunar durant els quarts), la llum del Sol arriba molt rasant i projecta llargues ombres que ressalten el relleu dels cràters i cadenes muntanyoses."
     },
     {
       "id": 6,
-      "pregunta": "¿Qué significa la nomenclatura '7x50' en unos prismáticos astronómicos?",
-      "opciones": ["7 lentes interiores y 50 aumentos", "7 aumentos y 50 mm de diámetro en las lentes frontales", "7 mm de diámetro y 50 gramos de peso", "Campo aparente de 7 grados y 50 metros de alcance"],
+      "pregunta": "Quins són els planetes rocosos?",
+      "opciones": [
+        "Júpiter, Saturn, Urà i Neptú",
+        "Mercuri, Venus, la Terra i Mart",
+        "Mart, Júpiter, Saturn i Plutó",
+        "Venus, la Terra, Urà i Neptú"
+      ],
       "correcta": 1,
-      "explicacion": "El primer número (7) indica el factor de aumento; el segundo número (50) indica el diámetro de cada objetivo en milímetros."
+      "explicacion": "Els planetes rocosos o tel·lúrics del Sistema Solar interior són Mercuri, Venus, la Terra i Mart, formats principalment per silicats i metalls."
     },
     {
       "id": 7,
-      "pregunta": "¿Qué ventaja principal ofrece una montura ecuatorial frente a una montura altacimutal clásica?",
-      "opciones": ["Es mucho más ligera y pequeña", "Permite compensar la rotación terrestre moviendo un único eje (eje polar o de ascensión recta)", "No necesita alineación previa", "Permite observar debajo del suelo"],
-      "correcta": 1,
-      "explicacion": "Al tener uno de sus ejes alineado paralelamente al eje de rotación de la Tierra, un solo movimiento continuo basta para mantener el objeto celeste en el centro del campo."
+      "pregunta": "Com podem distingir un planeta d'una estrella a ull nu?",
+      "opciones": [
+        "Els planetes titil·len més que les estrelles",
+        "Els planetes sempre són al zenit",
+        "La llum dels planetes és més estable: gairebé no titil·len",
+        "Els planetes només es veuen de dia"
+      ],
+      "correcta": 2,
+      "explicacion": "Les estrelles són punts de llum tan llunyans que la turbulència atmosfèrica les fa parpellejar o titil·lar. Els planetes presenten un petit disc aparent visible des de l'atmosfera, fent que la seva llum sigui molt més constant i estable."
     },
     {
       "id": 8,
-      "pregunta": "¿Qué es la 'pupila de salida' de un instrumento óptico y cómo se calcula?",
-      "opciones": ["El diámetro del ocular multiplicado por 2", "El diámetro del objetivo dividido por el número de aumentos", "El campo aparente dividido por la focal", "La distancia entre la lente y el ojo"],
-      "correcta": 1,
-      "explicacion": "Pupila de salida = Apertura / Aumentos. En unos 7x50 es 50 / 7 = 7.1 mm, ideal para que coincida con la dilatación de la pupila del ojo humano adaptado a la oscuridad."
+      "pregunta": "Per què Mercuri i Venus només es veuen al vespre o a la matinada, mai a mitjanit?",
+      "opciones": [
+        "Perquè són massa petits",
+        "Perquè només es veuen a l'hivern",
+        "Perquè la Lluna els tapa",
+        "Perquè són més a prop del Sol que la Terra"
+      ],
+      "correcta": 3,
+      "explicacion": "Com que les seves òrbites són interiors a la de la Terra, la seva separació angular màxima (elongació) respecte al Sol és curta; per tant, mai no poden estar oposats al Sol en el cel de mitjanit."
     },
     {
       "id": 9,
-      "pregunta": "¿Cuál es la regla práctica general para el límite de aumento máximo útil de un telescopio en condiciones medias?",
-      "opciones": ["10 veces el diámetro en milímetros", "Aproximadamente 2 veces el diámetro del objetivo en milímetros", "50 veces la distancia focal", "No existe límite útil, se puede aumentar indefinidamente"],
-      "correcta": 1,
-      "explicacion": "Por leyes de difracción y turbulencia atmosférica (seeing), el aumento útil no suele superar 2x por cada milímetro de apertura (p. ej. un telescopio de 150 mm rendirá hasta ~300x)."
+      "pregunta": "En quina zona del diagrama de Hertzsprung-Russell es troba el Sol?",
+      "opciones": [
+        "A la seqüència principal",
+        "Entre les nanes blanques",
+        "Entre les supergegants",
+        "Entre les gegants"
+      ],
+      "correcta": 0,
+      "explicacion": "El Sol és una estrella en la seva fase adulta estable (nana groga de tipus G2V) que fusiona hidrogen en heli al seu nucli, situant-se a la seqüència principal del diagrama H-R."
     },
     {
       "id": 10,
-      "pregunta": "¿Qué lente accesoria duplica o triplica la distancia focal efectiva del telescopio?",
-      "opciones": ["Lente reductora de focal", "Lente de Barlow", "Filtro lunar", "Diagonal cenital"],
-      "correcta": 1,
-      "explicacion": "Una lente de Barlow es una lente divergente acromática que alarga el cono de luz, multiplicando la distancia focal por su factor (2x, 3x) y duplicando los aumentos del ocular."
+      "pregunta": "Com acabarà la vida d'una estrella com el Sol?",
+      "opciones": [
+        "Com un forat negre",
+        "Explotant com una supernova",
+        "Com una estrella de neutrons",
+        "Com una gegant vermella i després una nana blanca"
+      ],
+      "correcta": 3,
+      "explicacion": "El Sol no té prou massa per explotar com a supernova. En esgotar el combustible nuclear s'expandirà com a gegant vermella, expulsarà les capes externes formant una nebulosa planetària i el seu nucli quedarà com una nana blanca."
     },
     {
       "id": 11,
-      "pregunta": "¿Qué diseño óptico combinan los telescopios catadióptricos como los Schmidt-Cassegrain (SCT) o Maksutov?",
-      "opciones": ["Solo espejos planos", "Lentes correctoras en la entrada y espejos en el fondo del tubo", "Solo fibra óptica", "Prismas continuos de dispersión"],
+      "pregunta": "Què és un cúmul globular, com M13 a Hèrcules?",
+      "opciones": [
+        "Un núvol de gas on neixen estrelles",
+        "Una bola de centenars de milers d'estrelles molt velles",
+        "Un grup d'estrelles joves que van néixer juntes",
+        "Una galàxia petita"
+      ],
       "correcta": 1,
-      "explicacion": "Los catadióptricos combinan elementos refractores (placa correctora o menisco frontal) y reflectores (espejo primario y secundario) en un tubo muy compacto."
+      "explicacion": "Els cúmuls globulars són agrupacions estel·lars molt denses i simètriques de centenars de milers d'estrelles velles de la Població II, lligades per la gravetat a l'halo galàctic."
     },
     {
       "id": 12,
-      "pregunta": "¿Por qué es imprescindible utilizar un filtro astronómico homologado (como Baader solar o de polímero) para mirar el Sol con telescopio?",
-      "opciones": ["Para mejorar el contraste nocturno", "Porque el telescopio concentra la luz solar quemando la retina y causando ceguera instantánea e irreversible", "Para que el telescopio no se enfríe", "Para evitar que la montura se descalibre"],
-      "correcta": 1,
-      "explicacion": "El telescopio actúa como una potente lupa: mirar al Sol sin un filtro seguro colocado en la parte delantera destruye la retina en una fracción de segundo de forma irreversible."
+      "pregunta": "Quin tipus de galàxia és la Via Làctia?",
+      "opciones": [
+        "El·líptica",
+        "Irregular",
+        "Espiral barrada",
+        "Lenticular"
+      ],
+      "correcta": 2,
+      "explicacion": "La Via Làctia és una galàxia espiral barrada (classificada com a SBbc) amb una banda central d'estrelles en forma de barra d'on surten els braços espirals."
     },
     {
       "id": 13,
-      "pregunta": "¿Qué tipo de montura altacimutal de madera o metal es muy popular por su gran estabilidad, simplicidad de uso y bajo coste para reflectores grandes?",
-      "opciones": ["Montura alemana", "Montura Dobson (Dobsoniana)", "Montura de horquilla robótica", "Trípode fotográfico simple"],
-      "correcta": 1,
-      "explicacion": "Ideada por John Dobson en los años 60, permite montar grandes tubos newtonianos sobre una base giratoria de bajo coste y manejo manual muy intuitivo."
+      "pregunta": "Quina llum de l'espai arriba fins a terra travessant l'atmosfera?",
+      "opciones": [
+        "La llum visible i les ones de ràdio",
+        "Els raigs X i els raigs gamma",
+        "L'ultraviolat i els raigs X",
+        "Totes, sense excepció"
+      ],
+      "correcta": 0,
+      "explicacion": "L'atmosfera terrestre només és transparent en dues 'finestres': la finestra òptica (llum visible i part d'infraroig proper) i la finestra de ràdio. Els raigs X, gamma i la major part de l'ultraviolat són absorbits per la capa d'ozó i l'atmosfera."
     },
     {
       "id": 14,
-      "pregunta": "¿Qué término astronómico describe la estabilidad de la atmósfera terrestre y la nitidez de la imagen telescópica?",
-      "opciones": ["Transparencia", "Seeing", "Apertura", "Bortle"],
-      "correcta": 1,
-      "explicacion": "El seeing evalúa la turbulencia térmica en la atmósfera que hace que las estrellas parpadeen o se vean borrosas y temblorosas a altos aumentos."
+      "pregunta": "Com veuràs millor un objecte molt feble a l'ocular?",
+      "opciones": [
+        "Mirant-lo fixament, just al centre de la vista",
+        "Encenent un moment una llanterna blanca",
+        "Mirant una mica al costat de l'objecte",
+        "Posant sempre més augments"
+      ],
+      "correcta": 2,
+      "explicacion": "És la tècnica de la visió averted o lateral: en mirar lleugerament al costat, la llum de l'objecte incideix sobre els bastonets de la retina (perifèrics), que són molt més sensibles a la llum feble que els cons centrals."
     },
     {
       "id": 15,
-      "pregunta": "¿Para qué sirve el pequeño visor auxiliar llamado 'buscador' fijado sobre el tubo del telescopio?",
-      "opciones": ["Para medir la temperatura ambiental", "Para apuntar y centrar fácilmente los objetos gracias a su gran campo visual y pocos aumentos", "Para iluminar el ocular en la oscuridad", "Para tomar fotos con el móvil"],
-      "correcta": 1,
-      "explicacion": "El telescopio tiene un campo de visión muy estrecho; el buscador (óptico o de punto rojo) tiene gran campo y permite apuntar con precisión al objeto deseado."
+      "pregunta": "Quin és el número més important d'un telescopi?",
+      "opciones": [
+        "Els augments",
+        "La llargada del tub",
+        "El pes",
+        "L'obertura, el diàmetre de la lent o el mirall"
+      ],
+      "correcta": 3,
+      "explicacion": "L'obertura (diàmetre de l'objectiu o mirall primari) és el paràmetre clau: determina quanta llum capta el telescopi i la seva resolució per separar detalls fins. Els augments depenen de l'ocular que es faci servir."
     },
     {
       "id": 16,
-      "pregunta": "¿Por qué los astrónomos aficionados usan linternas con luz roja durante las sesiones de observación nocturna?",
-      "opciones": ["Porque la luz roja viaja más lejos en la niebla", "Porque preserva la adaptación de la pupila y la visión nocturna (rodopsina en los bastones)", "Para no asustar a los animales del campo", "Porque consume menos batería"],
+      "pregunta": "Quants augments dóna un telescopi de 750 mm de focal amb un ocular de 25 mm?",
+      "opciones": [
+        "25×",
+        "30×",
+        "750×",
+        "775×"
+      ],
       "correcta": 1,
-      "explicacion": "El ojo humano tarda unos 20-30 minutos en adaptarse a la oscuridad absoluta; la luz roja apenas descompone los pigmentos de visión nocturna de la retina."
+      "explicacion": "Els augments es calculen dividint la distància focal del telescopi per la distància focal de l'ocular utilitzat: 750 mm / 25 mm = 30×."
     },
     {
       "id": 17,
-      "pregunta": "¿Qué es la técnica de la 'visión lateral o evitada' en observación visual de cielo profundo?",
-      "opciones": ["Mirar con los dos ojos cerrados a la vez", "Desviar la mirada ligeramente a un lado del objeto para que la luz incida en los bastones de la retina", "Mirar sin ocular", "Usar gafas polarizadas"],
-      "correcta": 1,
-      "explicacion": "Los bastones (receptores fotosensibles muy sensibles al brillo pero sin color) se concentran fuera del centro de la fóvea. Mirar de reojo permite ver detalles más tenues."
+      "pregunta": "Quin és, aproximadament, el màxim d'augments útil d'un telescopi de 150 mm d'obertura?",
+      "opciones": [
+        "50×",
+        "150×",
+        "300×",
+        "500× o més"
+      ],
+      "correcta": 2,
+      "explicacion": "Per difracció òptica i turbulència atmosfèrica, la regla pràctica màxima recomanada és d'aproximadament 2 augments per cada mil·límetre d'obertura: 2 × 150 mm = 300×."
     },
     {
       "id": 18,
-      "pregunta": "¿Qué proceso óptico es necesario realizar periódicamente en los telescopios reflectores para alinear sus espejos?",
-      "opciones": ["Colimación", "Polarización", "Decapado", "Inclinación zenital"],
+      "pregunta": "Què volen dir els números d'uns prismàtics 10×50?",
+      "opciones": [
+        "10 augments i objectius de 50 mm",
+        "50 augments i objectius de 10 mm",
+        "Un camp de 10° i 50 mm de llargada",
+        "10 mm de pupil·la de sortida i 50 augments"
+      ],
       "correcta": 0,
-      "explicacion": "La colimación consiste en alinear con precisión el eje óptico del espejo primario con el espejo secundario y el portaocular mediante sus tornillos de ajuste."
+      "explicacion": "El primer número (10) indica el factor d'ampliació o augments; el segon número (50) indica el diàmetre en mil·límetres de cadascuna de les lents frontals (obertura)."
     },
     {
       "id": 19,
-      "pregunta": "¿Qué función cumple un filtro antipolución lumínica de banda estrecha (como O-III o UHC)?",
-      "opciones": ["Aumentar el número de aumentos del ocular", "Dejar pasar selectivamente las longitudes de onda emitidas por las nebulosas gaseosas bloqueando el brillo artificial", "Corregir el enfoque del telescopio", "Aclarar el polvo lunar"],
+      "pregunta": "Quin tipus de telescopi concentra la llum només amb miralls?",
+      "opciones": [
+        "El refractor",
+        "El reflector newtonià",
+        "El catadiòptric",
+        "La lent de Barlow"
+      ],
       "correcta": 1,
-      "explicacion": "Los filtros interferenciales como O-III y UHC transmiten solo la luz de emisión del oxígeno ionizado y el hidrógeno, bloqueando la mayor parte de las luces urbanas."
+      "explicacion": "El telescopi reflector newtonià utilitza exclusivament miralls: un mirall primari còncau al fons per recollir la llum i un mirall secundari pla diagonal a 45° per desviar-la cap al portaocular."
     },
     {
       "id": 20,
-      "pregunta": "¿Qué es la relación focal (f/D) de un telescopio?",
-      "opciones": ["La distancia focal dividida por el diámetro de apertura", "El diámetro del objetivo multiplicado por la longitud del tubo", "El peso del ocular entre los aumentos", "El precio del equipo dividido por los aumentos"],
-      "correcta": 0,
-      "explicacion": "La relación focal (f/D) define si un telescopio es 'rápido' o luminoso para fotografía (f/4 - f/5, ideales para cielo profundo) o 'lento' (f/10 - f/15, ideales para planetaria)."
+      "pregunta": "En una muntura equatorial, cap a on ha d'apuntar l'eix polar?",
+      "opciones": [
+        "Cap al Sol",
+        "Cap al zenit",
+        "Cap a l'estrella Polar",
+        "Cap a la Lluna"
+      ],
+      "correcta": 2,
+      "explicacion": "L'eix polar (eix d'ascensió recta) s'ha d'orientar cap al pol nord celeste (marcat per l'estrella Polar a l'hemisferi nord) perquè quedi paral·lel a l'eix de rotació de la Terra."
     }
   ]
 }
