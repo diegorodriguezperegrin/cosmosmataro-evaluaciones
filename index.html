@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmos Mataró | Evaluaciones Curso de Iniciación a la Astronomía</title>
+  <meta name="description" content="Formulario de evaluación continua del Curso de Iniciación a la Astronomía de Cosmos Mataró">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- Encabezado Principal y Marca -->
+    <header class="main-header">
+      <div class="brand-wrapper">
+        <img src="assets/logo.svg" alt="Cosmos Mataró Logo" class="brand-logo">
+        <div class="brand-info">
+          <h1>Curso de Iniciación a la Astronomía</h1>
+          <p>Cuestionarios de Evaluación</p>
+        </div>
+      </div>
+      <div id="header-session-badge" class="header-badge hidden">
+        Sesión activa
+      </div>
+    </header>
+
+    <!-- =======================================================================
+         VISTA 1: Selector de Sesiones (1 a 4)
+         ======================================================================= -->
+    <main id="view-sessions" class="card">
+      <h2 class="card-title">
+        <span>🔭</span>
+        <span>Selecciona la sesión a evaluar</span>
+      </h2>
+      <p class="card-subtitle">
+        Cada sesión consta de 20 preguntas con cuatro opciones posibles. Al terminar obtendrás tu puntuación, corrección comentada y registro de resultados.
+      </p>
+
+      <div id="sessions-grid" class="sessions-grid">
+        <!-- Renderizado dinámicamente con JavaScript desde data/sesiones.json -->
+      </div>
+    </main>
+
+    <!-- =======================================================================
+         VISTA 2: Identificación del Alumno
+         ======================================================================= -->
+    <section id="view-registration" class="card hidden">
+      <button type="button" id="btn-back-to-sessions" class="btn btn-secondary" style="margin-bottom: 20px; font-size: 0.85rem; padding: 6px 14px;">
+        ← Volver a elegir otra sesión
+      </button>
+
+      <h2 class="card-title">
+        <span>👨‍🚀</span>
+        <span id="reg-session-title">Sesión seleccionada</span>
+      </h2>
+      <p class="card-subtitle">
+        Por favor, introduce tus datos para emitir tu certificado de aprovechamiento y registrar tus resultados.
+      </p>
+
+      <div class="info-banner">
+        <strong>Pautas de la evaluación:</strong> Dispones de <strong>20 preguntas</strong>. Puedes avanzar y retroceder entre las preguntas tantas veces como desees antes del envío final.
+      </div>
+
+      <form id="student-form">
+        <div class="form-group">
+          <label for="student-name" class="form-label">Nombre y Apellidos *</label>
+          <input type="text" id="student-name" class="form-input" placeholder="Ej: María García López" required autocomplete="name">
+          <div class="form-hint">Tal como deseas que figure en tu comprobante.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="student-email" class="form-label">Correo Electrónico (opcional)</label>
+          <input type="email" id="student-email" class="form-input" placeholder="ejemplo@correo.com" autocomplete="email">
+          <div class="form-hint">Para recibir comunicaciones sobre próximas observaciones de Cosmos Mataró.</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px; padding: 14px;">
+          <span>Comenzar Evaluación</span>
+          <span>→</span>
+        </button>
+      </form>
+    </section>
+
+    <!-- =======================================================================
+         VISTA 3: Cuestionario en curso (20 preguntas)
+         ======================================================================= -->
+    <section id="view-quiz" class="card hidden">
+      <!-- Barra superior con progreso -->
+      <div class="quiz-header">
+        <div id="quiz-session-title" style="font-size: 0.95rem; font-weight: 700; color: var(--text-main);">
+          Sesión
+        </div>
+        <div id="quiz-progress-text" class="quiz-progress-text">
+          Pregunta 1 de 20
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div id="quiz-progress-fill" class="progress-fill"></div>
+      </div>
+
+      <!-- Tira de botones de navegación directa a preguntas (1 a 20) -->
+      <div id="question-nav-strip" class="question-nav-strip">
+        <!-- Renderizado dinámicamente con JavaScript -->
+      </div>
+
+      <!-- Caja de la Pregunta actual -->
+      <div class="question-box">
+        <div id="question-number" class="question-number">Pregunta 1</div>
+        <div id="question-prompt" class="question-prompt">Enunciado de la pregunta...</div>
+      </div>
+
+      <!-- Lista de 4 opciones A, B, C, D -->
+      <div id="options-list" class="options-list">
+        <!-- Renderizado dinámicamente con JavaScript -->
+      </div>
+
+      <!-- Acciones de Navegación -->
+      <div class="quiz-actions">
+        <button type="button" id="btn-prev" class="btn btn-secondary">
+          <span>← Anterior</span>
+        </button>
+
+        <button type="button" id="btn-next" class="btn btn-primary">
+          <span>Siguiente →</span>
+        </button>
+
+        <button type="button" id="btn-submit" class="btn btn-success hidden">
+          <span>Finalizar y Enviar Evaluación ✓</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         VISTA 4: Resultados y Corrección
+         ======================================================================= -->
+    <section id="view-results" class="card hidden">
+      <div class="results-hero">
+        <div class="score-circle">
+          <span id="score-num" class="score-num">0</span>
+          <span class="score-total">de 20 aciertos</span>
+        </div>
+
+        <div>
+          <span id="score-badge" class="badge-result">Resultado</span>
+        </div>
+
+        <div class="results-meta">
+          Alumno: <strong id="results-student"></strong> · 
+          Sesión: <strong id="results-session"></strong><br>
+          Completado el: <span id="results-date"></span>
+        </div>
+      </div>
+
+      <!-- Estado de guardado en Google Sheets -->
+      <div id="sync-status" class="sync-status offline">
+        <!-- Rellenado por app.js -->
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="results-actions">
+        <button type="button" id="btn-print-cert" class="btn btn-primary">
+          <span>🖨️ Imprimir / Guardar Diploma en PDF</span>
+        </button>
+        <button type="button" id="btn-restart" class="btn btn-secondary">
+          <span>🪐 Evaluar otra sesión</span>
+        </button>
+      </div>
+
+      <!-- Desglose de corrección detallada -->
+      <div class="review-section">
+        <h3 style="font-size: 1.15rem; margin-bottom: 16px; color: var(--accent-cyan); display: flex; align-items: center; gap: 8px;">
+          <span>📖</span>
+          <span>Corrección pedagógica detallada (20 preguntas)</span>
+        </h3>
+        
+        <div id="review-list">
+          <!-- Renderizado dinámicamente -->
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- =======================================================================
+       MODAL: Alerta de preguntas pendientes
+       ======================================================================= -->
+  <div id="modal-unanswered" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-title">⚠️ Preguntas sin responder</div>
+      <p class="modal-desc">
+        Aún te quedan <strong id="unanswered-count">0</strong> preguntas sin contestar.
+        ¿Prefieres repasarlas o deseas enviar el cuestionario con las respuestas actuales?
+      </p>
+      <div class="modal-actions">
+        <button type="button" id="btn-modal-review" class="btn btn-primary">
+          Repasar preguntas
+        </button>
+        <button type="button" id="btn-modal-confirm" class="btn btn-secondary">
+          Enviar igualmente
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       PLANTILLA DE DIPLOMA / CERTIFICADO IMPRIMIBLE (@media print)
+       ======================================================================= -->
+  <div id="printable-certificate">
+    <div style="font-size: 11pt; letter-spacing: 3px; color: #475569; margin-bottom: 6pt;">
+      AGRUPACIÓ ASTRONÒMICA COSMOS MATARÓ
+    </div>
+    <h1>Certificado de Aprovechamiento</h1>
+    <h2>Curso de Iniciación a la Astronomía</h2>
+
+    <div class="cert-body">
+      Se hace constar que el alumno/a
+      <br>
+      <div id="cert-student-name" class="student-name">Nombre del Alumno</div>
+      <br>
+      ha completado satisfactoriamente la evaluación correspondiente a:
+      <br>
+      <strong id="cert-session-title" style="font-size: 15pt; color: #1e3a8a; display: block; margin: 10pt 0;">
+        Sesión
+      </strong>
+      <div id="cert-score-detail" class="cert-score">
+        20 de 20 aciertos (100%) - Excelente
+      </div>
+    </div>
+
+    <div class="cert-footer">
+      <div class="signature-box">
+        <div style="font-size: 9pt; color: #64748b; margin-bottom: 40pt;">Firma de Secretaría / Profesorado:</div>
+        <div>Cosmos Mataró</div>
+      </div>
+      <div style="text-align: right; display: flex; flex-direction: column; justify-content: flex-end;">
+        <div id="cert-date" style="font-style: italic;">Mataró, a ...</div>
+        <div style="font-size: 9pt; color: #64748b; margin-top: 4pt;">cosmosmataro.org</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

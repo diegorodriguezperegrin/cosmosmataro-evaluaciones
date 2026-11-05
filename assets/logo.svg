@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <defs>
+    <linearGradient id="gradPlanet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#4338ca" />
+    </linearGradient>
+    <linearGradient id="gradRing" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2" />
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.2" />
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Emblem Icon: Stylized Planet with Orbital Rings & Stars -->
+  <g transform="translate(10, 8)">
+    <!-- Orbit ring back -->
+    <ellipse cx="32" cy="32" rx="30" ry="9" transform="rotate(-25 32 32)" stroke="url(#gradRing)" stroke-width="2.5" stroke-dasharray="120" stroke-dashoffset="35" opacity="0.6"/>
+    
+    <!-- Central Sphere -->
+    <circle cx="32" cy="32" r="18" fill="url(#gradPlanet)" filter="url(#glow)"/>
+    
+    <!-- Atmosphere crescent -->
+    <path d="M22 19 A18 18 0 0 0 44 43 A17 17 0 0 1 22 19 Z" fill="#93c5fd" opacity="0.3"/>
+    
+    <!-- Orbit ring front -->
+    <ellipse cx="32" cy="32" rx="30" ry="9" transform="rotate(-25 32 32)" stroke="url(#gradRing)" stroke-width="2.5" stroke-dasharray="65 100" stroke-dashoffset="0"/>
+    
+    <!-- Polaris / 4-point sparkle stars -->
+    <path d="M52 14 L53.5 17 L56.5 18.5 L53.5 20 L52 23 L50.5 20 L47.5 18.5 L50.5 17 Z" fill="#facc15" filter="url(#glow)"/>
+    <circle cx="12" cy="46" r="1.5" fill="#38bdf8" opacity="0.8"/>
+    <circle cx="16" cy="16" r="1.2" fill="#ffffff" opacity="0.9"/>
+    <circle cx="48" cy="48" r="1" fill="#ffffff" opacity="0.7"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="82" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="24" letter-spacing="3" fill="url(#textGrad)">
+    COSMOS
+  </text>
+  <text x="210" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-weight="300" font-size="24" letter-spacing="2" fill="#38bdf8">
+    MATARÓ
+  </text>
+  <text x="84" y="55" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-weight="500" font-size="9" letter-spacing="2.2" fill="#94a3b8">
+    AGRUPACIÓ ASTRONÒMICA · CURS D'INICIACIÓ
+  </text>
+</svg>

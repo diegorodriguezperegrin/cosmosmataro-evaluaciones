@@ -1,0 +1,147 @@
+{
+  "sesionId": 4,
+  "titulo": "Sesión 4: Estrellas, espacio profundo y cosmología",
+  "descripcion": "Evaluación sobre evolución estelar, nebulosas, cúmulos estelares, galaxias, el Big Bang y cosmología moderna.",
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué diagrama fundamental relaciona la temperatura superficial (tipo espectral) de las estrellas con su luminosidad intrínseca?",
+      "opciones": ["Diagrama de Venn estelar", "Diagrama Hertzsprung-Russell (H-R)", "Carta de Smith", "Diagrama de Hubble"],
+      "correcta": 1,
+      "explicacion": "El diagrama H-R permite clasificar las estrellas y entender su ciclo evolutivo (secuencia principal, gigantes, supergigantes y enanas blancas)."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿En qué estado evolutivo pasa una estrella la mayor parte de su vida activa?",
+      "opciones": ["Como gigante roja", "En la Secuencia Principal fusionando hidrógeno en helio", "Como nebulosa planetaria", "Como enana marrón"],
+      "correcta": 1,
+      "explicacion": "En la secuencia principal las estrellas mantienen un equilibrio hidrostático estable entre la gravedad hacia el centro y la presión de radiación hacia afuera."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Cuál será el destino final más probable de nuestro Sol tras agotar su combustible nuclear?",
+      "opciones": ["Colapsar en un agujero negro", "Explotar como supernova tipo II", "Formar una nebulosa planetaria y dejar como remanente una enana blanca", "Desaparecer sin dejar rastro"],
+      "correcta": 2,
+      "explicacion": "Las estrellas de masa intermedia (como el Sol) expulsan sus capas exteriores formando una bella nebulosa planetaria, dejando enfriar lentamente su núcleo de carbono y oxígeno (enana blanca)."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué cataclismo cósmico marca la muerte violenta de una estrella masiva (más de 8-10 masas solares)?",
+      "opciones": ["Aurora boreal gigante", "Explosión de Supernova", "Eclipse galáctico", "Destello de helio silencioso"],
+      "correcta": 1,
+      "explicacion": "Al formarse un núcleo de hierro inerte incapaz de generar energía por fusión, el núcleo colapsa bruscamente desatando una colosal explosión de supernova."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Qué es un remanente estelar ultradenso compuesto casi exclusivamente por neutrones empaquetados?",
+      "opciones": ["Una enana roja", "Una estrella de neutrones (o pulsar si emite haces de radiación)", "Un asteroide masivo", "Una estrella de Wolf-Rayet"],
+      "correcta": 1,
+      "explicacion": "Con una densidad tan colosal que una cucharadita de su materia pesaría miles de millones de toneladas, el colapso gravitatorio supera la degeneración electrónica."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Cómo se llama el límite esférico alrededor de un agujero negro del que ni siquiera la luz puede escapar?",
+      "opciones": ["Singularidad cósmica", "Horizonte de sucesos (o de eventos)", "Esfera de Dyson", "Radio de Roche"],
+      "correcta": 1,
+      "explicacion": "El horizonte de sucesos marca la frontera en la cual la velocidad de escape iguala a la velocidad de la luz en el vacío."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Qué tipo de nebulosa es la famosa Nebulosa de Orión (M42)?",
+      "opciones": ["Nebulosa oscura pura", "Nebulosa de emisión y región de formación estelar (cuna de estrellas)", "Nebulosa planetaria vieja", "Resto de supernova reciente"],
+      "correcta": 1,
+      "explicacion": "M42 es una inmensa nube interestelar de gas (hidrógeno ionizado) y polvo donde se están formando activamente nuevas estrellas iluminadas por el cúmulo del Trapecio."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Qué diferencia fundamental hay entre un cúmulo abierto y un cúmulo globular?",
+      "opciones": ["Los cúmulos abiertos tienen millones de estrellas y los globulares solo 10", "Los cúmulos abiertos son jóvenes y desorganizados; los globulares son muy antiguos, esféricos y muy densos", "Los globulares solo contienen planetas", "No hay diferencia, son idénticos"],
+      "correcta": 1,
+      "explicacion": "Los cúmulos abiertos (como las Pléyades) son asociaciones jóvenes en el disco galáctico; los globulares (como M13) orbitan en el halo galáctico y contienen cientos de miles de estrellas muy viejas."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿A qué tipo morfológico de galaxia pertenece nuestra Vía Láctea?",
+      "opciones": ["Galaxia elíptica gigante (E0)", "Galaxia espiral barrada (SBbc)", "Galaxia irregular pura (Irr)", "Galaxia lenticular (S0)"],
+      "correcta": 1,
+      "explicacion": "Las observaciones infrarrojas y de radio modernas demuestran que la Vía Láctea tiene una marcada barra central de estrellas de la que parten sus brazos espirales."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Cuál es la galaxia espiral gigante más cercana a la Vía Láctea y el objeto celeste más lejano visible a simple vista?",
+      "opciones": ["Galaxia del Sombrero (M104)", "Galaxia de Andrómeda (M31)", "Galaxia del Triángulo (M33)", "Gran Nube de Magallanes"],
+      "correcta": 1,
+      "explicacion": "La Galaxia de Andrómeda (M31) se encuentra a unos 2.5 millones de años luz de nosotros y es observable a simple vista en cielos oscuros."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Cómo se llama la pequeña agrupación de unas 50 a 80 galaxias a la que pertenece nuestra Vía Láctea?",
+      "opciones": ["Cúmulo de Coma", "El Grupo Local", "Supercúmulo de Hércules", "Cúmulo de Virgo"],
+      "correcta": 1,
+      "explicacion": "El Grupo Local está dominado por las dos mayores galaxias espirales: la Galaxia de Andrómeda y la Vía Láctea, junto con la Galaxia del Triángulo y decenas de galaxias enanas."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué astrónomo demostró en 1929 que las galaxias se alejan unas de otras a velocidades proporcionales a su distancia?",
+      "opciones": ["Isaac Newton", "Edwin Hubble", "Tycho Brahe", "Johannes Kepler"],
+      "correcta": 1,
+      "explicacion": "Edwin Hubble (apoyado en los trabajos previos de Georges Lemaître y Henrietta Swan Leavitt) formuló la Ley de Hubble-Lemaître, demostrando la expansión del Universo."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Qué fenómeno en el espectro de la luz de galaxias lejanas evidencia que el espacio entre ellas se está expandiendo?",
+      "opciones": ["Corrimiento al azul (Blueshift)", "Corrimiento al rojo (Redshift)", "Dispersión de Rayleigh", "Efecto fotoeléctrico"],
+      "correcta": 1,
+      "explicacion": "A medida que los fotones viajan por un universo en expansión, su longitud de onda se 'estira' hacia el extremo rojo del espectro electromagnético."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Qué radiación residual fósil, descubierta en 1965 por Penzias y Wilson, es la prueba primordial del Big Bang?",
+      "opciones": ["La luz zodiacal", "El Fondo Cósmico de Microondas (CMB)", "Los rayos gamma del agujero negro central", "Las ondas de radio solares"],
+      "correcta": 1,
+      "explicacion": "El Fondo Cósmico de Microondas es la radiación térmica emitida unos 380.000 años después del Big Bang, cuando los protones y electrones formaron los primeros átomos neutros."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Cuál es la edad estimada de nuestro Universo según las mediciones cosmológicas más precisas (misión Planck)?",
+      "opciones": ["Aproximadamente 4.500 millones de años", "Aproximadamente 13.800 millones de años", "Aproximadamente 100.000 millones de años", "Aproximadamente 1 billón de años"],
+      "correcta": 1,
+      "explicacion": "La edad actual aceptada con altísima precisión por el satélite Planck de la Agencia Espacial Europea es de 13.787 ± 20 millones de años."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué componente misterioso no emite luz pero ejerce la gravedad necesaria para mantener unidas las galaxias?",
+      "opciones": ["Materia ordinaria bariónica", "Materia oscura", "Radiación infrarroja de fondo", "Polvo de cometas"],
+      "correcta": 1,
+      "explicacion": "La materia oscura compone aproximadamente el 27% del Universo; se detecta por sus efectos gravitatorios en las curvas de rotación de las galaxias y las lentes gravitacionales."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Qué enigmática entidad descubierta a finales de los años 90 está acelerando la velocidad de expansión del Universo?",
+      "opciones": ["Energía oscura", "Viento solar interestelar", "Ondas de choque de supernovas", "Atracción de agujeros blancos"],
+      "correcta": 0,
+      "explicacion": "La energía oscura representa aproximadamente el 68% de la densidad de masa-energía del cosmos y actúa como una presión negativa repulsiva a gran escala."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Qué agujero negro supermasivo se encuentra ubicado en el centro exacto de la Vía Láctea?",
+      "opciones": ["Cygnus X-1", "Sagitario A* (Sgr A*)", "M87*", "Centaurus A"],
+      "correcta": 1,
+      "explicacion": "Sagitario A* tiene una masa de unos 4.1 millones de masas solares y su silueta fue fotografiada por el consorcio Event Horizon Telescope (EHT) en 2022."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿A cuántos kilómetros equivale aproximadamente 1 año luz?",
+      "opciones": ["Aproximadamente 300.000 km", "Aproximadamente 9.46 billones de kilómetros (9.46 x 10^12 km)", "Aproximadamente 150 millones de km", "Aproximadamente 1 millón de km"],
+      "correcta": 1,
+      "explicacion": "Es la distancia que recorre un fotón de luz en el vacío durante un año juliano a una velocidad de ~300.000 km/s, resultando casi 9.5 billones de kilómetros."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿En qué catálogo célebre elaborado en el siglo XVIII por un astrónomo francés figuran 110 de los objetos de cielo profundo más destacados?",
+      "opciones": ["Catálogo de Hiparco", "Catálogo Messier (M1 a M110)", "Catálogo NGC", "Catálogo Tycho-2"],
+      "correcta": 1,
+      "explicacion": "Charles Messier confeccionó su lista de nebulosas, cúmulos y galaxias para no confundirlos con los cometas que buscaba afanosamente en el cielo nocturno."
+    }
+  ]
+}

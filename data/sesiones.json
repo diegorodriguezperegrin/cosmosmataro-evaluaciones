@@ -1,0 +1,35 @@
+{
+  "organizacion": "Cosmos Mataró",
+  "subtitulo": "Agrupació Astronòmica",
+  "curso": "Curso de Iniciación a la Astronomía",
+  "sesiones": [
+    {
+      "id": 1,
+      "titulo": "Sesión 1: El cielo nocturno y la esfera celeste",
+      "descripcion": "Constelaciones, orientación estelar, coordenadas celestes, magnitudes y movimientos de la Tierra y la Luna.",
+      "archivo": "data/sesion-1.json",
+      "icono": "compass"
+    },
+    {
+      "id": 2,
+      "titulo": "Sesión 2: El Sistema Solar",
+      "descripcion": "El Sol, los planetas rocosos y gaseosos, lunas principales, asteroides, cometas y mecánica planetaria.",
+      "archivo": "data/sesion-2.json",
+      "icono": "sun"
+    },
+    {
+      "id": 3,
+      "titulo": "Sesión 3: Instrumentación y observación astronómica",
+      "descripcion": "Prismáticos, tipos de telescopios (refractores, reflectores, catadióptricos), monturas, oculares y filtros.",
+      "archivo": "data/sesion-3.json",
+      "icono": "telescope"
+    },
+    {
+      "id": 4,
+      "titulo": "Sesión 4: Estrellas, espacio profundo y cosmología",
+      "descripcion": "Evolución y ciclo estelar, nebulosas, cúmulos, tipos de galaxias, el Big Bang y la expansión del Universo.",
+      "archivo": "data/sesion-4.json",
+      "icono": "galaxy"
+    }
+  ]
+}

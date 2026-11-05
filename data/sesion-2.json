@@ -1,0 +1,147 @@
+{
+  "sesionId": 2,
+  "titulo": "Sesión 2: El Sistema Solar",
+  "descripcion": "Evaluación sobre los planetas rocosos y gaseosos, lunas, el Sol, asteroides, cometas y cuerpos menores.",
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Cuál es el planeta más grande del Sistema Solar?",
+      "opciones": ["Saturno", "Júpiter", "Neptuno", "Urano"],
+      "correcta": 1,
+      "explicacion": "Júpiter tiene una masa más de dos veces superior a la de todos los demás planetas juntos y un diámetro de unos 142.984 km."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Qué planeta del Sistema Solar tiene la temperatura superficial media más alta debido a un efecto invernadero desbocado?",
+      "opciones": ["Mercurio", "Venus", "Marte", "Júpiter"],
+      "correcta": 1,
+      "explicacion": "Aunque Mercurio está más cerca del Sol, la densa atmósfera de dióxido de carbono de Venus atrapa el calor alcanzando unos 465 °C."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Dónde se encuentra ubicado el Cinturón Principal de Asteroides?",
+      "opciones": ["Entre la Tierra y Marte", "Entre Marte y Júpiter", "Más allá de la órbita de Neptuno", "Entre Venus y la Tierra"],
+      "correcta": 1,
+      "explicacion": "El Cinturón de Asteroides se ubica entre las órbitas de Marte y Júpiter, albergando cuerpos como Ceres, Vesta y Palas."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Qué cuatro satélites principales de Júpiter fueron descubiertos por Galileo Galilei en 1610?",
+      "opciones": ["Titán, Encélado, Mimas y Jápeto", "Ío, Europa, Ganímedes y Calisto", "Fobos, Deimos, Caronte y Tritón", "Miranda, Ariel, Umbriel y Titania"],
+      "correcta": 1,
+      "explicacion": "Los satélites galileanos son Ío, Europa, Ganímedes (la luna más grande del Sistema Solar) y Calisto."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿De qué están compuestos principalmente los espectaculares anillos de Saturno?",
+      "opciones": ["Rocas de hierro fundido", "Partículas y bloques de hielo de agua con trazas de polvo", "Gases de hidrógeno y helio condensados", "Diamantes y carbono puro"],
+      "correcta": 1,
+      "explicacion": "Los anillos de Saturno están formados en un 99% por fragmentos de hielo de agua pura, desde el tamaño de granos de arena hasta bloques de varios metros."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿En qué año reclasificó la Unión Astronómica Internacional a Plutón como 'planeta enano'?",
+      "opciones": ["1999", "2006", "2012", "1986"],
+      "correcta": 1,
+      "explicacion": "En la Asamblea General de Praga de 2006, se redefinió el concepto de planeta y Plutón pasó a ser considerado planeta enano al no haber 'despejado su órbita'."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Cuál es la fuente de energía que hace brillar al Sol en su núcleo?",
+      "opciones": ["Combustión de carbón y oxígeno", "Fisión nuclear de uranio", "Fusión nuclear de hidrógeno en helio", "Contracción gravitatoria pura"],
+      "correcta": 2,
+      "explicacion": "El núcleo solar funciona mediante fusión termonuclear: transforma protones de hidrógeno en núcleos de helio liberando energía a través de la cadena protón-protón."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿Hacia dónde apunta siempre la cola de gas ionizado de un cometa al acercarse al Sol?",
+      "opciones": ["Hacia la dirección por donde viaja el cometa", "Hacia atrás en su trayectoria orbital", "En dirección opuesta al Sol debido a la presión de radiación y el viento solar", "Hacia el planeta más cercano"],
+      "correcta": 2,
+      "explicacion": "El viento solar y la radiación solar empujan el gas ionizado de la coma cometaria alejándolo del Sol, independientemente del sentido en el que se mueva el cometa."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Cuál es la luna de Saturno famosa por su densa atmósfera y lagos de metano y etano líquidos?",
+      "opciones": ["Titán", "Europa", "Encélado", "Ganímedes"],
+      "correcta": 0,
+      "explicacion": "Titán es el único satélite del Sistema Solar con una atmósfera sustancial (más densa que la terrestre) y un ciclo meteorológico con líquidos de hidrocarburos."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Qué planeta del Sistema Solar tiene su eje de rotación tan inclinado (~98°) que prácticamente 'rueda' sobre su órbita?",
+      "opciones": ["Neptuno", "Urano", "Saturno", "Mercurio"],
+      "correcta": 1,
+      "explicacion": "Urano tiene una inclinación axial extrema de 97.8°, probablemente debido a un impacto cataclísmico con un protoplaneta en los orígenes del Sistema Solar."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Qué fenómeno provoca el color rojizo característico del suelo y la atmósfera de Marte?",
+      "opciones": ["Vegetación extraterrestre marciana", "La presencia de óxido de hierro (herrumbre) en su regolito", "Depósitos masivos de cobre", "La radiación ultravioleta sobre gas metano"],
+      "correcta": 1,
+      "explicacion": "La superficie marciana es rica en minerales de hierro que se oxidaron en el pasado geológico, confiriéndole su tono rojizo."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Cuál es el mayor volcán conocido del Sistema Solar, situado en Marte?",
+      "opciones": ["Mauna Kea", "Monte Olimpo (Olympus Mons)", "Monte Vesubio", "Caldera de Yellowstone"],
+      "correcta": 1,
+      "explicacion": "Olympus Mons es un volcán en escudo que se eleva más de 21 km sobre el nivel medio marciano, casi tres veces la altura del Everest."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Qué satélite de Júpiter tiene la mayor actividad volcánica del Sistema Solar debido al calentamiento por mareas gravitatorias?",
+      "opciones": ["Calisto", "Europa", "Ío", "Ganímedes"],
+      "correcta": 2,
+      "explicacion": "La continua fricción por las intensas mareas gravitatorias ejercidas por Júpiter, Europa y Ganímedes mantiene el interior de Ío fundido, con cientos de volcanes activos."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Cuál es la región más externa del Sistema Solar, considerada el origen de los cometas de largo periodo?",
+      "opciones": ["El cinturón de Kuiper", "La nube de Oort", "El cinturón de asteroides", "La heliopausa"],
+      "correcta": 1,
+      "explicacion": "La nube de Oort es una nube esférica hipotética de millones de cuerpos helados situada entre 2.000 y 100.000 UA del Sol."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Cuánto equivale aproximadamente una Unidad Astronómica (UA)?",
+      "opciones": ["La distancia de la Tierra a la Luna (384.400 km)", "La distancia media de la Tierra al Sol (~150 millones de km)", "La distancia a la estrella más cercana (4.2 años luz)", "El radio de la órbita de Júpiter"],
+      "correcta": 1,
+      "explicacion": "1 Unidad Astronómica (UA) se define formalmente como 149.597.870.700 metros (~150 millones de kilómetros)."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué capa de la atmósfera del Sol es visible a simple vista durante la totalidad de un eclipse solar?",
+      "opciones": ["La fotosfera", "El núcleo", "La corona solar", "La zona radiactiva"],
+      "correcta": 2,
+      "explicacion": "La corona solar es la tenue atmósfera exterior a millones de grados, oculta habitualmente por el deslumbrante brillo de la fotosfera y solo visible en eclipses totales."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Cuál es la diferencia entre un meteoroide, un meteoro y un meteorito?",
+      "opciones": ["No hay diferencia, son sinónimos exactos", "Meteoroide en el espacio, meteoro el trazo luminoso en la atmósfera, meteorito si llega al suelo", "Meteorito es el cometa, meteoro la estrella fugaz", "Meteoroide es artificial y meteoro natural"],
+      "correcta": 1,
+      "explicacion": "Meteoroide es la partícula en el espacio interplanetario; meteoro ('estrella fugaz') es el fenómeno luminoso en la atmósfera; meteorito es el fragmento que impacta el suelo."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Qué satélite natural posee géiseres que expulsan vapor de agua y hielo desde un océano subterráneo hacia el espacio?",
+      "opciones": ["La Luna", "Encélado (Saturno)", "Fobos (Marte)", "Deimos (Marte)"],
+      "correcta": 1,
+      "explicacion": "La sonda Cassini descubrió espectaculares plumas criovolcánicas en el polo sur de Encélado, confirmando la existencia de un océano global de agua líquida bajo su corteza de hielo."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Qué dos planetas del Sistema Solar no tienen ningún satélite natural o luna?",
+      "opciones": ["Marte y Venus", "Mercurio y Venus", "Mercurio y Marte", "Urano y Neptuno"],
+      "correcta": 1,
+      "explicacion": "Mercurio y Venus son los dos únicos planetas de nuestro Sistema Solar que carecen por completo de lunas naturales."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cada cuántos años aproximadamente se repite el ciclo de actividad magnética y manchas solares?",
+      "opciones": ["Cada 1 año", "Cada 11 años", "Cada 50 años", "Cada 100 años"],
+      "correcta": 1,
+      "explicacion": "El ciclo solar promedio dura aproximadamente 11 años entre mínimos y máximos de manchas solares (y 22 años para invertir y restablecer la polaridad magnética completa)."
+    }
+  ]
+}

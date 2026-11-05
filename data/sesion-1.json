@@ -1,0 +1,147 @@
+{
+  "sesionId": 1,
+  "titulo": "Sesión 1: El cielo nocturno y la esfera celeste",
+  "descripcion": "Evaluación de conocimientos sobre orientación, constelaciones, esfera celeste, magnitudes y movimientos básicos.",
+  "preguntas": [
+    {
+      "id": 1,
+      "pregunta": "¿Cuál es la estrella que señala aproximadamente el polo norte celeste en el hemisferio norte?",
+      "opciones": ["Sirio", "Polaris (Estrella Polar)", "Vega", "Betelgeuse"],
+      "correcta": 1,
+      "explicacion": "Polaris se encuentra a menos de 1 grado del polo norte celeste, por lo que parece permanecer inmóvil mientras las demás estrellas rotan a su alrededor."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Qué constelación es la referencia más popular para localizar la Estrella Polar?",
+      "opciones": ["Orión", "Casiopea", "Osa Mayor (Ursa Major)", "El Cisne"],
+      "correcta": 2,
+      "explicacion": "Prolongando unas 5 veces la distancia entre las estrellas Merak y Dubhe (los 'apuntadores' del carro de la Osa Mayor), se llega directamente a Polaris."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿A qué se debe el movimiento aparente diario de las estrellas de este a oeste?",
+      "opciones": ["A la rotación de la Tierra de oeste a este", "A la traslación de la Tierra alrededor del Sol", "Al movimiento propio de las estrellas por la galaxia", "A la precesión de los equinoccios"],
+      "correcta": 0,
+      "explicacion": "La rotación de la Tierra sobre su propio eje en sentido antihorario (de oeste a este) produce la ilusión de que la bóveda celeste gira en sentido contrario."
+    },
+    {
+      "id": 4,
+      "pregunta": "En el sistema astronómico de magnitudes aparentes, ¿qué estrella es más brillante?",
+      "opciones": ["Una de magnitud +5", "Una de magnitud +1", "Una de magnitud 0", "Una de magnitud -1.5"],
+      "correcta": 3,
+      "explicacion": "La escala de magnitud aparente es inversa y logarítmica: cuanto más negativo o menor sea el número, mayor es el brillo aparente del objeto."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Qué nombre recibe el punto de la esfera celeste situado verticalmente justo sobre la cabeza del observador?",
+      "opciones": ["Nadir", "Cénit", "Meridiano", "Azimut"],
+      "correcta": 1,
+      "explicacion": "El cénit (o cenit) es la intersección de la vertical del observador con la esfera celeste hacia arriba. El punto opuesto es el nadir."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué representa la línea imaginaria denominada 'Eclíptica'?",
+      "opciones": ["El ecuador de la Vía Láctea", "La trayectoria aparente anual del Sol sobre el fondo de estrellas", "El horizonte del observador", "La órbita exacta de la Luna"],
+      "correcta": 1,
+      "explicacion": "La eclíptica es la proyección del plano de la órbita terrestre en la esfera celeste y marca el camino aparente del Sol a lo largo del año."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Cuántas constelaciones oficiales reconoce formalmente la Unión Astronómica Internacional (UAI/IAU)?",
+      "opciones": ["12", "48", "88", "108"],
+      "correcta": 2,
+      "explicacion": "En 1922-1930, la Unión Astronómica Internacional definió formalmente los límites precisos de las 88 constelaciones que cubren toda la esfera celeste."
+    },
+    {
+      "id": 8,
+      "pregunta": "En las coordenadas ecuatoriales celestes, ¿cuáles son los equivalentes a la latitud y longitud terrestres?",
+      "opciones": ["Azimut y Altitud", "Declinación y Ascensión Recta", "Cénit y Nadir", "Paralelo y Eclíptica"],
+      "correcta": 1,
+      "explicacion": "La Declinación mide los grados al norte o sur del ecuador celeste (como la latitud) y la Ascensión Recta mide el ángulo a lo largo del ecuador celeste (como la longitud)."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Qué causa principal produce las cuatro estaciones en la Tierra?",
+      "opciones": ["La variación de la distancia entre la Tierra y el Sol", "La inclinación del eje de rotación terrestre respecto al plano orbital", "El cambio en la actividad de las manchas solares", "La sombra producida por la Luna"],
+      "correcta": 1,
+      "explicacion": "El eje terrestre está inclinado unos 23.5 grados. Esto provoca que a lo largo del año los rayos solares incidan con diferente ángulo y duración en cada hemisferio."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Cuánto dura aproximadamente un ciclo completo de las fases lunares (mes sinódico)?",
+      "opciones": ["24 horas", "27.3 días", "29.5 días", "365 días"],
+      "correcta": 2,
+      "explicacion": "El mes sinódico (de luna nueva a la siguiente luna nueva) dura aproximadamente 29 días y medio (29.53 días)."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Por qué desde la Tierra siempre vemos la misma cara de la Luna?",
+      "opciones": ["Porque la Luna no gira sobre sí misma", "Debido a la rotación sincrónica (tarda lo mismo en rotar que en trasladarse)", "Porque la cara oculta no refleja luz solar", "Por la atracción combinada de Júpiter y el Sol"],
+      "correcta": 1,
+      "explicacion": "Las fuerzas de marea frenaron la rotación de la Luna hasta acoplarla: su periodo de rotación es exactamente igual a su periodo orbital (rotación sincrónica)."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Qué ocurre astronómicamente durante un eclipse solar?",
+      "opciones": ["La Tierra se sitúa entre el Sol y la Luna", "La Luna se sitúa directamente entre el Sol y la Tierra", "El Sol oculta a la Luna detrás de la Vía Láctea", "La Luna pasa por el cono de sombra de la Tierra"],
+      "correcta": 1,
+      "explicacion": "Un eclipse solar ocurre en fase de Luna Nueva cuando la Luna se interpone en la línea de visión directa entre el Sol y la Tierra, proyectando su sombra."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Qué asterismo o figura geométrica célebre domina las noches despejadas de verano en nuestras latitudes?",
+      "opciones": ["El Triángulo de Invierno", "El Triángulo de Verano (Vega, Deneb, Altair)", "La Cruz del Sur", "El Cinturón de Orión"],
+      "correcta": 1,
+      "explicacion": "El Triángulo de Verano está formado por tres estrellas muy brillantes de tres constelaciones distintas: Vega (Lira), Deneb (Cisne) y Altair (Águila)."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Cuál es la causa del movimiento retrógrado aparente que describen los planetas en el cielo?",
+      "opciones": ["El planeta frena y cambia de dirección físicamente", "Efecto de perspectiva cuando la Tierra adelanta al planeta en su órbita", "La atracción gravitatoria de la Luna", "La refracción atmosférica terrestre"],
+      "correcta": 1,
+      "explicacion": "Es un efecto puramente geométrico y de perspectiva que ocurre cuando la Tierra, al viajar más rápido en su órbita interior, adelanta a un planeta exterior como Marte."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿A qué llamamos 'estrellas circumpolares' para un lugar determinado?",
+      "opciones": ["Aquellas que solo se ven durante el invierno", "Aquellas que nunca se ponen bajo el horizonte local debido a la latitud", "Las estrellas que tienen un brillo variable regular", "Las estrellas más cercanas al ecuador celeste"],
+      "correcta": 1,
+      "explicacion": "Son aquellas estrellas cuya distancia angular al polo celeste es menor que la latitud del observador, por lo que nunca se ocultan por debajo del horizonte."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Qué es la 'luz cenicienta' de la Luna visible en fases crecientes o menguantes finas?",
+      "opciones": ["Luz emitida por volcanes lunares activos", "Luz solar reflejada por la Tierra que ilumina la parte no expuesta al Sol de la Luna", "Fosforescencia del polvo lunar (regolito)", "Reflejo de la Vía Láctea en los cráteres"],
+      "correcta": 1,
+      "explicacion": "La luz cenicienta es el brillo ténue de la parte nocturna de la Luna producido por el reflejo de la luz solar en los océanos, nubes y continentes de la Tierra ('brillo de la Tierra')."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿En qué fechas la duración del día y de la noche es prácticamente igual en toda la Tierra?",
+      "opciones": ["Solsticios de verano e invierno", "Equinoccios de primavera y otoño", "Solo durante el perihelio terrestre", "Durante la luna llena de agosto"],
+      "correcta": 1,
+      "explicacion": "En los equinoccios (del latín aequinoctium: 'noche igual'), el Sol cruza el ecuador celeste y el día y la noche duran aproximadamente 12 horas en todo el planeta."
+    },
+    {
+      "id": 18,
+      "pregunta": "¿Cómo se llama el lento bamboleo cónico del eje de rotación de la Tierra que completa un ciclo cada 25.770 años?",
+      "opciones": ["Nutación", "Precesión de los equinoccios", "Libración lunar", "Aberración de la luz"],
+      "correcta": 1,
+      "explicacion": "La precesión de los equinoccios hace que la posición del polo norte celeste vaya cambiando lentamente a lo largo de los milenios (hace 4.000 años la polar era Thuban)."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Qué mide la escala de cielo oscuro de Bortle?",
+      "opciones": ["La temperatura del telescopio", "El nivel de contaminación lumínica y la oscuridad del cielo", "La velocidad del viento en la alta atmósfera", "El número de satélites artificiales visibles"],
+      "correcta": 1,
+      "explicacion": "La escala de Bortle (clases 1 a 9) clasifica la calidad del cielo nocturno desde cielos oscuros prístinos (clase 1) hasta cielos de centro de gran ciudad (clase 9)."
+    },
+    {
+      "id": 20,
+      "pregunta": "Si extiendes el brazo completamente, ¿cuántos grados de arco mide aproximadamente el ancho de tu puño cerrado en el cielo?",
+      "opciones": ["Aproximadamente 1 grado", "Aproximadamente 5 grados", "Aproximadamente 10 grados", "Aproximadamente 25 grados"],
+      "correcta": 2,
+      "explicacion": "A brazo extendido: el dedo meñique mide ~1°, tres dedos ~5°, el puño cerrado ~10°, y la mano abierta de pulgar a meñique ~20-25°. Son reglas prácticas de estimación angular."
+    }
+  ]
+}
