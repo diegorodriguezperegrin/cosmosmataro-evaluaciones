@@ -120,11 +120,11 @@
     
     elements.sessionsGrid.innerHTML = state.sessionsData.sesiones.map(s => `
       <div class="session-item" data-session-id="${s.id}">
-        <div class="session-badge">Sesión ${s.id}</div>
+        <div class="session-badge">Sessió ${s.id}</div>
         <div class="session-title">${escapeHtml(s.titulo)}</div>
         <div class="session-desc">${escapeHtml(s.descripcion)}</div>
         <div class="session-action">
-          <span>Realizar evaluación (20 preguntas)</span>
+          <span>Realitzar avaluació (20 preguntes)</span>
           <span>→</span>
         </div>
       </div>
@@ -156,13 +156,13 @@
     if (!session) return;
 
     state.currentSession = session;
-    elements.headerBadge.textContent = `Sesión ${session.id}`;
+    elements.headerBadge.textContent = `Sessió ${session.id}`;
     elements.headerBadge.classList.remove("hidden");
     elements.regSessionTitle.textContent = session.titulo;
 
     try {
       const resp = await fetch(session.archivo);
-      if (!resp.ok) throw new Error(`No se pudo cargar ${session.archivo}`);
+      if (!resp.ok) throw new Error(`No s'ha pogut carregar ${session.archivo}`);
       const data = await resp.json();
       state.questions = data.preguntas || [];
       state.answers = {};
@@ -170,7 +170,7 @@
 
       switchView("registration");
     } catch (err) {
-      alert(`Error al cargar las preguntas de la sesión: ${err.message}`);
+      alert(`Error en carregar les preguntes de la sessió: ${err.message}`);
     }
   }
 
@@ -189,7 +189,7 @@
       const email = elements.studentEmail.value.trim();
 
       if (!name) {
-        alert("Por favor, introduce tu nombre y apellidos.");
+        alert("Si us plau, introdueix el teu nom i cognoms.");
         return;
       }
 
@@ -403,13 +403,13 @@
     const excellentThreshold = CONFIG.EXCELLENT_PERCENT || 85;
 
     let calificacion = "fail";
-    let badgeText = "Necesita Repaso";
+    let badgeText = "Necessita repàs";
     if (percent >= excellentThreshold) {
       calificacion = "excellent";
-      badgeText = "¡Excelente!";
+      badgeText = "¡Excel·lent!";
     } else if (percent >= passThreshold) {
       calificacion = "pass";
-      badgeText = "¡Apto!";
+      badgeText = "¡Apte!";
     }
 
     state.results = {
@@ -419,7 +419,7 @@
       calificacion,
       badgeText,
       reviewDetails,
-      date: new Date().toLocaleDateString("es-ES", {
+      date: new Date().toLocaleDateString("ca-ES", {
         year: "numeric",
         month: "long",
         day: "numeric",
@@ -450,14 +450,14 @@
     // Rellenar certificado imprimible
     elements.certName.textContent = state.student.name;
     elements.certSession.textContent = state.currentSession.titulo;
-    elements.certScore.textContent = `${res.score} de ${res.total} aciertos (${res.percent}%) - Calificación: ${res.badgeText}`;
+    elements.certScore.textContent = `${res.score} de ${res.total} encerts (${res.percent}%) - Qualificació: ${res.badgeText}`;
     elements.certDate.textContent = `Mataró, a ${res.date}`;
 
     // Renderizar desglose pedagógico de preguntas
     const letters = ["A", "B", "C", "D"];
     elements.reviewList.innerHTML = res.reviewDetails.map(item => {
       const isCorrect = item.acierto;
-      const userChose = item.seleccionada !== -1 ? item.opciones[item.seleccionada] : "Sin responder";
+      const userChose = item.seleccionada !== -1 ? item.opciones[item.seleccionada] : "Sense respondre";
       const correctText = item.opciones[item.correcta];
 
       return `
@@ -471,18 +471,18 @@
           <div class="review-answers">
             ${!isCorrect ? `
               <div class="review-ans user-choice-wrong">
-                <span>Tu respuesta:</span>
+                <span>La teva resposta:</span>
                 <strong>${item.seleccionada !== -1 ? letters[item.seleccionada] + ") " : ""}${escapeHtml(userChose)}</strong>
               </div>
             ` : ""}
             <div class="review-ans correct-choice">
-              <span>Respuesta correcta:</span>
+              <span>Resposta correcta:</span>
               <strong>${letters[item.correcta]}) ${escapeHtml(correctText)}</strong>
             </div>
           </div>
           ${item.explicacion ? `
             <div class="review-explanation">
-              <strong>Explicación astronómica:</strong>
+              <strong>Explicació astronòmica:</strong>
               ${escapeHtml(item.explicacion)}
             </div>
           ` : ""}
@@ -499,7 +499,7 @@
       elements.syncStatus.className = "sync-status offline";
       elements.syncStatus.innerHTML = `
         <span>ℹ️</span>
-        <span>Evaluación completada localmente. (Para registrar automáticamente los resultados de los alumnos en Google Sheets, añade la URL del Webhook en <code>js/config.js</code>).</span>
+        <span>Avaluació completada localment.</span>
       `;
       return;
     }
@@ -507,7 +507,7 @@
     elements.syncStatus.className = "sync-status saving";
     elements.syncStatus.innerHTML = `
       <span>⏳</span>
-      <span>Guardando resultados en el registro de Cosmos Mataró...</span>
+      <span>Desant resultats al registre de Cosmos Mataró...</span>
     `;
 
     const payload = {
@@ -541,14 +541,14 @@
       elements.syncStatus.className = "sync-status success";
       elements.syncStatus.innerHTML = `
         <span>✓</span>
-        <span>¡Resultados registrados con éxito en la secretaría de Cosmos Mataró!</span>
+        <span>¡Resultats registrats amb èxit a la secretaria de Cosmos Mataró!</span>
       `;
     } catch (err) {
-      console.error("Error al registrar en Google Sheets:", err);
+      console.error("Error en registrar a Google Sheets:", err);
       elements.syncStatus.className = "sync-status offline";
       elements.syncStatus.innerHTML = `
         <span>⚠️</span>
-        <span>No se pudo conectar con Google Sheets en este momento. La evaluación sigue siendo válida.</span>
+        <span>No s'ha pogut connectar amb Google Sheets en aquest moment. L'avaluació continua sent vàlida.</span>
       `;
     }
   }

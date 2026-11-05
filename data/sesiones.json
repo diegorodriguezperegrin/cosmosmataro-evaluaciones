@@ -1,19 +1,19 @@
 {
-  "organizacion": "Cosmos Mataró",
+  "organizacion": "Cosmos, Grup d'Astronomia de Mataró",
   "subtitulo": "Agrupació Astronòmica",
-  "curso": "Curso de Iniciación a la Astronomía",
+  "curso": "Curs d'iniciació a l'astronomia",
   "sesiones": [
     {
       "id": 1,
-      "titulo": "Sesión 1: El cielo nocturno y la esfera celeste",
-      "descripcion": "Constelaciones, orientación estelar, coordenadas celestes, magnitudes y movimientos de la Tierra y la Luna.",
+      "titulo": "Sessió 1: El cel nocturn i l'esfera celest",
+      "descripcion": "Constel·lacions, orientació estel·lar, coordenades celestes, magnituds i moviments de la Terra i la Lluna.",
       "archivo": "data/sesion-1.json",
       "icono": "compass"
     },
     {
       "id": 2,
-      "titulo": "Sesión 2: El Sistema Solar",
-      "descripcion": "El Sol, los planetas rocosos y gaseosos, lunas principales, asteroides, cometas y mecánica planetaria.",
+      "titulo": "Sessió 2: El Sistema Solar",
+      "descripcion": "El Sol, els planetes rocosos i gasosos, llunes principals, asteroides, cometes i mecànica planetària.",
       "archivo": "data/sesion-2.json",
       "icono": "sun"
     },
@@ -26,8 +26,8 @@
     },
     {
       "id": 4,
-      "titulo": "Sesión 4: Estrellas, espacio profundo y cosmología",
-      "descripcion": "Evolución y ciclo estelar, nebulosas, cúmulos, tipos de galaxias, el Big Bang y la expansión del Universo.",
+      "titulo": "Sessió 4: Estrelles, espai profund i cosmologia",
+      "descripcion": "Evolució i cicle estel·lar, nebuloses, cúmuls, tipus de galàxies, el Big Bang i l'expansió de l'Univers.",
       "archivo": "data/sesion-4.json",
       "icono": "galaxy"
     }
