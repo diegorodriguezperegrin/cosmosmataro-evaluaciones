@@ -15,9 +15,7 @@ const CONFIG = {
   EXCELLENT_PERCENT: 85,   // Calificación de excelente: 85% (17 aciertos)
 
   // URL del Webhook de Google Apps Script (para registrar en Google Sheets)
-  // Pega aquí la URL que obtengas al implementar Code.gs (termina en /exec)
-  // Si se deja vacío, la app funciona en modo demostración/local sin bloquear al alumno.
-  GOOGLE_SHEETS_WEBHOOK_URL: "",
+  GOOGLE_SHEETS_WEBHOOK_URL: "https://script.google.com/macros/s/AKfycbzgnufLt06Q4mW_E5lHMLBEVDYdSaeQuhozIZcjW3TXMWP0ZvoYXbz93TkmyfAMJXsr/exec",
 
   // Opciones de experiencia de usuario
   ENABLE_DETAILED_EXPLANATIONS: true,  // Muestra explicaciones astronómicas tras finalizar
