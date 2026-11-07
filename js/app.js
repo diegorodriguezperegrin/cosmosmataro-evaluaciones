@@ -239,9 +239,9 @@
       finalizeAndScoreQuiz();
     });
 
-    // Imprimir diploma / PDF
+    // Generar / Descarregar diploma en PDF
     elements.btnPrintCert.addEventListener("click", () => {
-      window.print();
+      openCertificatePrintWindow();
     });
 
     // Repetir el mateix test (amb preguntes barallades)
@@ -511,6 +511,328 @@
         </div>
       `;
     }).join("");
+  }
+
+  // Cache per al Data URL del logotip per evitar errors de CORS a html2canvas
+  let cachedLogoDataUrl = "";
+  async function getLogoDataUrl() {
+    if (cachedLogoDataUrl) return cachedLogoDataUrl;
+    try {
+      const resp = await fetch("assets/logo-oficial.png");
+      const blob = await resp.blob();
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          cachedLogoDataUrl = reader.result;
+          resolve(cachedLogoDataUrl);
+        };
+        reader.readAsDataURL(blob);
+      });
+    } catch (e) {
+      return new URL("assets/logo-oficial.png", window.location.href).href;
+    }
+  }
+
+  // Obrir finestra dedicada per al Certificat / Diploma (evita restriccions d'iframe a Google Sites)
+  async function openCertificatePrintWindow() {
+    const res = state.results;
+    if (!res) {
+      alert("No hi ha resultats disponibles per generar el diploma.");
+      return;
+    }
+
+    const studentName = state.student.name || "Alumne/a";
+    const sessionTitle = state.currentSession ? state.currentSession.titulo : "Sessió";
+    const scoreDetail = `${res.score} de ${res.total} encerts (${res.percent}%) - Qualificació: ${res.badgeText}`;
+    const certDate = `Mataró, a ${res.date}`;
+
+    // Obrir la nova finestra immediatament a l'esdeveniment d'usuari per evitar el bloqueig de popups
+    const printWin = window.open("", "_blank");
+    if (!printWin) {
+      // Si el navegador bloqueja popups, intentar impressió directa
+      window.print();
+      return;
+    }
+
+    // Carregar imatge com a Data URL
+    const logoSrc = await getLogoDataUrl();
+    const safeFilename = "Certificat_Cosmos_Mataro_" + (studentName || "Alumne").replace(/[^a-zA-Z0-9À-ÿ]/g, "_") + ".pdf";
+
+    const html = `<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificat - ${escapeHtml(studentName)} - Cosmos Mataró</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"><\/script>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: #0b1120;
+      color: #0f172a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px;
+      min-height: 100vh;
+    }
+    .action-bar {
+      width: 100%;
+      max-width: 820px;
+      background: #1e293b;
+      color: #ffffff;
+      padding: 14px 20px;
+      border-radius: 10px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    .action-text {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+    .action-text strong {
+      color: #38bdf8;
+    }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .btn {
+      cursor: pointer;
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: 8px;
+      border: none;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-download {
+      background: #059669;
+      color: white;
+    }
+    .btn-download:hover {
+      background: #047857;
+    }
+    .btn-print {
+      background: #0284c7;
+      color: white;
+    }
+    .btn-print:hover {
+      background: #0369a1;
+    }
+    .btn-close {
+      background: #475569;
+      color: #f8fafc;
+    }
+    .btn-close:hover {
+      background: #64748b;
+    }
+    /* Contenidor del diploma */
+    .certificate-card {
+      width: 100%;
+      max-width: 820px;
+      background: #ffffff;
+      padding: 48px 40px;
+      border: 8px double #1e3a8a;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      text-align: center;
+      position: relative;
+    }
+    .cert-logo {
+      max-height: 85px;
+      width: auto;
+      margin: 0 auto 18px;
+      display: block;
+    }
+    h1 {
+      font-size: 26pt;
+      color: #1e3a8a;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 6pt;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: 14pt;
+      font-style: italic;
+      color: #475569;
+      margin-bottom: 28pt;
+      font-weight: normal;
+    }
+    .cert-body {
+      font-size: 13.5pt;
+      line-height: 1.8;
+      color: #1e293b;
+      margin-bottom: 28pt;
+    }
+    .student-name {
+      font-size: 23pt;
+      font-weight: bold;
+      color: #0f172a;
+      border-bottom: 2px solid #1e3a8a;
+      display: inline-block;
+      padding: 0 25px 4pt;
+      margin: 12pt 0 18pt;
+    }
+    .session-title {
+      font-size: 15pt;
+      color: #1e3a8a;
+      font-weight: bold;
+      margin: 10pt 0;
+      display: block;
+    }
+    .cert-score {
+      font-size: 15pt;
+      font-weight: bold;
+      color: #0284c7;
+      margin: 14pt 0;
+    }
+    .cert-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 45pt;
+      font-size: 10.5pt;
+      color: #334155;
+    }
+    .signature-box {
+      border-top: 1px solid #94a3b8;
+      width: 220px;
+      padding-top: 6pt;
+      text-align: center;
+    }
+    .signature-role {
+      font-size: 9pt;
+      color: #64748b;
+      margin-bottom: 40pt;
+    }
+    .date-box {
+      text-align: right;
+    }
+    .date-text {
+      font-style: italic;
+    }
+    .web-url {
+      font-size: 9pt;
+      color: #64748b;
+      margin-top: 4pt;
+    }
+    @media print {
+      body {
+        background: white !important;
+        padding: 0 !important;
+      }
+      .action-bar {
+        display: none !important;
+      }
+      .certificate-card {
+        border: 8px double #1e3a8a !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+        padding: 40px 35px !important;
+        margin: 0 auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="action-bar">
+    <div class="action-text">
+      <span>📄 <strong>Diploma generat:</strong> pots descarregar el fitxer .pdf directament o imprimir-lo.</span>
+    </div>
+    <div class="btn-group">
+      <button type="button" id="btn-dl-pdf" class="btn btn-download">
+        <span>📥 Descarregar fitxer PDF</span>
+      </button>
+      <button type="button" onclick="window.print()" class="btn btn-print">
+        <span>🖨️ Imprimir / Desar en PDF</span>
+      </button>
+      <button type="button" onclick="window.close()" class="btn btn-close">
+        <span>✕ Tancar</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="diploma-card" class="certificate-card">
+    <img src="${logoSrc}" alt="Cosmos Mataró" class="cert-logo">
+    <h1>Certificat d'Aprofitament</h1>
+    <h2>Curs d'iniciació a l'astronomia</h2>
+
+    <div class="cert-body">
+      Es fa constar que l'alumne/a
+      <br>
+      <div class="student-name">${escapeHtml(studentName)}</div>
+      <br>
+      ha completat satisfactòriament l'avaluació corresponent a:
+      <br>
+      <strong class="session-title">${escapeHtml(sessionTitle)}</strong>
+      <div class="cert-score">${escapeHtml(scoreDetail)}</div>
+    </div>
+
+    <div class="cert-footer">
+      <div class="signature-box">
+        <div class="signature-role">Signatura de Secretaria / Professorat:</div>
+        <div><strong>Cosmos Mataró</strong></div>
+      </div>
+      <div class="date-box">
+        <div class="date-text">${escapeHtml(certDate)}</div>
+        <div class="web-url">cosmosmataro.org</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("btn-dl-pdf").addEventListener("click", function() {
+      const element = document.getElementById("diploma-card");
+      const opt = {
+        margin:       [8, 8, 8, 8],
+        filename:     "${safeFilename}",
+        image:        { type: "jpeg", quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true, logging: false },
+        jsPDF:        { unit: "mm", format: "a4", orientation: "portrait" }
+      };
+      const btn = document.getElementById("btn-dl-pdf");
+      const origText = btn.innerHTML;
+      btn.innerHTML = "<span>⏳ Generant document PDF...</span>";
+      btn.disabled = true;
+
+      html2pdf().set(opt).from(element).save().then(function() {
+        btn.innerHTML = origText;
+        btn.disabled = false;
+      }).catch(function(err) {
+        console.error("Error html2pdf:", err);
+        btn.innerHTML = origText;
+        btn.disabled = false;
+        window.print();
+      });
+    });
+  <\/script>
+</body>
+</html>`;
+
+    printWin.document.open();
+    printWin.document.write(html);
+    printWin.document.close();
   }
 
   // Envío a Google Sheets mediante Google Apps Script
