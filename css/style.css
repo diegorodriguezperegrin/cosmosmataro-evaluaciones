@@ -809,6 +809,13 @@ body {
     box-sizing: border-box;
   }
 
+  #printable-certificate .cert-logo {
+    max-height: 75px;
+    width: auto;
+    margin: 0 auto 16pt;
+    display: block;
+  }
+
   #printable-certificate h1 {
     font-size: 28pt;
     color: #1e3a8a;
