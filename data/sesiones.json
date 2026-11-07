@@ -5,8 +5,8 @@
   "sesiones": [
     {
       "id": 1,
-      "titulo": "Sessió 1: El cel nocturn i l'esfera celest",
-      "descripcion": "Constel·lacions, orientació estel·lar, coordenades celestes, magnituds i moviments de la Terra i la Lluna.",
+      "titulo": "Sessió 1: Història de l'astronomia",
+      "descripcion": "Dels primers observatoris i el cosmos antic a la revolució copernicana, Kepler, Galileu, Newton i la cosmologia moderna.",
       "archivo": "data/sesion-1.json",
       "icono": "compass"
     },

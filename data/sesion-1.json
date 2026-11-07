@@ -1,147 +1,247 @@
 {
   "sesionId": 1,
-  "titulo": "Sesión 1: El cielo nocturno y la esfera celeste",
-  "descripcion": "Evaluación de conocimientos sobre orientación, constelaciones, esfera celeste, magnitudes y movimientos básicos.",
+  "titulo": "Sessió 1: Història de l'astronomia",
+  "descripcion": "Avaluació sobre la història de l'astronomia: de l'arqueoastronomia i el món antic a la revolució heliocèntrica i l'astrofísica moderna.",
   "preguntas": [
     {
       "id": 1,
-      "pregunta": "¿Cuál es la estrella que señala aproximadamente el polo norte celeste en el hemisferio norte?",
-      "opciones": ["Sirio", "Polaris (Estrella Polar)", "Vega", "Betelgeuse"],
-      "correcta": 1,
-      "explicacion": "Polaris se encuentra a menos de 1 grado del polo norte celeste, por lo que parece permanecer inmóvil mientras las demás estrellas rotan a su alrededor."
+      "pregunta": "Quin és considerat un dels observatoris solars més antics coneguts d'Europa, construït al voltant del 4900 aC?",
+      "opciones": [
+        "El Cercle de Goseck (Alemanya)",
+        "El complex megalític de Stonehenge (Anglaterra)",
+        "El túmul funerari de Newgrange (Irlanda)",
+        "L'observatori d'Uraniborg a l'illa de Hven"
+      ],
+      "correcta": 0,
+      "explicacion": "El Cercle de Goseck, a Alemanya (~4900 aC), és una estructura circular concèntrica de fusta considerada un dels observatoris solars més antics d'Europa, anterior a Newgrange (~3200 aC) i a l'inici de Stonehenge (~3000 aC)."
     },
     {
       "id": 2,
-      "pregunta": "¿Qué constelación es la referencia más popular para localizar la Estrella Polar?",
-      "opciones": ["Orión", "Casiopea", "Osa Mayor (Ursa Major)", "El Cisne"],
-      "correcta": 2,
-      "explicacion": "Prolongando unas 5 veces la distancia entre las estrellas Merak y Dubhe (los 'apuntadores' del carro de la Osa Mayor), se llega directamente a Polaris."
+      "pregunta": "Què representa el cèlebre Disc de Nebra (~1600 aC), descobert a Alemanya i datat a l'edat de bronze?",
+      "opciones": [
+        "Un mecanisme d'engranatges per predir posicions planetàries",
+        "La representació coneguda més antiga del cosmos, amb el Sol o Lluna plena, la Lluna creixent i possiblement les Plèiades",
+        "El primer catàleg que classificava més d'un miler d'estrelles en sis magnituds",
+        "Un rellotge solar d'ombra utilitzat pels astrònoms de l'antic Egipte"
+      ],
+      "correcta": 1,
+      "explicacion": "El Disc de Nebra (~1600 aC, edat de bronze) és la representació del firmament més antiga que es coneix. Mostra la Lluna (creixent i plena/Sol), un cúmul estel·lar identificat com les Plèiades, i arcs que marquen els angles dels solsticis i equinoccis."
     },
     {
       "id": 3,
-      "pregunta": "¿A qué se debe el movimiento aparente diario de las estrellas de este a oeste?",
-      "opciones": ["A la rotación de la Tierra de oeste a este", "A la traslación de la Tierra alrededor del Sol", "Al movimiento propio de las estrellas por la galaxia", "A la precesión de los equinoccios"],
-      "correcta": 0,
-      "explicacion": "La rotación de la Tierra sobre su propio eje en sentido antihorario (de oeste a este) produce la ilusión de que la bóveda celeste gira en sentido contrario."
+      "pregunta": "A l'antic Egipte (~2100 aC), què eren els anomenats «degans» i quina funció tenien en el còmput del temps?",
+      "opciones": [
+        "Sacerdots encarregats de calcular la trajectòria dels eclipsis de Sol",
+        "Rellotges d'ombra utilitzats per mesurar l'altura del Sol al migdia",
+        "36 estels o grups d'estels amb sortides helíaques successives cada ~10 dies per mesurar les hores de la nit",
+        "Dotze figures zodiacals utilitzades per predir la crescuda anual del riu Nil"
+      ],
+      "correcta": 2,
+      "explicacion": "Els degans eren 36 estels o asterismes les sortides helíaques dels quals se succeïen cada aproximadament 10 dies. Servien per comptar les hores nocturnes i estructuraven el calendari civil egipci en 36 dècades (36 × 10 = 360 dies) més 5 dies afegits anomenats epagòmens."
     },
     {
       "id": 4,
-      "pregunta": "En el sistema astronómico de magnitudes aparentes, ¿qué estrella es más brillante?",
-      "opciones": ["Una de magnitud +5", "Una de magnitud +1", "Una de magnitud 0", "Una de magnitud -1.5"],
+      "pregunta": "Com que l'any civil egipci era de 365 dies i l'any tròpic és d'unes 365,25 hores (desplaçant la sortida helíaca de Sírius un dia cada 4 anys), cada quants anys tornaven a coincidir exactament el calendari civil i l'any sòtic?",
+      "opciones": [
+        "Cada 365 anys",
+        "Cada 720 anys",
+        "Cada 26.000 anys",
+        "Cada 1.460 anys"
+      ],
       "correcta": 3,
-      "explicacion": "La escala de magnitud aparente es inversa y logarítmica: cuanto más negativo o menor sea el número, mayor es el brillo aparente del objeto."
+      "explicacion": "A causa del desfasament d'aproximadament un quart de dia per any (~1 dia cada 4 anys), calien 1.460 anys (365 × 4) perquè l'any civil de 365 dies tornés a coincidir exactament amb la sortida helíaca de Sírius (cicle sòtic)."
     },
     {
       "id": 5,
-      "pregunta": "¿Qué nombre recibe el punto de la esfera celeste situado verticalmente justo sobre la cabeza del observador?",
-      "opciones": ["Nadir", "Cénit", "Meridiano", "Azimut"],
-      "correcta": 1,
-      "explicacion": "El cénit (o cenit) es la intersección de la vertical del observador con la esfera celeste hacia arriba. El punto opuesto es el nadir."
+      "pregunta": "Per quina raó astronòmica el dia solar mitjà (24 hores) és aproximadament 3 minuts i 56 segons més llarg que el dia sideral?",
+      "opciones": [
+        "Perquè mentre la Terra rota sobre el seu eix també avança en la seva òrbita al voltant del Sol, i ha de girar ~1° més perquè el Sol torni a culminar",
+        "A causa del retard de la llum provinent del Sol respecte a les estrelles llunyanes",
+        "Perquè la velocitat de rotació de la Terra sobre si mateixa s'accelera durant la nit",
+        "Perquè el moviment propi de les estrelles fixes a la galàxia supera el moviment dels planetes"
+      ],
+      "correcta": 0,
+      "explicacion": "Un dia sideral és el temps que triga la Terra a fer un gir de 360° respecte a les estrelles llunyanes (23 h 56 min 4 s). Com que mentrestant la Terra s'ha desplaçat al voltant del Sol, ha de girar aproximadament 1° addicional (~3 min 56 s) perquè el Sol torni a alinear-se amb el meridià local."
     },
     {
       "id": 6,
-      "pregunta": "¿Qué representa la línea imaginaria denominada 'Eclíptica'?",
-      "opciones": ["El ecuador de la Vía Láctea", "La trayectoria aparente anual del Sol sobre el fondo de estrellas", "El horizonte del observador", "La órbita exacta de la Luna"],
+      "pregunta": "Els astrònoms babilonis van descobrir un període cíclic de 223 mesos sinòdics (~6.585,3 dies o ~18 anys, 11 dies i 8 hores) conegut avui com a cicle Saros. Per a què servia?",
+      "opciones": [
+        "Per mesurar la distància física exacta entre la Terra i el planeta Mart",
+        "Per anticipar i predir la repetició cíclica d'eclipsis de Lluna i de Sol",
+        "Per establir les dates dels solsticis d'hivern i estiu",
+        "Per calcular la velocitat de rotació de la Lluna"
+      ],
       "correcta": 1,
-      "explicacion": "La eclíptica es la proyección del plano de la órbita terrestre en la esfera celeste y marca el camino aparente del Sol a lo largo del año."
+      "explicacion": "El cicle Saros (223 mesos sinòdics) és el període després del qual la geometria entre el Sol, la Terra i els nodes orbitals de la Lluna es repeteix gairebé de forma idèntica, permetent als babilonis preveure els eclipsis (especialment els de Lluna)."
     },
     {
       "id": 7,
-      "pregunta": "¿Cuántas constelaciones oficiales reconoce formalmente la Unión Astronómica Internacional (UAI/IAU)?",
-      "opciones": ["12", "48", "88", "108"],
+      "pregunta": "Quina correspondència fonamental va descobrir Metó d'Atenes (~432 aC), fonament del calendari lunisolar i del càlcul de la Pasqua cristiana (nombre d'or)?",
+      "opciones": [
+        "10 anys solars equivalen a 120 fases de lluna plena",
+        "30 anys solars corresponen a 360 revolucions de Mercuri",
+        "19 anys solars equivalen gairebé exactament a 235 llunacions (mesos sinòdics)",
+        "100 anys solars equivalen a 1.235 mesos siderals"
+      ],
       "correcta": 2,
-      "explicacion": "En 1922-1930, la Unión Astronómica Internacional definió formalmente los límites precisos de las 88 constelaciones que cubren toda la esfera celeste."
+      "explicacion": "El cicle metònic demostra que 19 anys solars (tròpics) coincideixen de manera gairebé exacta amb 235 mesos sinòdics (llunacions). Aquest cicle permet sincronitzar el calendari lunar amb l'any solar i és la base del 'Computus' per fixar la Pasqua."
     },
     {
       "id": 8,
-      "pregunta": "En las coordenadas ecuatoriales celestes, ¿cuáles son los equivalentes a la latitud y longitud terrestres?",
-      "opciones": ["Azimut y Altitud", "Declinación y Ascensión Recta", "Cénit y Nadir", "Paralelo y Eclíptica"],
-      "correcta": 1,
-      "explicacion": "La Declinación mide los grados al norte o sur del ecuador celeste (como la latitud) y la Ascensión Recta mide el ángulo a lo largo del ecuador celeste (como la longitud)."
+      "pregunta": "Quins dos arguments observacionals sòlids va utilitzar Aristòtil (~350 aC) per demostrar que la Terra és una esfera?",
+      "opciones": [
+        "El moviment de les marees i la variació estacional de la brillantor de Sírius",
+        "La curvatura de les tempestes i l'absència de suport físic de la Terra a l'espai",
+        "El càlcul de la paral·laxi lunar i el reflex de la llum solar als núvols",
+        "L'ombra circular que projecta la Terra sobre la Lluna durant els eclipsis i el canvi d'estrelles visibles segons la latitud"
+      ],
+      "correcta": 3,
+      "explicacion": "Aristòtil va argumentar que l'ombra de la Terra projectada sobre la Lluna en els eclipsis lunars és sempre circular (propi d'un cos esfèric) i que en viatjar cap al nord o cap al sud es veuen noves estrelles sobre l'horitzó mentre d'altres desapareixen."
     },
     {
       "id": 9,
-      "pregunta": "¿Qué causa principal produce las cuatro estaciones en la Tierra?",
-      "opciones": ["La variación de la distancia entre la Tierra y el Sol", "La inclinación del eje de rotación terrestre respecto al plano orbital", "El cambio en la actividad de las manchas solares", "La sombra producida por la Luna"],
-      "correcta": 1,
-      "explicacion": "El eje terrestre está inclinado unos 23.5 grados. Esto provoca que a lo largo del año los rayos solares incidan con diferente ángulo y duración en cada hemisferio."
+      "pregunta": "Quina proposta pionera i revolucionària va fer Aristarc de Samos (~280 aC), transmesa posteriorment per Arquimedes?",
+      "opciones": [
+        "Va proposar per primer cop que la Terra gira sobre si mateixa i orbita al voltant del Sol (model heliocèntric)",
+        "Va inventar el primer telescopi òptic utilitzant miralls parabòlics",
+        "Va formular la llei de gravitació universal que regeix l'atracció de les masses",
+        "Va descobrir els quatre satèl·lits més grans del planeta Júpiter"
+      ],
+      "correcta": 0,
+      "explicacion": "Al segle III aC, Aristarc de Samos va calcular per mètodes geomètrics les proporcions de mida i distància del Sol i la Lluna (*Sobre les mides i les distàncies del Sol i la Lluna*) i va plantejar la hipòtesi que la Terra i els planetes giren al voltant del Sol, anticipant-se a Copèrnic en més de 1.800 anys."
     },
     {
       "id": 10,
-      "pregunta": "¿Cuánto dura aproximadamente un ciclo completo de las fases lunares (mes sinódico)?",
-      "opciones": ["24 horas", "27.3 días", "29.5 días", "365 días"],
-      "correcta": 2,
-      "explicacion": "El mes sinódico (de luna nueva a la siguiente luna nueva) dura aproximadamente 29 días y medio (29.53 días)."
+      "pregunta": "Com va aconseguir Eratòstenes de Cirene (~240 aC) calcular per primera vegada la circumferència i el radi de la Terra amb gran precisió?",
+      "opciones": [
+        "Cronometrant el pas d'un cometa simultàniament des de dues ciutats costaneres",
+        "Comparant l'angle d'ombra d'un gnòmon a Alexandria (~7,2°, 1/50 de cercle) amb el Sol al zenit a Siena durant el solstici d'estiu",
+        "Mesurant el temps que trigava un vaixell a cobrir la distància entre Grècia i Egipte",
+        "Calculant la variació de temperatura entre dues latituds en el solstici d'hivern"
+      ],
+      "correcta": 1,
+      "explicacion": "En constatar que al migdia del solstici d'estiu el Sol queia a la vertical (zenit) a Siena (Assuan) mentre que a Alexandria projectava una ombra de 7,2° (1/50 de 360°), va multiplicar la distància de ~5.000 estadis per 50 per obtenir una circumferència terrestre de ~252.000 estadis (~40.000 km)."
     },
     {
       "id": 11,
-      "pregunta": "¿Por qué desde la Tierra siempre vemos la misma cara de la Luna?",
-      "opciones": ["Porque la Luna no gira sobre sí misma", "Debido a la rotación sincrónica (tarda lo mismo en rotar que en trasladarse)", "Porque la cara oculta no refleja luz solar", "Por la atracción combinada de Júpiter y el Sol"],
-      "correcta": 1,
-      "explicacion": "Las fuerzas de marea frenaron la rotación de la Luna hasta acoplarla: su periodo de rotación es exactamente igual a su periodo orbital (rotación sincrónica)."
+      "pregunta": "Quin fenomen fonamental va descobrir Hiparc de Nicea (~130 aC) en comparar les seves mesures estel·lars amb les observacions babilòniques i gregues anteriors?",
+      "opciones": [
+        "La rotació diferencial de la superfície del Sol",
+        "L'existència de cúmuls de galàxies a gran escala",
+        "La precessió dels equinoccis, un lent moviment cònic de l'eix terrestre de ~1° per segle",
+        "La variabilitat periòdica de la brillantor de l'estrella Polar"
+      ],
+      "correcta": 2,
+      "explicacion": "Hiparc va comparar les posicions d'estrelles com Espiga amb les registrades per Timocari i va descobrir que els punts equinoccials es desplacen lentament (~1° per segle, en un cicle de ~26.000 anys). També va calcular la distància Terra-Lluna en uns 60-80 radis terrestres i és considerat el pare de la trigonometria."
     },
     {
       "id": 12,
-      "pregunta": "¿Qué ocurre astronómicamente durante un eclipse solar?",
-      "opciones": ["La Tierra se sitúa entre el Sol y la Luna", "La Luna se sitúa directamente entre el Sol y la Tierra", "El Sol oculta a la Luna detrás de la Vía Láctea", "La Luna pasa por el cono de sombra de la Tierra"],
-      "correcta": 1,
-      "explicacion": "Un eclipse solar ocurre en fase de Luna Nueva cuando la Luna se interpone en la línea de visión directa entre el Sol y la Tierra, proyectando su sombra."
+      "pregunta": "En el model geocèntric de Claudi Ptolemeu a l'Almagest (~150 dC), quin punt geomètric es va introduir per explicar la velocitat aparent variable dels planetes?",
+      "opciones": [
+        "El focus buit d'una òrbita el·líptica",
+        "L'esfera dels estels immutables",
+        "El vèrtex d'una paràbola d'escapament",
+        "El punt equant (punt simètric a la Terra respecte al centre del deferent des d'on l'epicicle es mou amb velocitat angular uniforme)"
+      ],
+      "correcta": 3,
+      "explicacion": "Ptolemeu va introduir l'equant (Q): un punt simètric a la Terra respecte al centre del deferent. Vist des de l'equant, el centre de l'epicicle avançava amb velocitat angular uniforme, resolent matemàticament les variacions de velocitat però trencant la uniformitat respecte al centre físic del deferent."
     },
     {
       "id": 13,
-      "pregunta": "¿Qué asterismo o figura geométrica célebre domina las noches despejadas de verano en nuestras latitudes?",
-      "opciones": ["El Triángulo de Invierno", "El Triángulo de Verano (Vega, Deneb, Altair)", "La Cruz del Sur", "El Cinturón de Orión"],
-      "correcta": 1,
-      "explicacion": "El Triángulo de Verano está formado por tres estrellas muy brillantes de tres constelaciones distintas: Vega (Lira), Deneb (Cisne) y Altair (Águila)."
+      "pregunta": "Quin concepte geomètric va idear l'astrònom Nasir al-Din al-Tusi (segle XIII, observatori de Maragha) per generar moviment lineal a partir de moviments circulars sense fer servir l'equant ptolemaic?",
+      "opciones": [
+        "La Parella de Tusi (un cercle petit que roda dins d'un cercle gran de diàmetre doble)",
+        "L'astrolabi universal o azafea",
+        "El sextant equatorial de granit",
+        "El mirall parabòlic d'enfocament múltiple"
+      ],
+      "correcta": 0,
+      "explicacion": "La 'Parella de Tusi' és una construcció geomètrica en què un cercle de radi R roda sense lliscar dins d'un cercle de radi 2R, convertint el moviment circular en una oscil·lació lineal perfecta. Aquest lema va permetre modelar les anomalies planetàries de manera estricta i Copèrnic el va utilitzar en el seu model heliocèntric."
     },
     {
       "id": 14,
-      "pregunta": "¿Cuál es la causa del movimiento retrógrado aparente que describen los planetas en el cielo?",
-      "opciones": ["El planeta frena y cambia de dirección físicamente", "Efecto de perspectiva cuando la Tierra adelanta al planeta en su órbita", "La atracción gravitatoria de la Luna", "La refracción atmosférica terrestre"],
+      "pregunta": "Com explica el model heliocèntric de Nicolau Copèrnic (1543) el moviment de retrogradació dels planetes exteriors com Mart, Júpiter o Saturn?",
+      "opciones": [
+        "Els planetes canvien físicament el sentit de la seva marxa per la fricció amb l'èter celeste",
+        "És una il·lusió de perspectiva que es produeix quan la Terra, que orbita més ràpidament, avança el planeta exterior en oposició",
+        "Es deu a la influència de la gravetat lunar quan la Lluna està en fase nova",
+        "El planeta és atret periòdicament cap a l'interior pel camp magnètic del Sol"
+      ],
       "correcta": 1,
-      "explicacion": "Es un efecto puramente geométrico y de perspectiva que ocurre cuando la Tierra, al viajar más rápido en su órbita interior, adelanta a un planeta exterior como Marte."
+      "explicacion": "Copèrnic va demostrar que la retrogradació és un efecte purament geomètric: com que la Terra té una òrbita més propera al Sol, es mou a major velocitat orbital i, en avançar un planeta exterior quan aquest es troba en oposició al Sol, el veiem projectar-se cap enrere sobre la volta celeste."
     },
     {
       "id": 15,
-      "pregunta": "¿A qué llamamos 'estrellas circumpolares' para un lugar determinado?",
-      "opciones": ["Aquellas que solo se ven durante el invierno", "Aquellas que nunca se ponen bajo el horizonte local debido a la latitud", "Las estrellas que tienen un brillo variable regular", "Las estrellas más cercanas al ecuador celeste"],
-      "correcta": 1,
-      "explicacion": "Son aquellas estrellas cuya distancia angular al polo celeste es menor que la latitud del observador, por lo que nunca se ocultan por debajo del horizonte."
+      "pregunta": "Quines observacions cabdals de Tycho Brahe (1572 i 1577) van trencar el dogma clàssic aristotèlic de la immutabilitat dels cels?",
+      "opciones": [
+        "La detecció dels casquets polars de Mart i els anells de Saturn",
+        "La mesura de la velocitat finita de la llum mitjançant les llunes de Júpiter",
+        "Una «nova» (supernova estel·lar) i un cometa que no presentaven paral·laxi diürna, situant-se clarament més enllà de la Lluna",
+        "L'observació de taques solars que apareixien i desapareixien periòdicament"
+      ],
+      "correcta": 2,
+      "explicacion": "En constatar que la 'nova' de 1572 i el cometa de 1577 no tenien paral·laxi mesurable des de diferents punts d'Europa, Tycho Brahe va demostrar que es trobaven molt més enllà de l'òrbita de la Lluna, provant que els cels no eren esferes de cristall perfectes ni immutables."
     },
     {
       "id": 16,
-      "pregunta": "¿Qué es la 'luz cenicienta' de la Luna visible en fases crecientes o menguantes finas?",
-      "opciones": ["Luz emitida por volcanes lunares activos", "Luz solar reflejada por la Tierra que ilumina la parte no expuesta al Sol de la Luna", "Fosforescencia del polvo lunar (regolito)", "Reflejo de la Vía Láctea en los cráteres"],
-      "correcta": 1,
-      "explicacion": "La luz cenicienta es el brillo ténue de la parte nocturna de la Luna producido por el reflejo de la luz solar en los océanos, nubes y continentes de la Tierra ('brillo de la Tierra')."
+      "pregunta": "Quina discrepància angular entre les precises observacions de Tycho Brahe sobre Mart i el model circular clàssic va obligar Johannes Kepler a abandonar el cercle i adoptar l'òrbita el·líptica (1609)?",
+      "opciones": [
+        "Un retard de 45 dies en l'arribada al periheli",
+        "Una variació de 15 graus d'arc en la declinació",
+        "Un error acumulat de més de 2 hores en cada rotació",
+        "Una discrepància de només 8 minuts d'arc (8')"
+      ],
+      "correcta": 3,
+      "explicacion": "Kepler va intentar durant anys ajustar les dades de Mart a un model circular, però sempre persistia un error irreductible de 8 minuts d'arc (8'). Confiant plenament en l'exactitud observacional de Tycho Brahe, va afirmar que 'aquests 8 minuts obrien el camí cap a una reforma completa de l'astronomia', portant-lo a la Primera Llei (òrbites el·líptiques)."
     },
     {
       "id": 17,
-      "pregunta": "¿En qué fechas la duración del día y de la noche es prácticamente igual en toda la Tierra?",
-      "opciones": ["Solsticios de verano e invierno", "Equinoccios de primavera y otoño", "Solo durante el perihelio terrestre", "Durante la luna llena de agosto"],
-      "correcta": 1,
-      "explicacion": "En los equinoccios (del latín aequinoctium: 'noche igual'), el Sol cruza el ecuador celeste y el día y la noche duran aproximadamente 12 horas en todo el planeta."
+      "pregunta": "Quin descobriment observacional realitzat per Galileu Galilei el 1610 amb el seu telescopi va confirmar de manera irrefutable que Venus gira al voltant del Sol i no pas de la Terra?",
+      "opciones": [
+        "L'observació del cicle complet de fases de Venus (fases creixents, plenes i menguants amb canvis de mida aparent)",
+        "La descoberta de quatre satèl·lits naturals orbitant al voltant de Venus",
+        "La presència d'una atmosfera densa rica en diòxid de carboni",
+        "La detecció de cràters i muntanyes idèntiques a les de la Lluna"
+      ],
+      "correcta": 0,
+      "explicacion": "En el model de Ptolemeu, l'epicicle de Venus romania sempre entre la Terra i el Sol, per la qual cosa Venus només hauria pogut mostrar fases creixents fines. Quan Galileu va descobrir que Venus passa per una fase gairebé plena (quan és a l'altre costat del Sol) i canvia de mida aparent, va aportar una prova decisiva de l'heliocentrisme."
     },
     {
       "id": 18,
-      "pregunta": "¿Cómo se llama el lento bamboleo cónico del eje de rotación de la Tierra que completa un ciclo cada 25.770 años?",
-      "opciones": ["Nutación", "Precesión de los equinoccios", "Libración lunar", "Aberración de la luz"],
+      "pregunta": "Quina va ser la primera prova observacional directa del moviment orbital de la Terra al voltant del Sol, descoberta per James Bradley el 1728 en observar l'estrella γ Draconis?",
+      "opciones": [
+        "La variació anual de la lluentor de les estrelles gegants vermelles",
+        "L'aberració de la llum estel·lar, produïda pel moviment de la Terra combinat amb la velocitat finita de la llum",
+        "La mesura de la paral·laxi estel·lar trigonomètrica d'Alfa Centauri",
+        "L'experiment de la caiguda lliure de dues esferes de diferent pes des d'una torre"
+      ],
       "correcta": 1,
-      "explicacion": "La precesión de los equinoccios hace que la posición del polo norte celeste vaya cambiando lentamente a lo largo de los milenios (hace 4.000 años la polar era Thuban)."
+      "explicacion": "Buscant la paral·laxi estel·lar, Bradley va detectar un desplaçament aparent de les estrelles en el decurs de l'any causat per la velocitat orbital de la Terra combinada amb la velocitat finita de la llum (aberració de la llum). Això va oferir la primera demostració física empírica de l'òrbita de la Terra i va permetre calcular la velocitat de la llum (~301.000 km/s)."
     },
     {
       "id": 19,
-      "pregunta": "¿Qué mide la escala de cielo oscuro de Bortle?",
-      "opciones": ["La temperatura del telescopio", "El nivel de contaminación lumínica y la oscuridad del cielo", "La velocidad del viento en la alta atmósfera", "El número de satélites artificiales visibles"],
-      "correcta": 1,
-      "explicacion": "La escala de Bortle (clases 1 a 9) clasifica la calidad del cielo nocturno desde cielos oscuros prístinos (clase 1) hasta cielos de centro de gran ciudad (clase 9)."
+      "pregunta": "Quin descobriment transcendental va fer Henrietta Leavitt el 1912 estudiant les estrelles variables dels Núvols de Magallanes?",
+      "opciones": [
+        "La fusió nuclear de l'hidrogen com a font d'energia de les estrelles",
+        "La classificació espectral de les estrelles en set classes de temperatura",
+        "La relació període-lluminositat de les estrelles cefeides, que va permetre utilitzar-les com a espelmes estàndard per mesurar distàncies còsmiques",
+        "Que l'Univers s'està expandint de forma accelerada per l'energia fosca"
+      ],
+      "correcta": 2,
+      "explicacion": "Henrietta Leavitt va descobrir que el període de variació d'una estrella cefeida està directament relacionat amb la seva lluminositat intrínseca real. Aquesta llei va proporcionar als astrònoms (com Edwin Hubble) un patró fiable per mesurar distàncies a galàxies llunyanes com Andròmeda (M31)."
     },
     {
       "id": 20,
-      "pregunta": "Si extiendes el brazo completamente, ¿cuántos grados de arco mide aproximadamente el ancho de tu puño cerrado en el cielo?",
-      "opciones": ["Aproximadamente 1 grado", "Aproximadamente 5 grados", "Aproximadamente 10 grados", "Aproximadamente 25 grados"],
-      "correcta": 2,
-      "explicacion": "A brazo extendido: el dedo meñique mide ~1°, tres dedos ~5°, el puño cerrado ~10°, y la mano abierta de pulgar a meñique ~20-25°. Son reglas prácticas de estimación angular."
+      "pregunta": "Predits teòricament a partir de la Relativitat General d'Einstein (1915) i d'estudis de col·lapse estel·lar, quina gran fita observacional es va assolir l'abril de 2019?",
+      "opciones": [
+        "El llançament de la sonda espacial Voyager 1 cap a l'espai interestel·lar",
+        "La primera detecció de neutrins solars en un detector subterrani",
+        "La confirmació de la presència d'aigua líquida sota la crosta d'Europa",
+        "La publicació de la primera imatge real de l'ombra d'un forat negre supermassiu, situat al centre de la galàxia M87 (Verge A), per l'Event Horizon Telescope"
+      ],
+      "correcta": 3,
+      "explicacion": "L'abril de 2019, la xarxa internacional de radiotelescopis de l'Event Horizon Telescope (EHT) va revelar la primera imatge històrica de l'ombra d'un forat negre supermassiu i el seu anell d'acreció brillant al nucli de la galàxia Verge A (M87), confirmant de manera visual les prediccions de la física relativista."
     }
   ]
 }
