@@ -18,6 +18,7 @@ const CONFIG = {
   GOOGLE_SHEETS_WEBHOOK_URL: "https://script.google.com/macros/s/AKfycbzgnufLt06Q4mW_E5lHMLBEVDYdSaeQuhozIZcjW3TXMWP0ZvoYXbz93TkmyfAMJXsr/exec",
 
   // Opciones de experiencia de usuario
+  SHUFFLE_QUESTIONS: true,             // Barajar aleatoriamente el orden de las preguntas en cada intento
   ENABLE_DETAILED_EXPLANATIONS: true,  // Muestra explicaciones astronómicas tras finalizar
   ENABLE_CERTIFICATE_PRINT: true,      // Permite imprimir o guardar en PDF el comprobante/diploma
   ENABLE_IMMEDIATE_SESSION_SWITCH: true // Permite volver al selector para hacer otra sesión

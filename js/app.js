@@ -10,6 +10,7 @@
   const state = {
     sessionsData: null,
     currentSession: null,
+    rawQuestions: [],
     questions: [],
     student: {
       name: "",
@@ -69,6 +70,7 @@
     syncStatus: document.getElementById("sync-status"),
     reviewList: document.getElementById("review-list"),
     btnPrintCert: document.getElementById("btn-print-cert"),
+    btnRetry: document.getElementById("btn-retry"),
     btnRestart: document.getElementById("btn-restart"),
     
     // Certificado imprimible
@@ -164,7 +166,10 @@
       const resp = await fetch(session.archivo);
       if (!resp.ok) throw new Error(`No s'ha pogut carregar ${session.archivo}`);
       const data = await resp.json();
-      state.questions = data.preguntas || [];
+      state.rawQuestions = data.preguntas || [];
+      state.questions = (typeof CONFIG !== "undefined" && CONFIG.SHUFFLE_QUESTIONS !== false)
+        ? shuffleArray([...state.rawQuestions])
+        : [...state.rawQuestions];
       state.answers = {};
       state.currentQuestionIndex = 0;
 
@@ -239,6 +244,13 @@
       window.print();
     });
 
+    // Repetir el mateix test (amb preguntes barallades)
+    if (elements.btnRetry) {
+      elements.btnRetry.addEventListener("click", () => {
+        startQuiz();
+      });
+    }
+
     // Reiniciar / Otra sesión
     elements.btnRestart.addEventListener("click", () => {
       elements.headerBadge.classList.add("hidden");
@@ -265,6 +277,16 @@
 
   // Iniciar la evaluación
   function startQuiz() {
+    // Si està activat el barallat, reordenar les preguntes aleatòriament a cada intent
+    if (typeof CONFIG !== "undefined" && CONFIG.SHUFFLE_QUESTIONS !== false && state.rawQuestions.length > 0) {
+      state.questions = shuffleArray([...state.rawQuestions]);
+    } else if (state.rawQuestions.length > 0) {
+      state.questions = [...state.rawQuestions];
+    }
+
+    state.answers = {};
+    state.currentQuestionIndex = 0;
+
     elements.quizSessionTitle.textContent = state.currentSession.titulo;
     renderNavStrip();
     renderCurrentQuestion();
@@ -455,7 +477,7 @@
 
     // Renderizar desglose pedagógico de preguntas
     const letters = ["A", "B", "C", "D"];
-    elements.reviewList.innerHTML = res.reviewDetails.map(item => {
+    elements.reviewList.innerHTML = res.reviewDetails.map((item, idx) => {
       const isCorrect = item.acierto;
       const userChose = item.seleccionada !== -1 ? item.opciones[item.seleccionada] : "Sense respondre";
       const correctText = item.opciones[item.correcta];
@@ -466,7 +488,7 @@
             ${isCorrect ? "✓ Correcta" : "✗ Incorrecta"}
           </span>
           <div class="review-question">
-            Pregunta ${item.id}: ${escapeHtml(item.pregunta)}
+            Pregunta ${idx + 1}: ${escapeHtml(item.pregunta)}
           </div>
           <div class="review-answers">
             ${!isCorrect ? `
@@ -551,6 +573,18 @@
         <span>No s'ha pogut connectar amb Google Sheets en aquest moment. L'avaluació continua sent vàlida.</span>
       `;
     }
+  }
+
+  // Algorisme de Fisher-Yates per barallar elements d'un array sense biaix
+  function shuffleArray(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+    }
+    return arr;
   }
 
   // Utilidad para escapar texto HTML
