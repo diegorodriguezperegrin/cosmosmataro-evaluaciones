@@ -12,8 +12,8 @@
     },
     {
       "id": 2,
-      "titulo": "Sessió 2: El Sistema Solar",
-      "descripcion": "El Sol, els planetes rocosos i gasosos, llunes principals, asteroides, cometes i mecànica planetària.",
+      "titulo": "Sessió 2: Sistemes de referència, Temps i Espai, i Mecànica celeste",
+      "descripcion": "Coordenades equatorials i altazimutals, Equació de temps, escales de temps (UT1, TAI, UTC), analema i elements orbitals.",
       "archivo": "data/sesion-2.json",
       "icono": "sun"
     },

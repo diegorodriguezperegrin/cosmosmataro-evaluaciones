@@ -1,147 +1,247 @@
 {
   "sesionId": 2,
-  "titulo": "Sesión 2: El Sistema Solar",
-  "descripcion": "Evaluación sobre los planetas rocosos y gaseosos, lunas, el Sol, asteroides, cometas y cuerpos menores.",
+  "titulo": "Sessió 2: Sistemes de referència, Temps i Espai, i Mecànica celeste",
+  "descripcion": "Avaluació sobre coordenades equatorials i altazimutals, l'Equació de temps, escales astronòmiques de temps (UT1, TAI, UTC), definicions físiques i elements orbitals keplerians.",
   "preguntas": [
     {
       "id": 1,
-      "pregunta": "¿Cuál es el planeta más grande del Sistema Solar?",
-      "opciones": ["Saturno", "Júpiter", "Neptuno", "Urano"],
-      "correcta": 1,
-      "explicacion": "Júpiter tiene una masa más de dos veces superior a la de todos los demás planetas juntos y un diámetro de unos 142.984 km."
+      "pregunta": "En el sistema de coordenades equatorials, quines dues coordenades s'utilitzen per fixar la posició de qualsevol objecte a la volta celeste de manera anàloga a la latitud i la longitud terrestres?",
+      "opciones": [
+        "Azimut (Az) i Altura (Alt)",
+        "Distància zenital i Angle horari",
+        "Ascensió recta (α / AR, anàloga a la longitud) i Declinació (δ / Dec, anàloga a la latitud)",
+        "Longitud eclíptica i Latitud galàctica"
+      ],
+      "correcta": 2,
+      "explicacion": "L'ascensió recta mesura l'angle al llarg de l'equador celeste des del punt Àries o equinocci de primavera (similar a la longitud terrestre), i la declinació mesura la distància angular al nord (+) o al sud (-) de l'equador celeste (similar a la latitud terrestre)."
     },
     {
       "id": 2,
-      "pregunta": "¿Qué planeta del Sistema Solar tiene la temperatura superficial media más alta debido a un efecto invernadero desbocado?",
-      "opciones": ["Mercurio", "Venus", "Marte", "Júpiter"],
+      "pregunta": "Si un observador es troba a Mataró (latitud 41° N), quin criteri de declinació (δ) determina quins objectes no sortiran mai sobre el seu horitzó i quins seran sempre visibles (circumpolars)?",
+      "opciones": [
+        "Mai es veuen amb δ < -23,5°, i són circumpolars amb δ ≥ +23,5°",
+        "Mai es veuen amb δ < -49° (41° - 90°), i són circumpolars amb δ ≥ +49° (90° - 41°)",
+        "Mai es veuen amb δ < -41°, i són circumpolars amb δ ≥ +41°",
+        "Depèn exclusivament de l'hora del dia i de la fase de la Lluna"
+      ],
       "correcta": 1,
-      "explicacion": "Aunque Mercurio está más cerca del Sol, la densa atmósfera de dióxido de carbono de Venus atrapa el calor alcanzando unos 465 °C."
+      "explicacion": "A una latitud de 41° N, el pol celeste nord està a 41° d'altura sobre l'horitzó nord. Per tant, els objectes amb declinació ≥ +(90° - 41°) = +49° mai es ponen (circumpolars). De manera simètrica, els objectes amb declinació < -(90° - 41°) = -49° queden sempre per sota de l'horitzó sud i mai surten."
     },
     {
       "id": 3,
-      "pregunta": "¿Dónde se encuentra ubicado el Cinturón Principal de Asteroides?",
-      "opciones": ["Entre la Tierra y Marte", "Entre Marte y Júpiter", "Más allá de la órbita de Neptuno", "Entre Venus y la Tierra"],
-      "correcta": 1,
-      "explicacion": "El Cinturón de Asteroides se ubica entre las órbitas de Marte y Júpiter, albergando cuerpos como Ceres, Vesta y Palas."
+      "pregunta": "A causa de la inclinació de l'eix de rotació de la Terra respecte al pla de la seva òrbita (obliqüitat d'aproximadament 23,5°), quina declinació assoleix el Sol en el solstici d'estiu i en el solstici d'hivern?",
+      "opciones": [
+        "+41° a l'estiu i -41° a l'hivern",
+        "0° tant a l'estiu com a l'hivern",
+        "+90° a l'estiu i -90° a l'hivern",
+        "+23,5° en el solstici d'estiu (màxima altura) i -23,5° en el solstici d'hivern (mínima altura)"
+      ],
+      "correcta": 3,
+      "explicacion": "L'obliqüitat de l'eclíptica fa que el camí aparent del Sol oscil·li en declinació entre +23,5° (al solstici d'estiu al juny, punt més septentrional) i -23,5° (al solstici d'hivern al desembre). En els dos equinoccis (març i setembre), la declinació solar és de 0°."
     },
     {
       "id": 4,
-      "pregunta": "¿Qué cuatro satélites principales de Júpiter fueron descubiertos por Galileo Galilei en 1610?",
-      "opciones": ["Titán, Encélado, Mimas y Jápeto", "Ío, Europa, Ganímedes y Calisto", "Fobos, Deimos, Caronte y Tritón", "Miranda, Ariel, Umbriel y Titania"],
-      "correcta": 1,
-      "explicacion": "Los satélites galileanos son Ío, Europa, Ganímedes (la luna más grande del Sistema Solar) y Calisto."
+      "pregunta": "Quina diferència pràctica fonamental hi ha entre el sistema de coordenades altazimutal (azimut i altura) i el sistema equatorial (ascensió recta i declinació)?",
+      "opciones": [
+        "L'altazimutal depèn de la posició de l'observador i de l'hora exacta, mentre que l'equatorial és independent del temps i del lloc sobre la Terra",
+        "L'equatorial només serveix per a planetes del sistema solar, mentre que l'altazimutal s'aplica a galàxies",
+        "L'altazimutal utilitza graus decimals i l'equatorial no admet valors positius",
+        "No hi ha cap diferència; són dos noms diferents per al mateix sistema"
+      ],
+      "correcta": 0,
+      "explicacion": "Les coordenades altazimutals d'un astre (on es troba respecte a l'horitzó local i al nord geogràfic) canvien a cada segon per la rotació terrestre i són diferents per a cada indret. En canvi, les coordenades equatorials estan fixades a la xarxa de la volta celeste i són les mateixes per a qualsevol observador i a qualsevol hora."
     },
     {
       "id": 5,
-      "pregunta": "¿De qué están compuestos principalmente los espectaculares anillos de Saturno?",
-      "opciones": ["Rocas de hierro fundido", "Partículas y bloques de hielo de agua con trazas de polvo", "Gases de hidrógeno y helio condensados", "Diamantes y carbono puro"],
-      "correcta": 1,
-      "explicacion": "Los anillos de Saturno están formados en un 99% por fragmentos de hielo de agua pura, desde el tamaño de granos de arena hasta bloques de varios metros."
+      "pregunta": "En l'astrometria d'alta precisió moderna de la Unió Astronòmica Internacional (IAU), què és l'ICRS (International Celestial Reference System)?",
+      "opciones": [
+        "Un catàleg d'estrelles visible només a l'hemisferi sud",
+        "Una aplicació de programari per a telèfons que localitza constel·lacions",
+        "El sistema de referència celeste inercial estàndard adoptat per la IAU, basat en fonts extragalàctiques com els quàsars",
+        "Un mètode per mesurar la velocitat del vent solar"
+      ],
+      "correcta": 2,
+      "explicacion": "L'ICRS és el marc de referència inercial de màxima precisió adoptat internacionalment per la IAU. Està materialitzat per l'ICRF a partir de posicions de ràdio d'objectes extragalàctics extremadament llunyans (quàsars), lliures dels moviments de precessió i nutació de la Terra."
     },
     {
       "id": 6,
-      "pregunta": "¿En qué año reclasificó la Unión Astronómica Internacional a Plutón como 'planeta enano'?",
-      "opciones": ["1999", "2006", "2012", "1986"],
+      "pregunta": "Com va canviar la definició física del metre entre el seu establiment original el 1792 i la definició vigent aprovada el 1983?",
+      "opciones": [
+        "El 1792 es basava en el diàmetre de la Lluna i el 1983 en la longitud de l'equador",
+        "El 1792 es va definir com la deumilionèsima part del quadrant d'un meridià terrestre, i el 1983 com la distància que recorre la llum en el buit en 1/299.792.458 de segon",
+        "El 1792 es va mesurar amb una corda de cànem i el 1983 amb una barra de fusta dipositada a París",
+        "El 1792 es basava en el temps d'oscil·lació d'un pèndol d'1 metre i el 1983 en la distància Terra-Sol"
+      ],
       "correcta": 1,
-      "explicacion": "En la Asamblea General de Praga de 2006, se redefinió el concepto de planeta y Plutón pasó a ser considerado planeta enano al no haber 'despejado su órbita'."
+      "explicacion": "El 1792, l'Acadèmia de Ciències de París va definir el metre com la deumilionèsima (1/10.000.000) part de la distància del pol nord a l'equador al llarg del meridià de París (mesurat entre Dunkerque i Barcelona). El 1983, es va redefinir amb precisió absoluta a través de la velocitat de la llum en el buit (c = 299.792.458 m/s)."
     },
     {
       "id": 7,
-      "pregunta": "¿Cuál es la fuente de energía que hace brillar al Sol en su núcleo?",
-      "opciones": ["Combustión de carbón y oxígeno", "Fisión nuclear de uranio", "Fusión nuclear de hidrógeno en helio", "Contracción gravitatoria pura"],
-      "correcta": 2,
-      "explicacion": "El núcleo solar funciona mediante fusión termonuclear: transforma protones de hidrógeno en núcleos de helio liberando energía a través de la cadena protón-protón."
+      "pregunta": "Quins dos fenòmens astronòmics combinats provoquen l'anomenada «Equació de temps», és a dir, la diferència entre el temps solar veritable (rellotge de sol) i el temps solar mitjà (rellotge de polsera de 24 hores uniformes)?",
+      "opciones": [
+        "L'excentricitat de l'òrbita de la Terra (Kepler) i l'obliqüitat de l'eclíptica (23,5°)",
+        "L'atracció gravitatòria de Júpiter i les fases de la Lluna",
+        "La velocitat d'expansió de l'univers i el vent solar",
+        "La rotació diferencial del nucli terrestre i la refracció atmosfèrica"
+      ],
+      "correcta": 0,
+      "explicacion": "L'Equació de temps sorgeix de dos efectes geomètrics: l'òrbita de la Terra és el·líptica (la seva velocitat varia segons la 2a llei de Kepler, fent dies solars més llargs al gener i més curts al juliol) i l'eix terrestre està inclinat 23,5° respecte al pla orbital (projectant un avanç variable del Sol sobre l'equador celeste entre solsticis i equinoccis)."
     },
     {
       "id": 8,
-      "pregunta": "¿Hacia dónde apunta siempre la cola de gas ionizado de un cometa al acercarse al Sol?",
-      "opciones": ["Hacia la dirección por donde viaja el cometa", "Hacia atrás en su trayectoria orbital", "En dirección opuesta al Sol debido a la presión de radiación y el viento solar", "Hacia el planeta más cercano"],
-      "correcta": 2,
-      "explicacion": "El viento solar y la radiación solar empujan el gas ionizado de la coma cometaria alejándolo del Sol, independientemente del sentido en el que se mueva el cometa."
+      "pregunta": "Per què a causa de l'excentricitat orbital de la Terra, la durada del dia solar veritable al voltant del periheli (~4 de gener) és superior a 24 hores (24h 00m 08s) mentre que a l'afeli (~4 de juliol) és inferior (23h 59m 52s)?",
+      "opciones": [
+        "Perquè el Sol s'apaga lleugerament durant l'hivern boreal",
+        "Perquè la Terra frena la seva rotació sobre si mateixa durant el mes de gener",
+        "Perquè la gravetat de la Lluna s'inverteix cada sis mesos",
+        "Perquè segons la 2a llei de Kepler, la Terra viatja a major velocitat orbital a prop del Sol (periheli), i ha de girar un angle diari addicional més gran perquè el Sol torni a culminar"
+      ],
+      "correcta": 3,
+      "explicacion": "En el periheli (gener), la Terra es mou més de pressa al voltant del Sol. Com que el desplaçament angular en la seva òrbita és més gran cada dia, la Terra necessita girar sobre el seu propi eix durant una fracció de temps més llarga perquè el Sol torni a passar pel meridià local."
     },
     {
       "id": 9,
-      "pregunta": "¿Cuál es la luna de Saturno famosa por su densa atmósfera y lagos de metano y etano líquidos?",
-      "opciones": ["Titán", "Europa", "Encélado", "Ganímedes"],
-      "correcta": 0,
-      "explicacion": "Titán es el único satélite del Sistema Solar con una atmósfera sustancial (más densa que la terrestre) y un ciclo meteorológico con líquidos de hidrocarburos."
+      "pregunta": "Quan es combinen els efectes de l'excentricitat i l'obliqüitat, quins dies de l'any es donen el dia solar veritable més llarg i el més curt en temps astronòmic real?",
+      "opciones": [
+        "El més llarg el 21 de juny i el més curt el 21 de desembre",
+        "El dia més llarg és cap al ~23 de desembre (24h 00m 29,9s) i el més curt cap al ~17 de setembre (23h 59m 38,7s)",
+        "El més llarg és el 15 d'agost i el més curt l'1 de febrer",
+        "Tots els dies de l'any tenen exactament 24h 00m 00,0s sense cap desviació"
+      ],
+      "correcta": 1,
+      "explicacion": "La corba combinada de l'Equació de temps arriba a la màxima addició diària cap al 23 de desembre (gairebé 30 segons per sobre de les 24 hores, sumant-se l'efecte del solstici i el periheli proper), i a la màxima reducció diària cap al 17 de setembre (uns 21 segons per sota de les 24 hores)."
     },
     {
       "id": 10,
-      "pregunta": "¿Qué planeta del Sistema Solar tiene su eje de rotación tan inclinado (~98°) que prácticamente 'rueda' sobre su órbita?",
-      "opciones": ["Neptuno", "Urano", "Saturno", "Mercurio"],
-      "correcta": 1,
-      "explicacion": "Urano tiene una inclinación axial extrema de 97.8°, probablemente debido a un impacto cataclísmico con un protoplaneta en los orígenes del Sistema Solar."
+      "pregunta": "Un rellotge de sol situat a Teià / Mataró (longitud +2,32° a l'est de Greenwich) marca les 15h 30m hora solar el 16 d'octubre. Si la longitud representa -9 minuts de desfasament respecte a Greenwich, l'equació de temps és de -14 minuts i estem en horari oficial d'estiu (UTC+2), quina hora marcarà el rellotge de polsera?",
+      "opciones": [
+        "15h 30m exactes",
+        "16h 00m",
+        "18h 30m",
+        "17h 07m"
+      ],
+      "correcta": 3,
+      "explicacion": "El càlcul pas a pas és: 15h 30m (hora solar) - 9m (longitud est) - 14m (equació de temps) = 15h 07m UTC. Com que a l'octubre encara regeix l'horari d'estiu oficial (UTC+2), se sumen 2 hores: 15h 07m + 2h = 17h 07m."
     },
     {
       "id": 11,
-      "pregunta": "¿Qué fenómeno provoca el color rojizo característico del suelo y la atmósfera de Marte?",
-      "opciones": ["Vegetación extraterrestre marciana", "La presencia de óxido de hierro (herrumbre) en su regolito", "Depósitos masivos de cobre", "La radiación ultravioleta sobre gas metano"],
-      "correcta": 1,
-      "explicacion": "La superficie marciana es rica en minerales de hierro que se oxidaron en el pasado geológico, confiriéndole su tono rojizo."
+      "pregunta": "Què és l'analema que es pot fotografiar o simular des d'un punt fix com Mataró?",
+      "opciones": [
+        "La figura en forma de «8» asimètric que descriu la posició del Sol al cel si es registra durant tot un any a la mateixa hora oficial de rellotge",
+        "Un telescopi especial utilitzat per detectar forats negres",
+        "El punt exacte d'intersecció entre l'òrbita de la Lluna i la de Júpiter",
+        "La línia recta que segueixen els planetes interiors durant una conjunció"
+      ],
+      "correcta": 0,
+      "explicacion": "L'analema solar és la corba en forma de 8 produïda per la combinació de l'obliqüitat de la Terra (que fa pujar i baixar el Sol verticalment en declinació segons l'estació) i l'Equació de temps (que fa avançar o retardar horitzontalment la posició del Sol respecte al meridià civil)."
     },
     {
       "id": 12,
-      "pregunta": "¿Cuál es el mayor volcán conocido del Sistema Solar, situado en Marte?",
-      "opciones": ["Mauna Kea", "Monte Olimpo (Olympus Mons)", "Monte Vesubio", "Caldera de Yellowstone"],
-      "correcta": 1,
-      "explicacion": "Olympus Mons es un volcán en escudo que se eleva más de 21 km sobre el nivel medio marciano, casi tres veces la altura del Everest."
+      "pregunta": "Des de l'any 1967, quina és la definició oficial del segon en el Sistema Internacional d'Unitats (SI)?",
+      "opciones": [
+        "La fracció 1/86.400 de la rotació mitjana de la Terra l'any 1900",
+        "El temps que triga la llum a recórrer 300.000 quilòmetres",
+        "La durada de 9.192.631.770 períodes de la radiació corresponent a la transició entre els dos nivells hiperfins de l'estat fonamental de l'àtom de Cesi 133",
+        "El temps que necessita un neutrí per travessar el nucli del Sol"
+      ],
+      "correcta": 2,
+      "explicacion": "Arran dels treballs de William Markowitz (USNO) i Louis Essen (NPL) que van comparar el temps d'efemèrides amb oscil·ladors atòmics, la 13a CGPM del 1967 va fixar el segon de forma indestructible com a exactament 9.192.631.770 oscil·lacions de la transició hiperfina del cesi 133."
     },
     {
       "id": 13,
-      "pregunta": "¿Qué satélite de Júpiter tiene la mayor actividad volcánica del Sistema Solar debido al calentamiento por mareas gravitatorias?",
-      "opciones": ["Calisto", "Europa", "Ío", "Ganímedes"],
-      "correcta": 2,
-      "explicacion": "La continua fricción por las intensas mareas gravitatorias ejercidas por Júpiter, Europa y Ganímedes mantiene el interior de Ío fundido, con cientos de volcanes activos."
+      "pregunta": "Quina diferència hi ha entre el Temps Atòmic Internacional (TAI) i el Temps Universal (UT1)?",
+      "opciones": [
+        "El TAI es mesura amb rellotges de sol antics i l'UT1 amb rellotges d'aigua",
+        "El TAI canvia cada dia segons les estacions i l'UT1 és rígidament constant",
+        "L'UT1 s'utilitza exclusivament per als trens d'alta velocitat europeus",
+        "El TAI és una mitjana ultraestable de més de 450 rellotges atòmics a escala mundial, mentre que l'UT1 mesura la rotació física real de la Terra respecte a les estrelles i quàsars"
+      ],
+      "correcta": 3,
+      "explicacion": "El TAI és una escala de temps uniforme i contínua generada per centenars de rellotges atòmics d'arreu del món. En canvi, l'UT1 és la mesura astromètrica directa de la rotació de la Terra (a través de l'angle ERA mesurat per VLBI), la qual pateix irregularitats físiques i una desacceleració progressiva."
     },
     {
       "id": 14,
-      "pregunta": "¿Cuál es la región más externa del Sistema Solar, considerada el origen de los cometas de largo periodo?",
-      "opciones": ["El cinturón de Kuiper", "La nube de Oort", "El cinturón de asteroides", "La heliopausa"],
+      "pregunta": "Per quin motiu físic fonamental la rotació de la Terra s'alenteix gradualment a llarg termini a un ritme d'uns 0,002 segons per segle (fent que el dia solar sigui cada cop lleugerament més llarg)?",
+      "opciones": [
+        "A causa del refredament progressiu del mantell terrestre",
+        "A causa de la fricció de marea provocada per l'atracció gravitatòria de la Lluna i el Sol sobre els oceans de la Terra",
+        "Perquè la pressió de la radiació de la llum solar frena l'equador",
+        "Perquè l'impacte continu de micrometeorits augmenta el pes de la Terra"
+      ],
       "correcta": 1,
-      "explicacion": "La nube de Oort es una nube esférica hipotética de millones de cuerpos helados situada entre 2.000 y 100.000 UA del Sol."
+      "explicacion": "La Lluna (i en menor mesura el Sol) genera protuberàncies de marea a la Terra. Com que la Terra rota més ràpid que l'òrbita de la Lluna, la protuberància s'avança i exerceix un parell de torsió gravitatori que frena lentament la rotació terrestre i allunya la Lluna uns 3,8 cm per any."
     },
     {
       "id": 15,
-      "pregunta": "¿Cuánto equivale aproximadamente una Unidad Astronómica (UA)?",
-      "opciones": ["La distancia de la Tierra a la Luna (384.400 km)", "La distancia media de la Tierra al Sol (~150 millones de km)", "La distancia a la estrella más cercana (4.2 años luz)", "El radio de la órbita de Júpiter"],
-      "correcta": 1,
-      "explicacion": "1 Unidad Astronómica (UA) se define formalmente como 149.597.870.700 metros (~150 millones de kilómetros)."
+      "pregunta": "Quina mesura tècnica de gran abast va aprovar la 28a Conferència General de Pesos i Mesures (CGPM) a la seva Resolució 5 per resoldre definitivament els problemes dels sistemes informàtics amb el «segon intercalar» (leap second)?",
+      "opciones": [
+        "Fixar que a partir del maig de 2027 s'aturarà la inserció de segons intercalars a l'UTC, congelant la diferència TAI - UTC en 37 segons i ampliant la tolerància fins a 1 hora",
+        "Tornar al temps solar antic i desconnectar tots els rellotges atòmics",
+        "Afegir 1 minut sencer cada any al mes de febrer",
+        "Obligar tots els països a utilitzar el meridià de Tòquio com a referència"
+      ],
+      "correcta": 0,
+      "explicacion": "Els segons intercalars causaven freqüents problemes en servidors d'internet, xarxes financeres i telecomunicacions. La resolució estableix que l'UTC passarà a ser una escala estrictament contínua a partir del 20 de maig de 2027, congelant la diferència amb el TAI a 37 s i permetent que la desviació amb la rotació terrestre (UT1) pugui créixer fins a 1 hora al llarg dels segles."
     },
     {
       "id": 16,
-      "pregunta": "¿Qué capa de la atmósfera del Sol es visible a simple vista durante la totalidad de un eclipse solar?",
-      "opciones": ["La fotosfera", "El núcleo", "La corona solar", "La zona radiactiva"],
+      "pregunta": "Per què Joseph Scaliger va introduir el 1582 l'escala del Dia Julià (JD) en astronomia, comptant els dies des de l'1 de gener del 4713 aC a les 12 del migdia?",
+      "opciones": [
+        "Per commemorar el naixement de Juli Cèsar a Roma",
+        "Per substituir les hores i minuts per fraccions decimals d'un quart d'hora",
+        "Per disposar d'una escala numèrica contínua de temps que permeti calcular intervals entre fenòmens astronòmics sense els embolics dels calendaris julià i gregorià",
+        "Perquè a l'hivern els dies són més curts i calia canviar d'escala"
+      ],
       "correcta": 2,
-      "explicacion": "La corona solar es la tenue atmósfera exterior a millones de grados, oculta habitualmente por el deslumbrante brillo de la fotosfera y solo visible en eclipses totales."
+      "explicacion": "Quan es canvia de calendari (com el salt de 10 dies l'octubre de 1582 en adoptar el calendari gregorià) calcular quants dies han passat entre dos eclipsis antics és molt propens a errors. El Dia Julià és un comptador seqüencial senzill de dies solars continus (i fraccions de dia), fixat amb origen a les 12:00 del migdia (quan abans començava la jornada dels astrònoms)."
     },
     {
       "id": 17,
-      "pregunta": "¿Cuál es la diferencia entre un meteoroide, un meteoro y un meteorito?",
-      "opciones": ["No hay diferencia, son sinónimos exactos", "Meteoroide en el espacio, meteoro el trazo luminoso en la atmósfera, meteorito si llega al suelo", "Meteorito es el cometa, meteoro la estrella fugaz", "Meteoroide es artificial y meteoro natural"],
-      "correcta": 1,
-      "explicacion": "Meteoroide es la partícula en el espacio interplanetario; meteoro ('estrella fugaz') es el fenómeno luminoso en la atmósfera; meteorito es el fragmento que impacta el suelo."
+      "pregunta": "Què és exactament un parsec (pc), la unitat de distància reina en astrometria i astronomia galàctica?",
+      "opciones": [
+        "La distància de la Terra a la Lluna multiplicada per 100",
+        "La distància que recorre un coet espacial a la seva velocitat d'escapament durant un segle",
+        "El diàmetre mitjà de l'òrbita de Júpiter",
+        "La distància des de la qual una Unitat Astronòmica (la distància Terra-Sol) subtén un angle de paral·laxi d'exactament un segon d'arc (equivalent a ~3,26 anys llum)"
+      ],
+      "correcta": 3,
+      "explicacion": "La paraula prové de «paral·laxi-segon». Per definició trigonomètrica, si des d'una estrella la distància d'1 ua entre la Terra i el Sol es veu sota un angle d'1 segon d'arc (1''), l'estrella es troba a 1 parsec (1 pc ≈ 3,26 anys llum ≈ 30,857 × 10¹² km)."
     },
     {
       "id": 18,
-      "pregunta": "¿Qué satélite natural posee géiseres que expulsan vapor de agua y hielo desde un océano subterráneo hacia el espacio?",
-      "opciones": ["La Luna", "Encélado (Saturno)", "Fobos (Marte)", "Deimos (Marte)"],
-      "correcta": 1,
-      "explicacion": "La sonda Cassini descubrió espectaculares plumas criovolcánicas en el polo sur de Encélado, confirmando la existencia de un océano global de agua líquida bajo su corteza de hielo."
+      "pregunta": "En mecànica celeste, quins dos elements orbitals defineixen exclusivament la mida i la forma geomètrica de l'el·lipse orbital d'un planeta?",
+      "opciones": [
+        "El semieix major (a, que determina la mida de l'òrbita) i l'excentricitat (e, que mesura el grau d'aplanament de l'el·lipse)",
+        "La inclinació (i) i la velocitat d'escapament",
+        "L'argument del periheli i la massa de la nau",
+        "La temperatura del planeta i la seva lluentor aparent"
+      ],
+      "correcta": 0,
+      "explicacion": "El semieix major a (la meitat de la distància entre el periheli i l'afeli) fixa l'escala i el període orbital per la 3a llei de Kepler. L'excentricitat e defineix si l'òrbita és circular (e=0), el·líptica (0 < e < 1), parabòlica (e=1) o hiperbòlica (e>1)."
     },
     {
       "id": 19,
-      "pregunta": "¿Qué dos planetas del Sistema Solar no tienen ningún satélite natural o luna?",
-      "opciones": ["Marte y Venus", "Mercurio y Venus", "Mercurio y Marte", "Urano y Neptuno"],
+      "pregunta": "Quins elements orbitals keplerians serveixen per orientar tridimensionalment el pla de l'òrbita d'un cos a l'espai respecte al pla de referència (com l'eclíptica)?",
+      "opciones": [
+        "Només el radi polar i la densitat del cos",
+        "La inclinació (i), la longitud del node ascendent (Ω) i l'argument del periheli (ω)",
+        "La velocitat de la llum i la constant de Hubble",
+        "L'altura baromètrica i l'azimut zenital"
+      ],
       "correcta": 1,
-      "explicacion": "Mercurio y Venus son los dos únicos planetas de nuestro Sistema Solar que carecen por completo de lunas naturales."
+      "explicacion": "La inclinació (i) mesura l'angle entre el pla de l'òrbita i l'eclíptica; la longitud del node ascendent (Ω) mesura l'orientació del punt on creua de sud a nord sobre l'eclíptica; i l'argument del periheli (ω) mesura l'angle dins del mateix pla orbital que separa el node ascendent del punt de màxim apropament (periheli)."
     },
     {
       "id": 20,
-      "pregunta": "¿Cada cuántos años aproximadamente se repite el ciclo de actividad magnética y manchas solares?",
-      "opciones": ["Cada 1 año", "Cada 11 años", "Cada 50 años", "Cada 100 años"],
-      "correcta": 1,
-      "explicacion": "El ciclo solar promedio dura aproximadamente 11 años entre mínimos y máximos de manchas solares (y 22 años para invertir y restablecer la polaridad magnética completa)."
+      "pregunta": "En mecànica celeste, quina diferència hi ha entre l'anomalia veritable (ν) i l'anomalia mitjana (M), relacionades per la cèlebre equació de Kepler M = E - e · sin(E)?",
+      "opciones": [
+        "L'anomalia veritable és falsa i la mitjana és la correcta",
+        "Totes dues mesuren exclusivament la temperatura de la superfície planetària",
+        "L'anomalia veritable (ν) és l'angle físic real que fa el planeta respecte al periheli vist des del Sol, mentre que l'anomalia mitjana (M) és un angle que avança a ritme perfectament uniforme amb el temps",
+        "L'anomalia mitjana només s'aplica als satèl·lits artificials en òrbita circular"
+      ],
+      "correcta": 2,
+      "explicacion": "Com que els planetes viatgen més ràpid a prop del Sol (periheli) i més lents lluny (afeli), l'anomalia veritable ν avança de forma no lineal. Per calcular la posició en una data concreta a partir del temps uniforme, s'utilitza l'anomalia mitjana M i l'anomalia excèntrica auxiliar E a través de l'equació transcendental de Kepler: M = E - e · sin(E)."
     }
   ]
 }

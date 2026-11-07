@@ -33,7 +33,7 @@ cosmosmataro-evaluaciones/
 ├── data/
 │   ├── sesiones.json           # Títulos y descripciones de las 4 sesiones
 │   ├── sesion-1.json           # 20 preguntas: Història de l'astronomia
-│   ├── sesion-2.json           # 20 preguntas: El Sistema Solar
+│   ├── sesion-2.json           # 20 preguntas: Sistemes de referència, Temps i Espai, i Mecànica celeste
 │   ├── sesion-3.json           # 20 preguntas: Instrumentación y observación
 │   └── sesion-4.json           # 20 preguntas: Estrellas, espacio profundo y cosmología
 ├── google-apps-script/
