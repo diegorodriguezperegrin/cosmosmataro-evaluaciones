@@ -26,8 +26,8 @@
     },
     {
       "id": 4,
-      "titulo": "Sessió 4: Estrelles, espai profund i cosmologia",
-      "descripcion": "Evolució i cicle estel·lar, nebuloses, cúmuls, tipus de galàxies, el Big Bang i l'expansió de l'Univers.",
+      "titulo": "Sessió 4: Origen i destí: Cosmologia",
+      "descripcion": "El moviment a la galàxia, matèria i energia fosca, expansió i tensió de Hubble, el Big Bang, fons còsmic (CMB), forats negres i l'equació de Drake.",
       "archivo": "data/sesion-4.json",
       "icono": "galaxy"
     }

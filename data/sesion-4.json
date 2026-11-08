@@ -1,147 +1,247 @@
 {
   "sesionId": 4,
-  "titulo": "Sesión 4: Estrellas, espacio profundo y cosmología",
-  "descripcion": "Evaluación sobre evolución estelar, nebulosas, cúmulos estelares, galaxias, el Big Bang y cosmología moderna.",
+  "titulo": "Sessió 4: Origen i destí: Cosmologia",
+  "descripcion": "Avaluació sobre cosmologia moderna: el moviment a la galàxia, matèria i energia fosca, expansió i tensió de Hubble, el Big Bang, el fons còsmic (CMB), forats negres i l'equació de Drake.",
   "preguntas": [
     {
       "id": 1,
-      "pregunta": "¿Qué diagrama fundamental relaciona la temperatura superficial (tipo espectral) de las estrellas con su luminosidad intrínseca?",
-      "opciones": ["Diagrama de Venn estelar", "Diagrama Hertzsprung-Russell (H-R)", "Carta de Smith", "Diagrama de Hubble"],
-      "correcta": 1,
-      "explicacion": "El diagrama H-R permite clasificar las estrellas y entender su ciclo evolutivo (secuencia principal, gigantes, supergigantes y enanas blancas)."
+      "pregunta": "A quina velocitat aproximada orbita el Sol al voltant del centre de la Via Làctia i quant dura un «any galàctic»?",
+      "opciones": [
+        "A uns 220 km/s (~792.000 km/h) i triga uns 240 milions d'anys a completar una volta",
+        "A uns 30 km/s (~108.000 km/h) i triga uns 365 dies a completar una volta",
+        "A la velocitat de la llum (300.000 km/s) i triga 1.000 milions d'anys",
+        "A uns 1.500 km/s i triga només 10 milions d'anys a creuar el braç d'Orió"
+      ],
+      "correcta": 0,
+      "explicacion": "El Sistema Solar orbita a uns 26.000 anys llum del centre de la galàxia a una velocitat d'uns 220 km/s. Un any galàctic (o còsmic) dura aproximadament 240 milions d'anys, per la qual cosa el nostre Sol només ha donat unes 20 voltes al llarg dels seus 4.600 milions d'anys de vida."
     },
     {
       "id": 2,
-      "pregunta": "¿En qué estado evolutivo pasa una estrella la mayor parte de su vida activa?",
-      "opciones": ["Como gigante roja", "En la Secuencia Principal fusionando hidrógeno en helio", "Como nebulosa planetaria", "Como enana marrón"],
+      "pregunta": "Segons s'explica a la sessió a partir del relat de Ray Bradbury, per què viatjar enrere en el temps per veure els dinosaures fa 60 milions d'anys requeriria també un viatge espacial colossal?",
+      "opciones": [
+        "Perquè la deriva continental hauria submergit tot el territori sota l'oceà primordial",
+        "Perquè la Terra acompanya el Sol en la seva òrbita galàctica i fa 60 milions d'anys es trobava a centenars de bilions de quilòmetres d'on és ara",
+        "Perquè l'expansió de l'Univers hauria allunyat el nostre planeta fora de la Via Làctia",
+        "Perquè la gravetat de la Lluna hauria desplaçat l'eix de rotació terrestre milers de quilòmetres"
+      ],
       "correcta": 1,
-      "explicacion": "En la secuencia principal las estrellas mantienen un equilibrio hidrostático estable entre la gravedad hacia el centro y la presión de radiación hacia afuera."
+      "explicacion": "La Terra no està estàtica a l'espai, sinó que es mou amb el Sol a 220 km/s. Fa 60 milions d'anys (quan es van extingir els dinosaures), el Sistema Solar era en un punt de la Via Làctia situat a uns 420.000 bilions de quilòmetres de la nostra posició actual."
     },
     {
       "id": 3,
-      "pregunta": "¿Cuál será el destino final más probable de nuestro Sol tras agotar su combustible nuclear?",
-      "opciones": ["Colapsar en un agujero negro", "Explotar como supernova tipo II", "Formar una nebulosa planetaria y dejar como remanente una enana blanca", "Desaparecer sin dejar rastro"],
+      "pregunta": "Quina anomalia en les corbes de rotació de les galàxies espirals va portar a plantejar l'existència de la matèria fosca?",
+      "opciones": [
+        "Que les estrelles del centre galàctic giren en sentit contrari a les de la perifèria",
+        "Que les galàxies espirals es frenen ràpidament fins a aturar la seva rotació",
+        "Que la velocitat de rotació de les estrelles externes no decau segons les lleis de Kepler, sinó que es manté pràcticament constant",
+        "Que la brillantor dels braços espirals supera la massa total permesa per la relativitat general"
+      ],
       "correcta": 2,
-      "explicacion": "Las estrellas de masa intermedia (como el Sol) expulsan sus capas exteriores formando una bella nebulosa planetaria, dejando enfriar lentamente su núcleo de carbono y oxígeno (enana blanca)."
+      "explicacion": "Segons les lleis de Kepler i de Newton (v proporcional a 1/√r), les estrelles més allunyades del centre haurien de girar molt més lentament que les interiors. Tanmateix, les observacions mostren que la velocitat es manté pràcticament plana (~220 km/s), revelant la presència d'un halo invisible de matèria fosca que envolta la galàxia."
     },
     {
       "id": 4,
-      "pregunta": "¿Qué cataclismo cósmico marca la muerte violenta de una estrella masiva (más de 8-10 masas solares)?",
-      "opciones": ["Aurora boreal gigante", "Explosión de Supernova", "Eclipse galáctico", "Destello de helio silencioso"],
-      "correcta": 1,
-      "explicacion": "Al formarse un núcleo de hierro inerte incapaz de generar energía por fusión, el núcleo colapsa bruscamente desatando una colosal explosión de supernova."
+      "pregunta": "Quins dos astrònoms van ser pioners fonamentals en la proposta teòrica (1933) i en l'evidència observacional directa (1970) de la matèria fosca?",
+      "opciones": [
+        "Edwin Hubble i Georges Lemaître",
+        "Albert Einstein i Arthur Eddington",
+        "Carl Sagan i Jocelyn Bell",
+        "Fritz Zwicky (al cúmul de Coma) i Vera Rubin (en galàxies espirals)"
+      ],
+      "correcta": 3,
+      "explicacion": "Fritz Zwicky va proposar el 1933 l'existència de matèria no visible observant les altes velocitats de les galàxies al cúmul de Coma. Dècades més tard, el 1970, l'astrònoma Vera Rubin va aportar la prova observacional definitiva mesurant la rotació de nombroses galàxies espirals."
     },
     {
       "id": 5,
-      "pregunta": "¿Qué es un remanente estelar ultradenso compuesto casi exclusivamente por neutrones empaquetados?",
-      "opciones": ["Una enana roja", "Una estrella de neutrones (o pulsar si emite haces de radiación)", "Un asteroide masivo", "Una estrella de Wolf-Rayet"],
-      "correcta": 1,
-      "explicacion": "Con una densidad tan colosal que una cucharadita de su materia pesaría miles de millones de toneladas, el colapso gravitatorio supera la degeneración electrónica."
+      "pregunta": "Què va fer del «Cúmul de la Bala» (Bullet Cluster) una prova empírica tan contundent de l'existència de la matèria fosca?",
+      "opciones": [
+        "La separació física entre el gas ordinari (frenat per fricció i detectat en raigs X) i la matèria fosca (que va continuar sense frenar-se, detectada per lent gravitatòria)",
+        "La destrucció total de les dues galàxies en col·lidir a velocitats superiors a la de la llum",
+        "El descobriment del forat negre més antic conegut absorbint matèria bariònica",
+        "L'emissió d'un pols de raigs gamma procedent del xoc frontal de dues estrelles de neutrons"
+      ],
+      "correcta": 0,
+      "explicacion": "En col·lidir els dos cúmuls de galàxies, el gas calent ordinari (matèria bariònica) va col·lidir i es va frenar per fricció (emissió vermella en raigs X), mentre que la matèria fosca gairebé no interactua entre si ni amb el gas i va continuar avançant sense fre (zones blaves mesurades per lent gravitatòria)."
     },
     {
       "id": 6,
-      "pregunta": "¿Cómo se llama el límite esférico alrededor de un agujero negro del que ni siquiera la luz puede escapar?",
-      "opciones": ["Singularidad cósmica", "Horizonte de sucesos (o de eventos)", "Esfera de Dyson", "Radio de Roche"],
+      "pregunta": "Segons el model cosmològic estàndard actual (ΛCDM), quina és la composició aproximada de l'Univers?",
+      "opciones": [
+        "95% de matèria ordinària, 4% de matèria fosca i 1% d'energia fosca",
+        "68% d'energia fosca, 27% de matèria fosca i només un 5% de matèria ordinària (bariònica)",
+        "50% de matèria fosca i 50% d'antimatèria",
+        "75% d'hidrogen, 24% d'heli i 1% de pols interestel·lar sense cap component fosc"
+      ],
       "correcta": 1,
-      "explicacion": "El horizonte de sucesos marca la frontera en la cual la velocidad de escape iguala a la velocidad de la luz en el vacío."
+      "explicacion": "Tota la matèria visible que coneixem (estrelles, planetes, nebuloses i éssers vius) representa només un 5% de l'Univers. El 95% restant està format per dos grans misteris: un 27% de matèria fosca i un 68% d'energia fosca."
     },
     {
       "id": 7,
-      "pregunta": "¿Qué tipo de nebulosa es la famosa Nebulosa de Orión (M42)?",
-      "opciones": ["Nebulosa oscura pura", "Nebulosa de emisión y región de formación estelar (cuna de estrellas)", "Nebulosa planetaria vieja", "Resto de supernova reciente"],
-      "correcta": 1,
-      "explicacion": "M42 es una inmensa nube interestelar de gas (hidrógeno ionizado) y polvo donde se están formando activamente nuevas estrellas iluminadas por el cúmulo del Trapecio."
+      "pregunta": "Quina és la característica principal de l'Observatori Vera C. Rubin, construït a Xile per explorar el cosmos transitori i la matèria fosca?",
+      "opciones": [
+        "És un radiotelescopi gegant que busca senyals intel·ligents a l'espai profund",
+        "Està situat a la Lluna per evitar completament l'atmosfera terrestre",
+        "Disposa de la càmera digital més gran del món (3.200 megapíxels) i cartografiarà 20.000 milions de galàxies",
+        "És un interferòmetre espacial d'ones gravitatòries amb braços de milions de quilòmetres"
+      ],
+      "correcta": 2,
+      "explicacion": "L'Observatori Vera C. Rubin compta amb una extraordinària càmera de 3.200 megapíxels i un mirall de 8,4 metres, dissenyada per fotografiar tot el cel visible cada poques nits i registrar 20 mil milions de galàxies en el sondeig LSST."
     },
     {
       "id": 8,
-      "pregunta": "¿Qué diferencia fundamental hay entre un cúmulo abierto y un cúmulo globular?",
-      "opciones": ["Los cúmulos abiertos tienen millones de estrellas y los globulares solo 10", "Los cúmulos abiertos son jóvenes y desorganizados; los globulares son muy antiguos, esféricos y muy densos", "Los globulares solo contienen planetas", "No hay diferencia, son idénticos"],
-      "correcta": 1,
-      "explicacion": "Los cúmulos abiertos (como las Pléyades) son asociaciones jóvenes en el disco galáctico; los globulares (como M13) orbitan en el halo galáctico y contienen cientos de miles de estrellas muy viejas."
+      "pregunta": "Què descriu la Llei de Hubble-Lemaître (v = H₀ · d) descoberta a partir del desplaçament cap al vermell (redshift)?",
+      "opciones": [
+        "Que les estrelles més properes a la Terra orbiten més ràpidament al voltant del Sol",
+        "Que la llum de les galàxies es corba en passar a prop d'un camp magnètic",
+        "Que la velocitat de la llum varia en funció de l'edat de la galàxia observada",
+        "Que com més lluny és una galàxia, a més velocitat aparent s'allunya de nosaltres degut a l'expansió de l'espai"
+      ],
+      "correcta": 3,
+      "explicacion": "Edwin Hubble i Georges Lemaître van demostrar que les galàxies llunyanes presenten un desplaçament al vermell proporcional a la seva distància. Això no reflecteix un moviment propi a través de l'espai, sinó l'expansió global del propi teixit de l'espaitemps."
     },
     {
       "id": 9,
-      "pregunta": "¿A qué tipo morfológico de galaxia pertenece nuestra Vía Láctea?",
-      "opciones": ["Galaxia elíptica gigante (E0)", "Galaxia espiral barrada (SBbc)", "Galaxia irregular pura (Irr)", "Galaxia lenticular (S0)"],
-      "correcta": 1,
-      "explicacion": "Las observaciones infrarrojas y de radio modernas demuestran que la Vía Láctea tiene una marcada barra central de estrellas de la que parten sus brazos espirales."
+      "pregunta": "Què s'anomena actualment la «Crisi Cosmològica» o «Tensió de Hubble»?",
+      "opciones": [
+        "La discrepància significativa entre el valor de H₀ obtingut del Fons Còsmic (~67,4 km/s/Mpc) i el mesurat a l'Univers local amb supernoves i Cefeides (~73 km/s/Mpc)",
+        "El dubte sobre si la Via Làctia col·lidirà o no amb la galàxia d'Andròmeda",
+        "La diferència inexplicable entre la massa del protó i la de l'electró en el Big Bang",
+        "La impossibilitat d'observar objectes més enllà de la Lluna amb telescopis terrestres"
+      ],
+      "correcta": 0,
+      "explicacion": "Les mesures altament precises de l'Univers primerenc (satèl·lit Planck a partir del CMB) donen H₀ ≈ 67,4 km/s/Mpc, mentre que les observacions astronòmiques de l'Univers local (mitjançant Cefeides i supernoves tipus Ia) donen ≈ 73 km/s/Mpc. Aquesta diferència d'un ~8% és estadísticament incompatible i suggereix possible física desconeguda."
     },
     {
       "id": 10,
-      "pregunta": "¿Cuál es la galaxia espiral gigante más cercana a la Vía Láctea y el objeto celeste más lejano visible a simple vista?",
-      "opciones": ["Galaxia del Sombrero (M104)", "Galaxia de Andrómeda (M31)", "Galaxia del Triángulo (M33)", "Gran Nube de Magallanes"],
+      "pregunta": "Quin és l'origen històric de l'expressió «Big Bang» per referir-se al model del naixement de l'Univers?",
+      "opciones": [
+        "Va ser el títol del cèlebre article d'Albert Einstein sobre la relativitat general el 1915",
+        "Va ser encunyada el 1950 per l'astrònom Fred Hoyle a la ràdio de la BBC en to burlesc, defensant el model d'estat estacionari",
+        "Va ser el nom que Georges Lemaître va donar oficialment a la seva hipòtesi de l'àtom primigeni",
+        "Va ser una expressió creada pels astrònoms de Mount Wilson en detectar la primera explosió d'una supernova"
+      ],
       "correcta": 1,
-      "explicacion": "La Galaxia de Andrómeda (M31) se encuentra a unos 2.5 millones de años luz de nosotros y es observable a simple vista en cielos oscuros."
+      "explicacion": "Sir Fred Hoyle, defensor del model d'un Univers etern i immutable (estat estacionari), va fer servir el terme «Big Bang» (gran esclat) durant una xerrada a la BBC el 1950 per ridiculitzar la idea d'un cosmos iniciat puntualment. La frase va ser tan gràfica que va acabar adoptant-se arreu."
     },
     {
       "id": 11,
-      "pregunta": "¿Cómo se llama la pequeña agrupación de unas 50 a 80 galaxias a la que pertenece nuestra Vía Láctea?",
-      "opciones": ["Cúmulo de Coma", "El Grupo Local", "Supercúmulo de Hércules", "Cúmulo de Virgo"],
-      "correcta": 1,
-      "explicacion": "El Grupo Local está dominado por las dos mayores galaxias espirales: la Galaxia de Andrómeda y la Vía Láctea, junto con la Galaxia del Triángulo y decenas de galaxias enanas."
+      "pregunta": "Com es pot estimar de manera bàsica l'edat de l'Univers a partir de la constant de Hubble (H₀)?",
+      "opciones": [
+        "Multiplicant el valor de H₀ per la velocitat de la llum al quadrat",
+        "Sumant la massa estimada de totes les galàxies conegudes",
+        "Calculant el temps de Hubble com la inversa de la constant (t_H = 1/H₀), obtenint uns 13.800 milions d'anys amb els ajustos del model estàndard",
+        "Dividint el diàmetre de la Via Làctia pel període orbital de la Terra"
+      ],
+      "correcta": 2,
+      "explicacion": "Si l'expansió ha estat aproximadament continuada, el temps que ha trigat l'Univers a expandir-se des del punt inicial és proporcional a 1/H₀. Amb H₀ ≈ 67,4 km/s/Mpc i la integració dels components de matèria i energia fosca, el model ΛCDM determina una edat de 13.800 milions d'anys."
     },
     {
       "id": 12,
-      "pregunta": "¿Qué astrónomo demostró en 1929 que las galaxias se alejan unas de otras a velocidades proporcionales a su distancia?",
-      "opciones": ["Isaac Newton", "Edwin Hubble", "Tycho Brahe", "Johannes Kepler"],
-      "correcta": 1,
-      "explicacion": "Edwin Hubble (apoyado en los trabajos previos de Georges Lemaître y Henrietta Swan Leavitt) formuló la Ley de Hubble-Lemaître, demostrando la expansión del Universo."
+      "pregunta": "Què planteja la Paradoxa d'Olbers i quina és la seva resolució científica?",
+      "opciones": [
+        "Planteja per què les estrelles no cauen cap al centre galàctic; es resol per la força centrífuga",
+        "Planteja per què la Lluna té fases; es resol per la posició de l'ombra terrestre",
+        "Planteja per què el cel és blau durant el dia; es resol per la dispersió Rayleigh",
+        "Planteja per què el cel nocturn és fosc si l'univers fos infinit i etern; es resol perquè l'Univers té una edat finita i s'expandeix"
+      ],
+      "correcta": 3,
+      "explicacion": "Si l'Univers fos etern, infinit i estàtic, a qualsevol direcció on miréssim trobaríem una estrella i la nit brillaria com el Sol. La nit és fosca perquè l'Univers té una edat finita (13.800 Ma, per tant la llum d'estrelles molt llunyanes encara no ens ha arribat) i s'expandeix (el redshift debilita i redueix l'energia dels fotons)."
     },
     {
       "id": 13,
-      "pregunta": "¿Qué fenómeno en el espectro de la luz de galaxias lejanas evidencia que el espacio entre ellas se está expandiendo?",
-      "opciones": ["Corrimiento al azul (Blueshift)", "Corrimiento al rojo (Redshift)", "Dispersión de Rayleigh", "Efecto fotoeléctrico"],
-      "correcta": 1,
-      "explicacion": "A medida que los fotones viajan por un universo en expansión, su longitud de onda se 'estira' hacia el extremo rojo del espectro electromagnético."
+      "pregunta": "Si l'Univers té 13.800 milions d'anys, per què el radi de l'Univers observable és d'uns 46.500 milions d'anys llum?",
+      "opciones": [
+        "Perquè durant els 13.800 milions d'anys que la llum ha viatjat cap a nosaltres, el propi espai s'ha anat expandint contínuament",
+        "Perquè la velocitat de la llum era mil vegades més ràpida a l'Univers primitiu",
+        "Perquè els telescopis espacials utilitzen lents d'amplificació que falsegen la distància física",
+        "Perquè un efecte de miratge gravitatori duplica visualment la mida de totes les galàxies"
+      ],
+      "correcta": 0,
+      "explicacion": "Mentre la llum dels objectes més primitius viatjava durant 13.800 milions d'anys per arribar a nosaltres, l'espai intermedi s'ha anat expandint. Per tant, els punts que van emetre aquesta radiació inicial es troben avui a una distància comòbil de ~46.500 milions d'anys llum de nosaltres (diàmetre d'uns 93.000 milions d'anys llum)."
     },
     {
       "id": 14,
-      "pregunta": "¿Qué radiación residual fósil, descubierta en 1965 por Penzias y Wilson, es la prueba primordial del Big Bang?",
-      "opciones": ["La luz zodiacal", "El Fondo Cósmico de Microondas (CMB)", "Los rayos gamma del agujero negro central", "Las ondas de radio solares"],
+      "pregunta": "Què va passar durant l'època de la «Recombinació», aproximadament 380.000 anys després del Big Bang?",
+      "opciones": [
+        "Es van encendre les primeres estrelles massives de Població III",
+        "Els electrons es van combinar amb els protons formant àtoms neutres d'hidrogen i l'Univers es va tornar transparent, alliberant el Fons Còsmic de Microones (CMB)",
+        "La matèria fosca es va transformar completament en energia fosca accelerada",
+        "Es van sintetitzar tots els elements químics pesants de la taula periòdica"
+      ],
       "correcta": 1,
-      "explicacion": "El Fondo Cósmico de Microondas es la radiación térmica emitida unos 380.000 años después del Big Bang, cuando los protones y electrones formaron los primeros átomos neutros."
+      "explicacion": "Fins als 380.000 anys, l'Univers era un plasma dens i opac on els fotons rebotaven sense parar en electrons lliures. En refredar-se a uns 3.000 K, els electrons van ser capturats pels protons formant àtoms neutres, deixant viatjar lliurement els fotons que avui observem com a fons còsmic de microones."
     },
     {
       "id": 15,
-      "pregunta": "¿Cuál es la edad estimada de nuestro Universo según las mediciones cosmológicas más precisas (misión Planck)?",
-      "opciones": ["Aproximadamente 4.500 millones de años", "Aproximadamente 13.800 millones de años", "Aproximadamente 100.000 millones de años", "Aproximadamente 1 billón de años"],
-      "correcta": 1,
-      "explicacion": "La edad actual aceptada con altísima precisión por el satélite Planck de la Agencia Espacial Europea es de 13.787 ± 20 millones de años."
+      "pregunta": "A quina temperatura mitjana es troba avui la radiació del Fons Còsmic de Microones (CMB) descoberta per Penzias i Wilson el 1964?",
+      "opciones": [
+        "A 0 K (-273,15 °C), el zero absolut exacte de la física",
+        "A uns 3.000 K, la mateixa temperatura que tenia en emetre's",
+        "A només 2,725 K (uns -270,4 °C), a causa del refredament provocat per l'expansió de l'espai",
+        "A temperatura ambient de 293 K"
+      ],
+      "correcta": 2,
+      "explicacion": "En el moment del desacoblament la radiació estava a ~3.000 K. Al llarg de 13.800 milions d'anys d'expansió de l'espai, la longitud d'ona d'aquests fotons s'ha estirat unes 1.100 vegades, refredant la radiació fins als 2,725 K actuals (en la banda de microones, responsable d'un 1% del soroll de neu dels televisors analògics)."
     },
     {
       "id": 16,
-      "pregunta": "¿Qué componente misterioso no emite luz pero ejerce la gravedad necesaria para mantener unidas las galaxias?",
-      "opciones": ["Materia ordinaria bariónica", "Materia oscura", "Radiación infrarroja de fondo", "Polvo de cometas"],
-      "correcta": 1,
-      "explicacion": "La materia oscura compone aproximadamente el 27% del Universo; se detecta por sus efectos gravitatorios en las curvas de rotación de las galaxias y las lentes gravitacionales."
+      "pregunta": "Què han determinat les observacions d'alta precisió del Fons Còsmic de Microones (satèl·lits WMAP i Planck) sobre la geometria espacial de l'Univers?",
+      "opciones": [
+        "Que té una curvatura hiperbòlica oberta en forma de sella de cavall (Ω < 1)",
+        "Que és una hiperesfera tancada sobre si mateixa amb curvatura positiva (Ω > 1)",
+        "Que té una geometria cilíndrica tancada en una sola dimensió",
+        "Que l'Univers té una geometria espacial pràcticament plana (Ω = 1)"
+      ],
+      "correcta": 3,
+      "explicacion": "L'anàlisi de la mida angular de les fluctuacions tèrmiques del CMB indica que el paràmetre de densitat total és Ω = 1,00 dins d'un marge d'error extremadament estret, demostrant que a escala cosmològica l'espai és pla (geometria euclidiana sense curvatura global)."
     },
     {
       "id": 17,
-      "pregunta": "¿Qué enigmática entidad descubierta a finales de los años 90 está acelerando la velocidad de expansión del Universo?",
-      "opciones": ["Energía oscura", "Viento solar interestelar", "Ondas de choque de supernovas", "Atracción de agujeros blancos"],
+      "pregunta": "Què són els «Little Red Dots» (Petits Punts Vermells) descoberts pel Telescopi Espacial James Webb (JWST)?",
+      "opciones": [
+        "Galàxies molt primerenques (fa més de 13.000 milions d'anys) que amaguen forats negres supermassius sorprenentment gegants per a la seva edat",
+        "Planetes errants vermells com Mart que viatgen lliurement per l'espai intergalàctic",
+        "Taques fredes a la superfície de les estrelles nanes vermelles properes",
+        "Defectes als sensors infrarojos del telescopi causats pel vent solar al punt L2"
+      ],
       "correcta": 0,
-      "explicacion": "La energía oscura representa aproximadamente el 68% de la densidad de masa-energía del cosmos y actúa como una presión negativa repulsiva a gran escala."
+      "explicacion": "El JWST ha descobert galàxies extremadament compactes i vermelloses quan l'Univers tenia tot just entre 600 i 800 milions d'anys. Aquests 'Little Red Dots' contenen forats negres supermassius d'un volum i massa desproporcionadament grans, obrint un debat fascinant sobre com van poder créixer tan ràpidament."
     },
     {
       "id": 18,
-      "pregunta": "¿Qué agujero negro supermasivo se encuentra ubicado en el centro exacto de la Vía Láctea?",
-      "opciones": ["Cygnus X-1", "Sagitario A* (Sgr A*)", "M87*", "Centaurus A"],
+      "pregunta": "Què és una lent gravitatòria (com la famosa «Creu d'Einstein» o els arcs en cúmuls de galàxies)?",
+      "opciones": [
+        "Un filtre de polarització instal·lat als grans telescopis terrestres",
+        "La desviació i amplificació de la llum d'un objecte distant en corbar-se l'espaitemps per l'enorme massa d'una galàxia o cúmul intermedi",
+        "Un mirall parabòlic líquid de mercuri utilitzat en observatoris d'alta muntanya",
+        "Una il·lusió òptica provocada per la refracció atmosfèrica de la Terra"
+      ],
       "correcta": 1,
-      "explicacion": "Sagitario A* tiene una masa de unos 4.1 millones de masas solares y su silueta fue fotografiada por el consorcio Event Horizon Telescope (EHT) en 2022."
+      "explicacion": "D'acord amb la Relativitat General, la massa deforma el teixit de l'espaitemps. Quan una galàxia o cúmul massiu s'interposa entre la Terra i un fons lluminós (com un quàsar llunyà), desvia els raigs de llum com una gegantina lent còsmica, quadruplicant la imatge (Creu d'Einstein) o formant anells i arcs de llum."
     },
     {
       "id": 19,
-      "pregunta": "¿A cuántos kilómetros equivale aproximadamente 1 año luz?",
-      "opciones": ["Aproximadamente 300.000 km", "Aproximadamente 9.46 billones de kilómetros (9.46 x 10^12 km)", "Aproximadamente 150 millones de km", "Aproximadamente 1 millón de km"],
-      "correcta": 1,
-      "explicacion": "Es la distancia que recorre un fotón de luz en el vacío durante un año juliano a una velocidad de ~300.000 km/s, resultando casi 9.5 billones de kilómetros."
+      "pregunta": "Com es va descobrir el 1998 que l'expansió de l'Univers no s'està frenant per la gravetat, sinó que s'està accelerant?",
+      "opciones": [
+        "Mesurant la velocitat de rotació dels anells de Saturn amb la sonda Cassini",
+        "Comprovant que la Lluna s'allunya de la Terra 3,8 cm cada any",
+        "Mesurant la lluminositat i el redshift de supernoves de tipus Ia llunyanes, que resultaven estar més allunyades i ser més tènues del que s'esperava",
+        "Detectant un descens en l'emissió de neutrins procedents del Sol"
+      ],
+      "correcta": 2,
+      "explicacion": "Com que les supernoves tipus Ia funcionen com a 'candeles estàndard' de lluentor coneguda, comparar la seva lluentor aparent amb el seu desplaçament cap al vermell va demostrar que estaven més lluny del que preveia un univers en desacceleració. Això va provar l'expansió accelerada produïda per l'energia fosca (Nobel de Física 2011)."
     },
     {
       "id": 20,
-      "pregunta": "¿En qué catálogo célebre elaborado en el siglo XVIII por un astrónomo francés figuran 110 de los objetos de cielo profundo más destacados?",
-      "opciones": ["Catálogo de Hiparco", "Catálogo Messier (M1 a M110)", "Catálogo NGC", "Catálogo Tycho-2"],
-      "correcta": 1,
-      "explicacion": "Charles Messier confeccionó su lista de nebulosas, cúmulos y galaxias para no confundirlos con los cometas que buscaba afanosamente en el cielo nocturno."
+      "pregunta": "Què pretén estimar l'Equació de Drake (1960) i quin dilema planteja la cèlebre «Paradoxa de Fermi»?",
+      "opciones": [
+        "La massa exacta de la matèria fosca i per què no s'ha pogut aïllar als laboratoris",
+        "El nombre d'asteroides perillosos i per què cap no ha impactat contra la Terra aquest segle",
+        "La velocitat límit d'un forat negre i per què no expulsa fotons per l'horitzó d'esdeveniments",
+        "El nombre de civilitzacions tecnològiques detectables a la galàxia, i la contradicció de no haver trobat cap evidència d'elles («On és tothom?»)"
+      ],
+      "correcta": 3,
+      "explicacion": "Frank Drake va formular una equació probabilística per calcular el nombre N de civilitzacions intel·ligents detectables a la Via Làctia. Tot i que molts escenaris suggereixen que haurien d'existir altres civilitzacions, la paradoxa plantejada per Enrico Fermi ('On és tothom?') reflecteix l'enigma del gran silenci còsmic davant l'absència de contacte."
     }
   ]
 }
