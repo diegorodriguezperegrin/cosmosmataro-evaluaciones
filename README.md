@@ -6,13 +6,16 @@ Aplicación web interactiva diseñada para la evaluación continua de los alumno
 
 ## 🌟 Características Principales
 
-- **4 Sesiones Formativas**: 20 preguntas con 4 opciones por cada sesión (80 preguntas en total).
+- **4 Sesiones Formativas + Examen Global**: 20 preguntas con 4 opciones por cada sesión (80 preguntas en total) más un **Examen Global de Certificación** que combina 5 preguntas aleatorias y equilibradas de cada módulo.
+- **Doble Nivel Pedagógico**:
+  - Las sesiones 1 a 4 funcionan como autoevaluación continua y formativa con corrección y explicaciones didácticas.
+  - El **Examen Global de Certificación** da acceso exclusivo al **Certificado Oficial d'Aprofitament** en PDF al alcanzar un mínimo del 60% (12 aciertos).
 - **Separación Limpia de Datos y Código**: Todas las preguntas están en archivos JSON independientes (`data/sesion-1.json`, etc.) para que cualquier profesor pueda editarlas o completarlas sin tocar código.
 - **Modo Selector o Modo Sesión Directa**:
-  - Si se accede a la raíz, el alumno elige la sesión que desea realizar.
-  - Si se incluye el parámetro en la URL (ej: `?sesion=1` o `?sesion=2`), la aplicación carga directamente esa sesión (ideal para incrustar una sesión por cada página de Google Sites).
-- **Corrección Inmediata y Explicaciones Didácticas**: Al terminar, el alumno ve su nota, las respuestas correctas/incorrectas y la explicación astronómica pedagógica de cada fallo.
-- **Certificado Imprimible / Guardar en PDF**: Botón que genera un diploma formal de aprovechamiento con estética oficial de Cosmos Mataró mediante `window.print()`.
+  - Si se accede a la raíz, el alumno elige la sesión o el Examen Global que desea realizar.
+  - Si se incluye el parámetro en la URL (ej: `?sesion=1`, `?sesion=4` o `?sesion=global`), la aplicación carga directamente esa prueba (ideal para incrustar por páginas en Google Sites).
+- **Corrección Inmediata y Explicaciones Didácticas**: Al terminar, el alumno ve su nota, las respuestas correctas/incorrectas con la etiqueta de la sesión de origen y la explicación astronómica pedagógica de cada fallo.
+- **Certificado Imprimible / Descargar en PDF**: Ventana emergente con `html2pdf.js` y `@media print` para descargar directamente o imprimir el diploma formal oficial de aprovechamiento de Cosmos Mataró.
 - **Integración con Google Sheets**: Envío automático de calificaciones, marcas temporales, nombres y respuestas de alumnos a una hoja de cálculo privada mediante un webhook ligero en Google Apps Script.
 - **Diseño Astronómico Moderno y Responsive**: Estética cósmica oscura, navegación fluida por teclado o ratón, adaptable a ordenadores, tablets y teléfonos móviles dentro del `<iframe>` de Google Sites.
 

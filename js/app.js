@@ -10,6 +10,7 @@
   const state = {
     sessionsData: null,
     currentSession: null,
+    allSessionsPool: null, // Banco de preguntas combinadas de las 4 sesiones
     rawQuestions: [],
     questions: [],
     student: {
@@ -68,8 +69,10 @@
     resultsSession: document.getElementById("results-session"),
     resultsDate: document.getElementById("results-date"),
     syncStatus: document.getElementById("sync-status"),
+    certInvitationBanner: document.getElementById("cert-invitation-banner"),
     reviewList: document.getElementById("review-list"),
     btnPrintCert: document.getElementById("btn-print-cert"),
+    btnGoGlobal: document.getElementById("btn-go-global"),
     btnRetry: document.getElementById("btn-retry"),
     btnRestart: document.getElementById("btn-restart"),
     
@@ -116,25 +119,48 @@
     }
   }
 
-  // Renderizar tarjetas de las 4 sesiones
+  // Renderizar tarjetas de las sesiones y del Examen Global
   function renderSessionsGrid() {
     if (!state.sessionsData || !state.sessionsData.sesiones) return;
     
-    elements.sessionsGrid.innerHTML = state.sessionsData.sesiones.map(s => `
+    const normalSessions = state.sessionsData.sesiones.filter(s => !s.esGlobal);
+    const globalSession = state.sessionsData.sesiones.find(s => s.esGlobal);
+
+    let html = normalSessions.map(s => `
       <div class="session-item" data-session-id="${s.id}">
-        <div class="session-badge">Sessió ${s.id}</div>
+        <div class="session-badge">Sessió ${s.id} · Avaluació contínua</div>
         <div class="session-title">${escapeHtml(s.titulo)}</div>
         <div class="session-desc">${escapeHtml(s.descripcion)}</div>
         <div class="session-action">
-          <span>Realitzar avaluació (20 preguntes)</span>
+          <span>Fer test de la sessió (20 preguntes)</span>
           <span>→</span>
         </div>
       </div>
     `).join("");
 
+    if (globalSession) {
+      html += `
+        <div class="session-item session-item-global" data-session-id="${globalSession.id}">
+          <div class="session-badge">
+            <span>✨</span>
+            <span>DIPLOMA OFICIAL · EXAMEN FINAL DEL CURS</span>
+          </div>
+          <div class="session-title">${escapeHtml(globalSession.titulo)}</div>
+          <div class="session-desc">${escapeHtml(globalSession.descripcion)}</div>
+          <div class="session-action">
+            <span>Iniciar l'Examen Global de Certificació (20 preguntes)</span>
+            <span>→</span>
+          </div>
+        </div>
+      `;
+    }
+
+    elements.sessionsGrid.innerHTML = html;
+
     elements.sessionsGrid.querySelectorAll(".session-item").forEach(item => {
       item.addEventListener("click", () => {
-        const id = parseInt(item.getAttribute("data-session-id"), 10);
+        const rawId = item.getAttribute("data-session-id");
+        const id = isNaN(rawId) ? rawId : parseInt(rawId, 10);
         selectSession(id);
       });
     });
@@ -143,39 +169,109 @@
   // Detectar parámetro ?sesion=X en la URL (ideal para Google Sites)
   function checkUrlParameters() {
     const urlParams = new URLSearchParams(window.location.search);
-    const sesionParam = urlParams.get("sesion") || urlParams.get("session");
+    const sesionParam = (urlParams.get("sesion") || urlParams.get("session") || "").toLowerCase().trim();
     if (sesionParam && state.sessionsData) {
-      const id = parseInt(sesionParam, 10);
-      if (id >= 1 && id <= 4) {
-        selectSession(id);
+      if (sesionParam === "global" || sesionParam === "final" || sesionParam === "5" || sesionParam === "examen") {
+        selectSession("global");
+      } else {
+        const id = parseInt(sesionParam, 10);
+        if (id >= 1 && id <= 4) {
+          selectSession(id);
+        }
       }
     }
   }
 
-  // Seleccionar una sesión y cargar su archivo JSON
+  // Construir 20 preguntas equilibradas para el Examen Global (5 de cada sesión)
+  function buildGlobalQuestions() {
+    if (!state.allSessionsPool) return;
+    const perSession = (typeof CONFIG !== "undefined" && CONFIG.QUESTIONS_PER_SESSION_IN_GLOBAL) || 5;
+
+    const sample = (arr, n, prefix, sNum) => {
+      return shuffleArray([...arr]).slice(0, n).map((q, idx) => ({
+        ...q,
+        id: `${prefix}_${q.id || idx}`,
+        sesionOrigenNum: sNum,
+        sesionOrigenNom: `Sessió ${sNum}`
+      }));
+    };
+
+    const picked = [
+      ...sample(state.allSessionsPool.s1, perSession, "s1", 1),
+      ...sample(state.allSessionsPool.s2, perSession, "s2", 2),
+      ...sample(state.allSessionsPool.s3, perSession, "s3", 3),
+      ...sample(state.allSessionsPool.s4, perSession, "s4", 4)
+    ];
+
+    state.rawQuestions = picked;
+    state.questions = shuffleArray([...picked]);
+  }
+
+  // Seleccionar una sesión o el Examen Global y cargar sus preguntas
   async function selectSession(sessionId) {
-    const session = state.sessionsData.sesiones.find(s => s.id === sessionId);
+    const session = state.sessionsData.sesiones.find(s => 
+      s.id === sessionId || 
+      String(s.id) === String(sessionId) || 
+      (sessionId === 5 && s.esGlobal) || 
+      (sessionId === "global" && s.esGlobal) ||
+      (sessionId === "final" && s.esGlobal)
+    );
     if (!session) return;
 
     state.currentSession = session;
-    elements.headerBadge.textContent = `Sessió ${session.id}`;
+
+    if (session.esGlobal) {
+      elements.headerBadge.textContent = "🎓 Examen Global";
+      elements.headerBadge.className = "header-badge badge-global";
+    } else {
+      elements.headerBadge.textContent = `Sessió ${session.id}`;
+      elements.headerBadge.className = "header-badge";
+    }
     elements.headerBadge.classList.remove("hidden");
     elements.regSessionTitle.textContent = session.titulo;
 
+    // Preservar datos si el alumno ya había introducido su nombre previamente
+    if (state.student.name && elements.studentName) {
+      elements.studentName.value = state.student.name;
+    }
+    if (state.student.email && elements.studentEmail) {
+      elements.studentEmail.value = state.student.email;
+    }
+
     try {
-      const resp = await fetch(session.archivo);
-      if (!resp.ok) throw new Error(`No s'ha pogut carregar ${session.archivo}`);
-      const data = await resp.json();
-      state.rawQuestions = data.preguntas || [];
-      state.questions = (typeof CONFIG !== "undefined" && CONFIG.SHUFFLE_QUESTIONS !== false)
-        ? shuffleArray([...state.rawQuestions])
-        : [...state.rawQuestions];
+      if (session.esGlobal) {
+        // Cargar en paralelo las 4 sesiones si aún no están en memoria
+        if (!state.allSessionsPool) {
+          const [d1, d2, d3, d4] = await Promise.all([
+            fetch("data/sesion-1.json").then(r => { if (!r.ok) throw new Error("sesion-1.json"); return r.json(); }),
+            fetch("data/sesion-2.json").then(r => { if (!r.ok) throw new Error("sesion-2.json"); return r.json(); }),
+            fetch("data/sesion-3.json").then(r => { if (!r.ok) throw new Error("sesion-3.json"); return r.json(); }),
+            fetch("data/sesion-4.json").then(r => { if (!r.ok) throw new Error("sesion-4.json"); return r.json(); })
+          ]);
+          state.allSessionsPool = {
+            s1: d1.preguntas || [],
+            s2: d2.preguntas || [],
+            s3: d3.preguntas || [],
+            s4: d4.preguntas || []
+          };
+        }
+        buildGlobalQuestions();
+      } else {
+        const resp = await fetch(session.archivo);
+        if (!resp.ok) throw new Error(`No s'ha pogut carregar ${session.archivo}`);
+        const data = await resp.json();
+        state.rawQuestions = data.preguntas || [];
+        state.questions = (typeof CONFIG !== "undefined" && CONFIG.SHUFFLE_QUESTIONS !== false)
+          ? shuffleArray([...state.rawQuestions])
+          : [...state.rawQuestions];
+      }
+
       state.answers = {};
       state.currentQuestionIndex = 0;
 
       switchView("registration");
     } catch (err) {
-      alert(`Error en carregar les preguntes de la sessió: ${err.message}`);
+      alert(`Error en carregar les preguntes: ${err.message}`);
     }
   }
 
@@ -244,6 +340,13 @@
       openCertificatePrintWindow();
     });
 
+    // Anar directament a l'Examen Global de Certificació
+    if (elements.btnGoGlobal) {
+      elements.btnGoGlobal.addEventListener("click", () => {
+        selectSession("global");
+      });
+    }
+
     // Repetir el mateix test (amb preguntes barallades)
     if (elements.btnRetry) {
       elements.btnRetry.addEventListener("click", () => {
@@ -277,8 +380,10 @@
 
   // Iniciar la evaluación
   function startQuiz() {
-    // Si està activat el barallat, reordenar les preguntes aleatòriament a cada intent
-    if (typeof CONFIG !== "undefined" && CONFIG.SHUFFLE_QUESTIONS !== false && state.rawQuestions.length > 0) {
+    // Si és l'examen global, re-extreure 5 preguntes noves de cada sessió i barallar-les a cada intent
+    if (state.currentSession && state.currentSession.esGlobal && state.allSessionsPool) {
+      buildGlobalQuestions();
+    } else if (typeof CONFIG !== "undefined" && CONFIG.SHUFFLE_QUESTIONS !== false && state.rawQuestions.length > 0) {
       state.questions = shuffleArray([...state.rawQuestions]);
     } else if (state.rawQuestions.length > 0) {
       state.questions = [...state.rawQuestions];
@@ -416,7 +521,8 @@
         correcta: q.correcta,
         seleccionada: selected !== undefined ? selected : -1,
         acierto: isCorrect,
-        explicacion: q.explicacion || ""
+        explicacion: q.explicacion || "",
+        sesionOrigenNom: q.sesionOrigenNom || ""
       });
     });
 
@@ -460,6 +566,8 @@
   // Renderizar la vista de resultados
   function renderResultsView() {
     const res = state.results;
+    const isGlobal = !!(state.currentSession && state.currentSession.esGlobal);
+    const passed = res.calificacion !== "fail";
 
     elements.scoreNum.textContent = res.score;
     elements.scoreBadge.textContent = res.badgeText;
@@ -469,9 +577,70 @@
     elements.resultsSession.textContent = state.currentSession.titulo;
     elements.resultsDate.textContent = res.date;
 
-    // Rellenar certificado imprimible
+    // Gestión del acceso al diploma y banner explicativo
+    if (isGlobal) {
+      if (passed) {
+        // Superado el examen global: acceso exclusivo al diploma oficial
+        elements.btnPrintCert.classList.remove("hidden");
+        elements.btnPrintCert.classList.add("btn-cert-highlight");
+        if (elements.btnGoGlobal) elements.btnGoGlobal.classList.add("hidden");
+
+        if (elements.certInvitationBanner) {
+          elements.certInvitationBanner.className = "cert-invitation-banner is-global-pass";
+          elements.certInvitationBanner.innerHTML = `
+            <strong>🎉 Felicitats, ${escapeHtml(state.student.name || "alumne/a")}!</strong><br>
+            Has superat l'<strong>Examen Global del Curs d'Iniciació a l'Astronomia</strong>.
+            Ja pots generar i descarregar el teu <strong>Certificat Oficial d'Aprofitament</strong> fent clic al botó inferior.
+          `;
+          elements.certInvitationBanner.classList.remove("hidden");
+        }
+      } else {
+        // Examen global no superado
+        elements.btnPrintCert.classList.add("hidden");
+        if (elements.btnGoGlobal) elements.btnGoGlobal.classList.add("hidden");
+
+        if (elements.certInvitationBanner) {
+          elements.certInvitationBanner.className = "cert-invitation-banner";
+          elements.certInvitationBanner.innerHTML = `
+            <strong>ℹ️ Examen Global pendent de superar:</strong><br>
+            Per obtenir el Certificat Oficial cal assolir un mínim del ${CONFIG.PASS_PERCENT || 60}% (12 encerts).
+            Revisa la correcció detallada amb les explicacions astronòmiques a sota i torna a intentar-ho!
+          `;
+          elements.certInvitationBanner.classList.remove("hidden");
+        }
+      }
+    } else {
+      // Sesión ordinaria (1 a 4) - El diploma está reservado al examen global
+      elements.btnPrintCert.classList.add("hidden");
+
+      if (passed) {
+        if (elements.btnGoGlobal) elements.btnGoGlobal.classList.remove("hidden");
+        if (elements.certInvitationBanner) {
+          elements.certInvitationBanner.className = "cert-invitation-banner is-success";
+          elements.certInvitationBanner.innerHTML = `
+            <strong>👏 Molt bé! Has superat aquesta sessió d'avaluació contínua.</strong><br>
+            Aquest test serveix per comprovar els teus coneixements. Per obtenir el <strong>Certificat d'Aprofitament Oficial del Curs</strong>, realitza l'<strong>Examen Global de Certificació</strong> (20 preguntes de totes les sessions).
+          `;
+          elements.certInvitationBanner.classList.remove("hidden");
+        }
+      } else {
+        if (elements.btnGoGlobal) elements.btnGoGlobal.classList.add("hidden");
+        if (elements.certInvitationBanner) {
+          elements.certInvitationBanner.className = "cert-invitation-banner";
+          elements.certInvitationBanner.innerHTML = `
+            <strong>ℹ️ Avaluació de sessió finalitzada:</strong><br>
+            Pots consultar les explicacions de cada pregunta a sota per repassar la matèria i repetir el test quan vulguis.
+          `;
+          elements.certInvitationBanner.classList.remove("hidden");
+        }
+      }
+    }
+
+    // Rellenar certificado imprimible de respaldo
     elements.certName.textContent = state.student.name;
-    elements.certSession.textContent = state.currentSession.titulo;
+    elements.certSession.textContent = isGlobal
+      ? "Examen Global - Curs d'iniciació a l'astronomia"
+      : state.currentSession.titulo;
     elements.certScore.textContent = `${res.score} de ${res.total} encerts (${res.percent}%) - Qualificació: ${res.badgeText}`;
     elements.certDate.textContent = `Mataró, a ${res.date}`;
 
@@ -484,9 +653,12 @@
 
       return `
         <div class="review-item ${isCorrect ? "is-correct" : "is-wrong"}">
-          <span class="review-badge ${isCorrect ? "correct" : "wrong"}">
-            ${isCorrect ? "✓ Correcta" : "✗ Incorrecta"}
-          </span>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <span class="review-badge ${isCorrect ? "correct" : "wrong"}">
+              ${isCorrect ? "✓ Correcta" : "✗ Incorrecta"}
+            </span>
+            ${item.sesionOrigenNom ? `<span class="review-session-tag">${escapeHtml(item.sesionOrigenNom)}</span>` : ""}
+          </div>
           <div class="review-question">
             Pregunta ${idx + 1}: ${escapeHtml(item.pregunta)}
           </div>
@@ -541,8 +713,17 @@
       return;
     }
 
+    const isGlobal = !!(state.currentSession && state.currentSession.esGlobal);
     const studentName = state.student.name || "Alumne/a";
-    const sessionTitle = state.currentSession ? state.currentSession.titulo : "Sessió";
+    const sessionTitle = isGlobal
+      ? "Curs d'iniciació a l'astronomia"
+      : (state.currentSession ? state.currentSession.titulo : "Sessió");
+    const certSubtitle = isGlobal
+      ? "Història de l'astronomia · Mecànica celeste i temps · Instrumentació i observació · Cosmologia"
+      : "";
+    const certStatement = isGlobal
+      ? "ha superat satisfactòriament l'<strong>Examen Global de Certificació</strong> del:"
+      : "ha completat satisfactòriament l'avaluació corresponent a:";
     const scoreDetail = `${res.score} de ${res.total} encerts (${res.percent}%) - Qualificació: ${res.badgeText}`;
     const certDate = `Mataró, a ${res.date}`;
 
@@ -783,9 +964,10 @@
       <br>
       <div class="student-name">${escapeHtml(studentName)}</div>
       <br>
-      ha completat satisfactòriament l'avaluació corresponent a:
+      ${certStatement}
       <br>
       <strong class="session-title">${escapeHtml(sessionTitle)}</strong>
+      ${certSubtitle ? `<div style="font-size: 11pt; color: #475569; margin: -4pt 0 14pt; font-style: italic;">${escapeHtml(certSubtitle)}</div>` : ""}
       <div class="cert-score">${escapeHtml(scoreDetail)}</div>
     </div>
 

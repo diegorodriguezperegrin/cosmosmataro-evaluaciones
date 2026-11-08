@@ -34,7 +34,7 @@
         <span>Selecciona la sessió a avaluar</span>
       </h2>
       <p class="card-subtitle">
-        Cada sessió consta de 20 preguntes amb quatre opcions possibles. En acabar obtindràs la teva puntuació, correcció comentada i registre de resultats.
+        Pots practicar i comprovar els teus coneixements amb els tests de cada sessió, o realitzar l'<strong>Examen Global de Certificació</strong> per obtenir el diploma oficial del curs.
       </p>
 
       <div id="sessions-grid" class="sessions-grid">
@@ -158,10 +158,18 @@
         <!-- Emplenat per app.js -->
       </div>
 
+      <!-- Banner informatiu / invitació al Diploma i Examen Global -->
+      <div id="cert-invitation-banner" class="cert-invitation-banner hidden">
+        <!-- Generat dinàmicament per app.js -->
+      </div>
+
       <!-- Botons d'Acció -->
       <div class="results-actions">
-        <button type="button" id="btn-print-cert" class="btn btn-primary">
+        <button type="button" id="btn-print-cert" class="btn btn-primary hidden">
           <span>🎓 Generar / Descarregar Diploma en PDF</span>
+        </button>
+        <button type="button" id="btn-go-global" class="btn btn-primary hidden">
+          <span>🎓 Realitzar l'Examen Global de Certificació</span>
         </button>
         <button type="button" id="btn-retry" class="btn btn-secondary">
           <span>🔄 Repetir aquest test</span>

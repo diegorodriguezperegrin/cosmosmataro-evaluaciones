@@ -11,6 +11,7 @@ const CONFIG = {
 
   // Criterios de evaluación (sobre 20 preguntas)
   TOTAL_QUESTIONS: 20,
+  QUESTIONS_PER_SESSION_IN_GLOBAL: 5,  // 5 preguntas de cada una de las 4 sesiones = 20 preguntas en Examen Global
   PASS_PERCENT: 60,        // Mínimo para aprobar: 60% (12 aciertos)
   EXCELLENT_PERCENT: 85,   // Calificación de excelente: 85% (17 aciertos)
 

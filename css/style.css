@@ -220,6 +220,58 @@ body {
   gap: 6px;
 }
 
+/* Tarjeta destacada para el Examen Global de Certificación */
+.session-item-global {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(22, 33, 59, 0.95) 0%, rgba(30, 27, 75, 0.95) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  box-shadow: 0 8px 24px -4px rgba(245, 158, 11, 0.2);
+  position: relative;
+}
+
+.session-item-global::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #f59e0b, #ec4899, #38bdf8);
+  opacity: 1;
+}
+
+.session-item-global:hover {
+  transform: translateY(-3px);
+  border-color: #fbbf24;
+  box-shadow: 0 14px 30px -4px rgba(245, 158, 11, 0.35);
+  background: linear-gradient(135deg, rgba(28, 42, 75, 0.98) 0%, rgba(42, 35, 95, 0.98) 100%);
+}
+
+.session-item-global .session-badge {
+  color: #fbbf24;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+}
+
+.session-item-global .session-title {
+  color: #ffffff;
+  font-size: 1.25rem;
+}
+
+.session-item-global .session-desc {
+  color: #e2e8f0;
+  font-size: 0.92rem;
+}
+
+.session-item-global .session-action {
+  color: #fbbf24;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
 /* ==========================================================================
    Vista 2: Formulario de Alumno
    ========================================================================== */
@@ -624,6 +676,72 @@ body {
   background: rgba(148, 163, 184, 0.1);
   color: var(--text-muted);
   border: 1px solid var(--border-subtle);
+}
+
+/* Banner informatiu / invitació al Diploma i Examen Global */
+.cert-invitation-banner {
+  background: rgba(30, 41, 59, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-left: 4px solid var(--accent-cyan);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 0 auto 24px;
+  max-width: 680px;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  text-align: left;
+}
+
+.cert-invitation-banner.is-success {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.4);
+  border-left-color: #10b981;
+}
+
+.cert-invitation-banner.is-global-pass {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(56, 189, 248, 0.12) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  border-left: 4px solid #f59e0b;
+}
+
+.cert-invitation-banner strong {
+  color: var(--accent-cyan);
+}
+
+.cert-invitation-banner.is-global-pass strong {
+  color: #fbbf24;
+}
+
+.btn-cert-highlight {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4) !important;
+  font-weight: 700 !important;
+}
+
+.btn-cert-highlight:hover {
+  background: linear-gradient(135deg, #fbbf24 0%, #b45309 100%) !important;
+  box-shadow: 0 6px 22px rgba(245, 158, 11, 0.6) !important;
+  transform: translateY(-2px);
+}
+
+.review-session-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.header-badge.badge-global {
+  background: rgba(245, 158, 11, 0.18);
+  border-color: rgba(245, 158, 11, 0.55);
+  color: #fbbf24;
 }
 
 /* Desglose de corrección detallada */
