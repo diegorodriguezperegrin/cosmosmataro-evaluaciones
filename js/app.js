@@ -6,8 +6,18 @@
 (function () {
   "use strict";
 
+  const AUTH_STORAGE_KEY = "cosmos_mataro_eval_auth_v1";
+
   // Estado global de la aplicación
   const state = {
+    auth: {
+      isAuthenticated: false,
+      email: "",
+      clave: "",
+      nombre: ""
+    },
+    pendingSessionId: null,
+    isVerifyingAccess: false,
     sessionsData: null,
     currentSession: null,
     allSessionsPool: null, // Banco de preguntas combinadas de las 4 sesiones
@@ -24,15 +34,36 @@
 
   // Referencias al DOM
   const views = {
+    access: document.getElementById("view-access"),
     sessions: document.getElementById("view-sessions"),
     registration: document.getElementById("view-registration"),
     quiz: document.getElementById("view-quiz"),
     results: document.getElementById("view-results")
   };
 
+  const viewFocusTargets = {
+    access: document.getElementById("access-heading"),
+    sessions: document.getElementById("sessions-heading"),
+    registration: document.getElementById("reg-heading"),
+    quiz: document.getElementById("quiz-session-title"),
+    results: document.getElementById("results-heading")
+  };
+
   const elements = {
     // Header & Brand
     headerBadge: document.getElementById("header-session-badge"),
+    headerUserPill: document.getElementById("header-user-pill"),
+    headerUserEmail: document.getElementById("header-user-email"),
+    btnLogout: document.getElementById("btn-logout"),
+
+    // Acceso
+    accessForm: document.getElementById("access-form"),
+    accessEmail: document.getElementById("access-email"),
+    accessKey: document.getElementById("access-key"),
+    btnToggleKey: document.getElementById("btn-toggle-key"),
+    btnAccessSubmit: document.getElementById("btn-access-submit"),
+    accessErrorBanner: document.getElementById("access-error-banner"),
+    accessCheckingBanner: document.getElementById("access-checking-banner"),
     
     // Sesiones
     sessionsGrid: document.getElementById("sessions-grid"),
@@ -42,6 +73,8 @@
     regForm: document.getElementById("student-form"),
     studentName: document.getElementById("student-name"),
     studentEmail: document.getElementById("student-email"),
+    studentEmailLabel: document.getElementById("student-email-label"),
+    studentEmailHint: document.getElementById("student-email-hint"),
     btnBackToSessions: document.getElementById("btn-back-to-sessions"),
     
     // Quiz
@@ -83,23 +116,403 @@
     certDate: document.getElementById("cert-date")
   };
 
+  // Comprobar si la plataforma exige validación por correo y clave
+  function isAccessRequired() {
+    return typeof CONFIG === "undefined" || CONFIG.REQUIRE_ACCESS_KEY !== false;
+  }
+
+  function hasValidWebhookUrl() {
+    const url = (typeof CONFIG !== "undefined" && CONFIG.GOOGLE_SHEETS_WEBHOOK_URL) || "";
+    return Boolean(url && url.trim() !== "" && !url.includes("PEGAR_AQUI"));
+  }
+
+  // Persistencia segura en sessionStorage (resiliente dentro de iframes restringidos)
+  function saveAuthSession(authObj) {
+    try {
+      window.sessionStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(authObj));
+    } catch (e) {
+      // Ignorar si sessionStorage está bloqueado en iframe
+    }
+  }
+
+  function loadAuthSession() {
+    try {
+      const raw = window.sessionStorage.getItem(AUTH_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function clearAuthSession() {
+    try {
+      window.sessionStorage.removeItem(AUTH_STORAGE_KEY);
+    } catch (e) {
+      // Ignorar si sessionStorage está bloqueado en iframe
+    }
+  }
+
+  // Validación progresiva tras interacción + sincronización ARIA (aria-invalid, aria-describedby, live region)
+  const FormValidation = (() => {
+    const interactionMap = new WeakMap();
+    const announcedSet = new WeakSet();
+    let announcer = null;
+    let announceTimer = null;
+    let announcedField = null;
+
+    function ensureAnnouncer() {
+      if (announcer) return announcer;
+      announcer = document.createElement("div");
+      announcer.setAttribute("aria-live", "polite");
+      announcer.classList.add("visually-hidden");
+      document.body.append(announcer);
+      return announcer;
+    }
+
+    function spokenText(node) {
+      const copy = node.cloneNode(true);
+      copy.querySelectorAll('[aria-hidden="true"]').forEach(n => n.remove());
+      copy.querySelectorAll('[role="img"][aria-label]').forEach(n => {
+        n.replaceWith(`${n.getAttribute("aria-label")}: `);
+      });
+      return copy.textContent.replace(/\s+/g, " ").trim();
+    }
+
+    function linkError(el, shown) {
+      const errorId = el.dataset.error;
+      if (!errorId) return;
+      const ids = (el.getAttribute("aria-describedby") || "")
+        .split(/\s+/)
+        .filter(id => id && id !== errorId);
+      if (shown) ids.push(errorId);
+      if (ids.length) el.setAttribute("aria-describedby", ids.join(" "));
+      else el.removeAttribute("aria-describedby");
+    }
+
+    function announceError(el) {
+      const errorEl = el.dataset.error ? document.getElementById(el.dataset.error) : null;
+      if (!errorEl) return;
+      const region = ensureAnnouncer();
+      const label = el.labels && el.labels[0] ? `${spokenText(el.labels[0])}: ` : "";
+      clearTimeout(announceTimer);
+      region.textContent = "";
+      announcedField = el;
+      announceTimer = setTimeout(() => {
+        region.textContent = label + spokenText(errorEl);
+      }, 500);
+    }
+
+    function updateFieldState(el, { announce = false, forceValidate = false } = {}) {
+      if (!el || !el.matches?.("input, select, textarea")) return true;
+      if (el.readOnly || el.disabled) return true;
+
+      const errorEl = el.dataset.error ? document.getElementById(el.dataset.error) : null;
+      const fieldState = interactionMap.get(el) || { hasInteracted: false, hasBlurred: false, forced: false };
+
+      if (forceValidate) {
+        fieldState.hasInteracted = true;
+        fieldState.hasBlurred = true;
+        fieldState.forced = true;
+        interactionMap.set(el, fieldState);
+      }
+
+      const valid = el.validity.valid;
+      const shouldShow = !valid && (fieldState.forced || (fieldState.hasInteracted && fieldState.hasBlurred));
+
+      el.classList.toggle("user-invalid-fallback", shouldShow);
+      el.setAttribute("aria-invalid", shouldShow ? "true" : "false");
+      linkError(el, shouldShow);
+      if (errorEl) errorEl.hidden = !shouldShow;
+
+      if (shouldShow) {
+        if (announce && !announcedSet.has(el)) {
+          announceError(el);
+          announcedSet.add(el);
+        }
+      } else {
+        announcedSet.delete(el);
+        if (announcedField === el && announcer) {
+          clearTimeout(announceTimer);
+          announcer.textContent = "";
+        }
+      }
+
+      return valid;
+    }
+
+    function attach(form) {
+      if (!form) return;
+      ensureAnnouncer();
+
+      form.querySelectorAll("input, select, textarea").forEach(el => {
+        if (!el.hasAttribute("aria-invalid")) {
+          el.setAttribute("aria-invalid", "false");
+        }
+      });
+
+      form.addEventListener("input", e => {
+        const el = e.target;
+        if (!el.matches?.("input, select, textarea")) return;
+        const st = interactionMap.get(el) || { hasInteracted: false, hasBlurred: false, forced: false };
+        st.hasInteracted = true;
+        interactionMap.set(el, st);
+        if (st.hasBlurred || st.forced || el.getAttribute("aria-invalid") === "true") {
+          updateFieldState(el, { announce: false });
+        }
+      });
+
+      form.addEventListener("blur", e => {
+        const el = e.target;
+        if (!el.matches?.("input, select, textarea")) return;
+        const st = interactionMap.get(el) || { hasInteracted: false, hasBlurred: false, forced: false };
+        st.hasBlurred = true;
+        interactionMap.set(el, st);
+        if (st.hasInteracted) {
+          updateFieldState(el, { announce: true });
+        }
+      }, true);
+    }
+
+    function validateForm(form) {
+      if (!form) return true;
+      let firstInvalid = null;
+      const controls = Array.from(form.querySelectorAll("input, select, textarea"));
+      controls.forEach(el => {
+        const valid = updateFieldState(el, { announce: false, forceValidate: true });
+        if (!valid && !firstInvalid) {
+          firstInvalid = el;
+        }
+      });
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return false;
+      }
+      return true;
+    }
+
+    function resetForm(form) {
+      if (!form) return;
+      form.querySelectorAll("input, select, textarea").forEach(el => {
+        interactionMap.delete(el);
+        announcedSet.delete(el);
+        el.classList.remove("user-invalid-fallback");
+        el.setAttribute("aria-invalid", "false");
+        linkError(el, false);
+        const errorEl = el.dataset.error ? document.getElementById(el.dataset.error) : null;
+        if (errorEl) errorEl.hidden = true;
+      });
+    }
+
+    return { attach, validateForm, resetForm };
+  })();
+
   // Inicialización de la aplicación
   async function init() {
+    state.pendingSessionId = parseSessionFromUrl();
+    FormValidation.attach(elements.accessForm);
+    FormValidation.attach(elements.regForm);
     setupEventListeners();
-    await loadSessionsData();
-    checkUrlParameters();
+
+    if (!isAccessRequired()) {
+      state.auth.isAuthenticated = true;
+      configureRegistrationEmailField(false);
+      await loadSessionsData();
+      navigateAfterAuth({ skipFocus: true });
+      return;
+    }
+
+    configureRegistrationEmailField(true);
+    const saved = loadAuthSession();
+
+    if (saved && saved.email && saved.clave && hasValidWebhookUrl()) {
+      if (elements.accessEmail) elements.accessEmail.value = saved.email;
+      setCheckingBannerVisible(true);
+      try {
+        const result = await verifyAccessWithBackend(saved.email, saved.clave);
+        setCheckingBannerVisible(false);
+        if (result && result.status === "success" && result.authorized) {
+          await completeAuthentication({
+            email: result.email || saved.email,
+            clave: saved.clave,
+            nombre: result.nombre || saved.nombre || ""
+          }, { skipFocus: true });
+          return;
+        }
+        clearAuthSession();
+      } catch (err) {
+        setCheckingBannerVisible(false);
+        clearAuthSession();
+      }
+    }
+
+    switchView("access", { skipFocus: true });
+  }
+
+  // Configurar el campo de correo del formulario de registro según si hay control de acceso
+  function configureRegistrationEmailField(lockedByAuth) {
+    if (!elements.studentEmail) return;
+    if (lockedByAuth) {
+      elements.studentEmail.readOnly = true;
+      elements.studentEmail.classList.add("is-readonly");
+      if (elements.studentEmailLabel) {
+        elements.studentEmailLabel.textContent = "Correu electrònic verificat";
+      }
+      if (elements.studentEmailHint) {
+        elements.studentEmailHint.textContent = "Correu electrònic vinculat a la teva clau d'accés.";
+      }
+    } else {
+      elements.studentEmail.readOnly = false;
+      elements.studentEmail.classList.remove("is-readonly");
+      if (elements.studentEmailLabel) {
+        elements.studentEmailLabel.textContent = "Correu electrònic (opcional)";
+      }
+      if (elements.studentEmailHint) {
+        elements.studentEmailHint.textContent = "Per rebre informació sobre properes observacions de Cosmos Mataró.";
+      }
+    }
   }
 
   // Cambio de vistas
-  function switchView(viewName) {
+  function switchView(viewName, options = {}) {
     Object.keys(views).forEach(key => {
+      if (!views[key]) return;
       if (key === viewName) {
         views[key].classList.remove("hidden");
       } else {
         views[key].classList.add("hidden");
       }
     });
+    if (!options.skipFocus) {
+      const target = viewFocusTargets[viewName];
+      if (target && typeof target.focus === "function") {
+        target.focus({ preventScroll: true });
+      }
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function renderUserHeader() {
+    if (!elements.headerUserPill || !elements.headerUserEmail) return;
+    if (isAccessRequired() && state.auth.isAuthenticated && state.auth.email) {
+      elements.headerUserEmail.textContent = state.auth.email;
+      elements.headerUserPill.classList.remove("hidden");
+    } else {
+      elements.headerUserEmail.textContent = "";
+      elements.headerUserPill.classList.add("hidden");
+    }
+  }
+
+  function setCheckingBannerVisible(visible) {
+    if (!elements.accessCheckingBanner) return;
+    elements.accessCheckingBanner.classList.toggle("hidden", !visible);
+  }
+
+  function showAccessError(message, { moveFocus = true } = {}) {
+    if (!elements.accessErrorBanner) return;
+    elements.accessErrorBanner.textContent = message;
+    elements.accessErrorBanner.classList.remove("hidden");
+    if (moveFocus) {
+      elements.accessErrorBanner.focus({ preventScroll: true });
+    }
+  }
+
+  function clearAccessError() {
+    if (!elements.accessErrorBanner) return;
+    elements.accessErrorBanner.textContent = "";
+    elements.accessErrorBanner.classList.add("hidden");
+  }
+
+  async function verifyAccessWithBackend(email, clave) {
+    const webhookUrl = CONFIG.GOOGLE_SHEETS_WEBHOOK_URL;
+    const response = await fetch(webhookUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      redirect: "follow",
+      body: JSON.stringify({
+        action: "verify_access",
+        email: email.trim().toLowerCase(),
+        clave: clave.trim()
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    return await response.json();
+  }
+
+  async function completeAuthentication(authInfo, options = {}) {
+    state.auth = {
+      isAuthenticated: true,
+      email: authInfo.email,
+      clave: authInfo.clave,
+      nombre: authInfo.nombre || ""
+    };
+
+    state.student.email = authInfo.email;
+    if (!state.student.name && authInfo.nombre) {
+      state.student.name = authInfo.nombre;
+    }
+
+    saveAuthSession(state.auth);
+    renderUserHeader();
+
+    if (!state.sessionsData) {
+      await loadSessionsData();
+    }
+
+    await navigateAfterAuth(options);
+  }
+
+  async function navigateAfterAuth(options = {}) {
+    if (state.pendingSessionId && state.sessionsData) {
+      const targetSession = state.pendingSessionId;
+      state.pendingSessionId = null;
+      await selectSession(targetSession);
+    } else {
+      switchView("sessions", options);
+    }
+  }
+
+  function logoutStudent() {
+    clearAuthSession();
+    state.auth = {
+      isAuthenticated: false,
+      email: "",
+      clave: "",
+      nombre: ""
+    };
+    state.student = { name: "", email: "" };
+    state.currentSession = null;
+    state.rawQuestions = [];
+    state.questions = [];
+    state.answers = {};
+    state.results = null;
+    state.currentQuestionIndex = 0;
+
+    if (elements.headerBadge) elements.headerBadge.classList.add("hidden");
+    renderUserHeader();
+    clearAccessError();
+
+    if (elements.accessForm) {
+      elements.accessForm.reset();
+      FormValidation.resetForm(elements.accessForm);
+    }
+    if (elements.regForm) {
+      elements.regForm.reset();
+      FormValidation.resetForm(elements.regForm);
+    }
+    if (elements.accessKey && elements.btnToggleKey) {
+      elements.accessKey.type = "password";
+      elements.btnToggleKey.setAttribute("aria-pressed", "false");
+      elements.btnToggleKey.setAttribute("aria-label", "Mostrar la clau d'accés");
+      elements.btnToggleKey.textContent = "Mostrar";
+    }
+
+    switchView("access");
   }
 
   // Cargar metadatos de las sesiones
@@ -167,19 +580,21 @@
   }
 
   // Detectar parámetro ?sesion=X en la URL (ideal para Google Sites)
-  function checkUrlParameters() {
+  function parseSessionFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
     const sesionParam = (urlParams.get("sesion") || urlParams.get("session") || "").toLowerCase().trim();
-    if (sesionParam && state.sessionsData) {
-      if (sesionParam === "global" || sesionParam === "final" || sesionParam === "5" || sesionParam === "examen") {
-        selectSession("global");
-      } else {
-        const id = parseInt(sesionParam, 10);
-        if (id >= 1 && id <= 4) {
-          selectSession(id);
-        }
-      }
+    if (!sesionParam) return null;
+
+    if (sesionParam === "global" || sesionParam === "final" || sesionParam === "5" || sesionParam === "examen") {
+      return "global";
     }
+
+    const id = parseInt(sesionParam, 10);
+    if (id >= 1 && id <= 4) {
+      return id;
+    }
+
+    return null;
   }
 
   // Construir 20 preguntas equilibradas para el Examen Global (5 de cada sesión)
@@ -209,6 +624,14 @@
 
   // Seleccionar una sesión o el Examen Global y cargar sus preguntas
   async function selectSession(sessionId) {
+    if (isAccessRequired() && !state.auth.isAuthenticated) {
+      state.pendingSessionId = sessionId;
+      switchView("access");
+      return;
+    }
+
+    if (!state.sessionsData || !state.sessionsData.sesiones) return;
+
     const session = state.sessionsData.sesiones.find(s => 
       s.id === sessionId || 
       String(s.id) === String(sessionId) || 
@@ -230,12 +653,14 @@
     elements.headerBadge.classList.remove("hidden");
     elements.regSessionTitle.textContent = session.titulo;
 
-    // Preservar datos si el alumno ya había introducido su nombre previamente
-    if (state.student.name && elements.studentName) {
-      elements.studentName.value = state.student.name;
+    // Preservar datos del alumne / autoomplir des de l'accés verificat
+    if (elements.studentName) {
+      elements.studentName.value = state.student.name || state.auth.nombre || "";
     }
-    if (state.student.email && elements.studentEmail) {
-      elements.studentEmail.value = state.student.email;
+    if (elements.studentEmail) {
+      elements.studentEmail.value = isAccessRequired()
+        ? (state.auth.email || state.student.email || "")
+        : (state.student.email || "");
     }
 
     try {
@@ -277,6 +702,81 @@
 
   // Event Listeners
   function setupEventListeners() {
+    // Mostrar / ocultar clave de acceso
+    if (elements.btnToggleKey && elements.accessKey) {
+      elements.btnToggleKey.addEventListener("click", () => {
+        const isCurrentlyHidden = elements.accessKey.type === "password";
+        elements.accessKey.type = isCurrentlyHidden ? "text" : "password";
+        elements.btnToggleKey.setAttribute("aria-pressed", isCurrentlyHidden ? "true" : "false");
+        elements.btnToggleKey.setAttribute(
+          "aria-label",
+          isCurrentlyHidden ? "Ocultar la clau d'accés" : "Mostrar la clau d'accés"
+        );
+        elements.btnToggleKey.textContent = isCurrentlyHidden ? "Ocultar" : "Mostrar";
+      });
+    }
+
+    // Cerrar sesión / cambiar de alumno
+    if (elements.btnLogout) {
+      elements.btnLogout.addEventListener("click", () => {
+        logoutStudent();
+      });
+    }
+
+    // Envío del formulario de control de acceso
+    if (elements.accessForm) {
+      elements.accessForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (state.isVerifyingAccess) return;
+
+        clearAccessError();
+
+        if (!FormValidation.validateForm(elements.accessForm)) {
+          return;
+        }
+
+        const email = elements.accessEmail.value.trim().toLowerCase();
+        const clave = elements.accessKey.value.trim();
+
+        if (!hasValidWebhookUrl()) {
+          showAccessError(
+            "La validació d'accés encara no està configurada al servidor (Google Apps Script)."
+          );
+          return;
+        }
+
+        const origBtnHtml = elements.btnAccessSubmit.innerHTML;
+        state.isVerifyingAccess = true;
+        elements.btnAccessSubmit.disabled = true;
+        elements.btnAccessSubmit.innerHTML = "<span>⏳ Verificant l'accés...</span>";
+
+        try {
+          const result = await verifyAccessWithBackend(email, clave);
+          if (result && result.status === "success" && result.authorized) {
+            await completeAuthentication({
+              email: result.email || email,
+              clave,
+              nombre: result.nombre || ""
+            });
+          } else {
+            showAccessError(
+              (result && result.message) ||
+                "El correu electrònic o la clau d'accés no són vàlids, o l'accés no està activat."
+            );
+          }
+        } catch (err) {
+          console.error("Error verificant l'accés:", err);
+          showAccessError(
+            "No s'ha pogut connectar amb el servidor de validació. Comprova la teva connexió i torna-ho a provar."
+          );
+        } finally {
+          state.isVerifyingAccess = false;
+          elements.btnAccessSubmit.disabled = false;
+          elements.btnAccessSubmit.innerHTML = origBtnHtml;
+        }
+      });
+    }
+
     // Volver a selector de sesiones
     elements.btnBackToSessions.addEventListener("click", () => {
       elements.headerBadge.classList.add("hidden");
@@ -286,13 +786,15 @@
     // Envío del formulario de registro del alumno
     elements.regForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const name = elements.studentName.value.trim();
-      const email = elements.studentEmail.value.trim();
 
-      if (!name) {
-        alert("Si us plau, introdueix el teu nom i cognoms.");
+      if (!FormValidation.validateForm(elements.regForm)) {
         return;
       }
+
+      const name = elements.studentName.value.trim();
+      const email = isAccessRequired()
+        ? (state.auth.email || elements.studentEmail.value.trim())
+        : elements.studentEmail.value.trim();
 
       state.student.name = name;
       state.student.email = email;
@@ -380,6 +882,11 @@
 
   // Iniciar la evaluación
   function startQuiz() {
+    if (isAccessRequired() && !state.auth.isAuthenticated) {
+      switchView("access");
+      return;
+    }
+
     // Si és l'examen global, re-extreure 5 preguntes noves de cada sessió i barallar-les a cada intent
     if (state.currentSession && state.currentSession.esGlobal && state.allSessionsPool) {
       buildGlobalQuestions();
@@ -505,6 +1012,11 @@
 
   // Calcular calificación y mostrar resultados
   async function finalizeAndScoreQuiz() {
+    if (isAccessRequired() && !state.auth.isAuthenticated) {
+      switchView("access");
+      return;
+    }
+
     let score = 0;
     const total = state.questions.length;
     const reviewDetails = [];
@@ -707,6 +1219,11 @@
 
   // Obrir finestra dedicada per al Certificat / Diploma (evita restriccions d'iframe a Google Sites)
   async function openCertificatePrintWindow() {
+    if (isAccessRequired() && !state.auth.isAuthenticated) {
+      switchView("access");
+      return;
+    }
+
     const res = state.results;
     if (!res) {
       alert("No hi ha resultats disponibles per generar el diploma.");
@@ -1037,8 +1554,11 @@
     `;
 
     const payload = {
+      action: "submit_result",
+      authEmail: state.auth.email || state.student.email,
+      clave: state.auth.clave || "",
       nombre: state.student.name,
-      email: state.student.email,
+      email: state.student.email || state.auth.email,
       sesionId: state.currentSession.id,
       sesionTitulo: state.currentSession.titulo,
       aciertos: state.results.score,
@@ -1054,21 +1574,34 @@
     };
 
     try {
-      // Usamos mode: 'no-cors' para Google Apps Script Web App
-      await fetch(webhookUrl, {
+      // text/plain evita el preflight CORS OPTIONS en Google Apps Script y permite leer la respuesta JSON
+      const response = await fetch(webhookUrl, {
         method: "POST",
-        mode: "no-cors",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "text/plain;charset=utf-8"
         },
+        redirect: "follow",
         body: JSON.stringify(payload)
       });
 
-      elements.syncStatus.className = "sync-status success";
-      elements.syncStatus.innerHTML = `
-        <span>✓</span>
-        <span>¡Resultats registrats amb èxit a la secretaria de Cosmos Mataró!</span>
-      `;
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const result = await response.json();
+      if (result && result.status === "success") {
+        elements.syncStatus.className = "sync-status success";
+        elements.syncStatus.innerHTML = `
+          <span>✓</span>
+          <span>Resultats registrats amb èxit a la secretaria de Cosmos Mataró!</span>
+        `;
+      } else {
+        elements.syncStatus.className = "sync-status offline";
+        elements.syncStatus.innerHTML = `
+          <span>⚠️</span>
+          <span>${escapeHtml((result && result.message) || "No s'han pogut desar els resultats al registre.")}</span>
+        `;
+      }
     } catch (err) {
       console.error("Error en registrar a Google Sheets:", err);
       elements.syncStatus.className = "sync-status offline";

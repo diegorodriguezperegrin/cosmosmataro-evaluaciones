@@ -99,6 +99,14 @@ body {
   font-weight: 600;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
 .header-badge {
   font-size: 0.75rem;
   background: rgba(56, 189, 248, 0.1);
@@ -110,6 +118,52 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+}
+
+.header-user-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(14, 21, 38, 0.85);
+  border: 1px solid var(--border-subtle);
+  padding: 4px 6px 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.header-user-email {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.btn-header-logout {
+  background: rgba(244, 63, 94, 0.14);
+  color: #fda4af;
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  border-radius: 999px;
+  padding: 6px 12px;
+  min-height: 32px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-header-logout:hover {
+  background: rgba(244, 63, 94, 0.28);
+  border-color: var(--error);
+  color: #ffffff;
+}
+
+.btn-header-logout:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
 }
 
 /* ==========================================================================
@@ -273,42 +327,148 @@ body {
 }
 
 /* ==========================================================================
-   Vista 2: Formulario de Alumno
+   Vista 0 & 2: Formularios de Acceso y Registro de Alumno
    ========================================================================== */
 .form-group {
-  margin-bottom: 20px;
+  margin-block-end: 22px;
 }
 
 .form-label {
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-block-end: 4px;
   color: var(--text-main);
+}
+
+.form-hint {
+  display: block;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.form-hint-top {
+  margin-top: 0;
+  margin-block-end: 8px;
 }
 
 .form-input {
   width: 100%;
+  min-height: 48px;
   padding: 12px 16px;
   background: rgba(14, 21, 38, 0.9);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   color: var(--text-main);
-  font-size: 1rem;
-  font-family: inherit;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  font: inherit;
+  font-size: max(1rem, 1em);
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
 .form-input:focus {
-  outline: none;
   border-color: var(--accent-cyan);
   box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
 }
 
-.form-hint {
-  font-size: 0.8rem;
-  color: var(--text-dim);
-  margin-top: 6px;
+.form-input:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
+
+.form-input.is-readonly,
+.form-input[readonly] {
+  background: rgba(14, 21, 38, 0.55);
+  color: var(--text-muted);
+  border-color: rgba(148, 163, 184, 0.25);
+  cursor: default;
+}
+
+.form-input:is(:user-invalid, .user-invalid-fallback) {
+  border-color: var(--error);
+  background-color: rgba(244, 63, 94, 0.08);
+}
+
+.input-action-group {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.input-action-group .form-input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.input-toggle-btn {
+  flex: 0 0 auto;
+  min-height: 48px;
+  min-width: 84px;
+  padding: 0 14px;
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.input-toggle-btn:hover {
+  background: rgba(51, 65, 85, 0.9);
+  border-color: var(--accent-cyan);
+}
+
+.input-toggle-btn:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
+
+.field-error-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fca5a5;
+  line-height: 1.4;
+}
+
+.field-error-msg[hidden] {
+  display: none;
+}
+
+.form-error-banner {
+  background: rgba(244, 63, 94, 0.14);
+  border: 1px solid rgba(244, 63, 94, 0.45);
+  border-left: 4px solid var(--error);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  font-size: 0.92rem;
+  color: #fecdd3;
+  line-height: 1.45;
+}
+
+.form-error-banner:focus {
+  outline: 2px solid var(--error);
+  outline-offset: 2px;
+}
+
+.access-help-note {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.access-help-note strong {
+  color: var(--text-main);
 }
 
 .info-banner {
@@ -504,6 +664,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  min-height: 48px;
   padding: 12px 24px;
   border-radius: var(--radius-sm);
   font-size: 0.95rem;
@@ -513,6 +674,22 @@ body {
   border: 1px solid transparent;
   transition: all 0.2s ease;
   text-decoration: none;
+}
+
+.btn-full {
+  width: 100%;
+  padding: 14px 24px;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.72;
+  cursor: wait;
+  transform: none !important;
 }
 
 .btn-primary {
@@ -889,6 +1066,18 @@ body {
   display: none !important;
 }
 
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
 /* ==========================================================================
    Certificado / Diploma imprimible (@media print)
    ========================================================================== */
@@ -1001,8 +1190,17 @@ body {
     gap: 12px;
   }
 
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
   .header-badge {
     align-self: flex-start;
+  }
+
+  .header-user-email {
+    max-width: 150px;
   }
 
   .card {
@@ -1035,5 +1233,13 @@ body {
     width: 28px;
     height: 28px;
     font-size: 0.75rem;
+  }
+}
+
+@media (pointer: coarse) {
+  .form-input,
+  .input-toggle-btn,
+  .btn {
+    min-height: 52px;
   }
 }

@@ -16,7 +16,8 @@ Aplicación web interactiva diseñada para la evaluación continua de los alumno
   - Si se incluye el parámetro en la URL (ej: `?sesion=1`, `?sesion=4` o `?sesion=global`), la aplicación carga directamente esa prueba (ideal para incrustar por páginas en Google Sites).
 - **Corrección Inmediata y Explicaciones Didácticas**: Al terminar, el alumno ve su nota, las respuestas correctas/incorrectas con la etiqueta de la sesión de origen y la explicación astronómica pedagógica de cada fallo.
 - **Certificado Imprimible / Descargar en PDF**: Ventana emergente con `html2pdf.js` y `@media print` para descargar directamente o imprimir el diploma formal oficial de aprovechamiento de Cosmos Mataró.
-- **Integración con Google Sheets**: Envío automático de calificaciones, marcas temporales, nombres y respuestas de alumnos a una hoja de cálculo privada mediante un webhook ligero en Google Apps Script.
+- **Acceso Exclusivo por Correo y Clave**: Pantalla inicial vinculada a una lista de alumnos autorizados en Google Sheets (`Email` + `Clave`), protegiendo tanto las sesiones como el Examen Global para que solo puedan acceder quienes han completado el curso.
+- **Integración con Google Sheets**: Validación de alumnos en tiempo real y envío automático de calificaciones, marcas temporales, nombres y respuestas a una hoja de cálculo privada mediante Google Apps Script.
 - **Diseño Astronómico Moderno y Responsive**: Estética cósmica oscura, navegación fluida por teclado o ratón, adaptable a ordenadores, tablets y teléfonos móviles dentro del `<iframe>` de Google Sites.
 
 ---
@@ -123,25 +124,30 @@ Si en tu Google Sites tienes una página dedicada a cada sesión, puedes incrust
 
 ---
 
-## 📊 Conexión con Google Sheets (Registro de Respuestas de Alumnos)
+## 📊 Conexión con Google Sheets (Registro de Respuestas y Control de Acceso)
 
-Para que los resultados y notas de los alumnos se guarden automáticamente en una hoja de cálculo privada de Cosmos Mataró:
+Para que solo los alumnos que han completado el curso puedan acceder (mediante correo electrónico y clave) y sus notas se guarden automáticamente en una hoja de cálculo privada de Cosmos Mataró:
 
-1. Crea una nueva hoja en Google Drive (ej: *"Evaluaciones Curso Astronomía - Cosmos Mataró"*).
+### 1. Configurar o actualizar Google Apps Script
+1. Abre tu hoja de cálculo en Google Drive (o crea una nueva en [sheets.new](https://sheets.new)).
 2. Ve a **Extensiones** > **Apps Script**.
-3. Reemplaza cualquier código existente por el contenido del archivo `google-apps-script/Code.gs`.
+3. Reemplaza cualquier código existente por el contenido completo del archivo `google-apps-script/Code.gs`.
 4. Guarda el archivo con el icono del disco o `Ctrl+S`.
-5. Arriba a la derecha, pulsa en el botón azul **Implementar** (Deploy) > **Nueva implementación**.
-6. En el tipo, selecciona **Aplicación web**.
-7. Configuración:
-   - **Ejecutar como**: `Yo` (tu cuenta)
-   - **Quién tiene acceso**: `Cualquier usuario` (Anyone) *(necesario para que los alumnos puedan enviar sus notas sin necesidad de iniciar sesión en Google)*.
-8. Pulsa **Implementar**, autoriza los permisos y copia la **URL de la aplicación web** generada (termina en `/exec`).
-9. Abre el archivo `js/config.js` y pega esa URL en:
-   ```javascript
-   GOOGLE_SHEETS_WEBHOOK_URL: "https://script.google.com/macros/s/TU_SCRIPT_ID/exec",
-   ```
-10. ¡Listo! A partir de ese momento, cada vez que un alumno finalice una sesión se creará una nueva fila en tu hoja con su nombre, correo, fecha, puntuación y desglose de respuestas.
+5. Publica los cambios como Aplicación web:
+   - **Si es la primera vez**: Pulsa **Implementar** > **Nueva implementación** > tipo **Aplicación web**, con **Ejecutar como**: `Yo` y **Quién tiene acceso**: `Cualquier usuario` (Anyone). Copia la URL `/exec` generada y pégala en `GOOGLE_SHEETS_WEBHOOK_URL` dentro de `js/config.js`.
+   - **Si ya lo tenías implementado**: Pulsa **Implementar** > **Gestionar implementaciones** > icono del lápiz (**Editar**) > en *Versión* elige **Nueva versión** > **Implementar** *(guardar el script sin crear una nueva versión no actualiza la URL activa)*.
+
+### 2. Gestionar la lista de alumnos y claves en Google Sheets
+1. Recarga tu hoja de cálculo de Google Sheets y en el menú superior verás **Cosmos Mataró** > **Preparar pestaña "Alumnos"** *(también se crea automáticamente al primer intento de acceso)*.
+2. En la pestaña **`Alumnos`**, añade a los alumnos autorizados con estas columnas:
+   - **`Email`**: Correo electrónico del alumno (se valida sin distinguir mayúsculas/minúsculas).
+   - **`Clave`**: Clave de acceso asignada (puede ser una clave personal por alumno o la misma para un grupo; si la dejas vacía, puedes usar el menú **Cosmos Mataró > Generar claves para alumnos sin clave** para crear códigos automáticamente como `CM-7K9P2M`).
+   - **`Nombre`** *(opcional)*: Si lo rellenas, se autocompletará en el formulario del diploma.
+   - **`Activo`** *(opcional)*: Déjalo en blanco o pon `Sí` para permitir el acceso; escribe `No` para revocar el acceso a un alumno concreto.
+   - **`Último acceso`** *(automático)*: Se actualiza con la fecha/hora cada vez que el alumno entra correctamente.
+3. Los resultados de los exámenes se seguirán guardando en tu otra pestaña de resultados (por ejemplo `Hoja 1` o `Resultados`).
+
+> **Nota**: Si en algún momento necesitas abrir la plataforma temporalmente sin pedir clave, cambia `REQUIRE_ACCESS_KEY: false` en `js/config.js`.
 
 ---
 

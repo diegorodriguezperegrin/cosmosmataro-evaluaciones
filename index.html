@@ -20,177 +20,326 @@
           <p>Qüestionaris d'avaluació</p>
         </div>
       </div>
-      <div id="header-session-badge" class="header-badge hidden">
-        Sessió activa
+      <div class="header-actions">
+        <div id="header-session-badge" class="header-badge hidden">
+          Sessió activa
+        </div>
+        <div id="header-user-pill" class="header-user-pill hidden">
+          <span id="header-user-email" class="header-user-email"></span>
+          <button type="button" id="btn-logout" class="btn-header-logout" aria-label="Tancar sessió i canviar d'alumne">
+            Sortir
+          </button>
+        </div>
       </div>
     </header>
 
-    <!-- =======================================================================
-         VISTA 1: Selector de Sessions (1 a 4)
-         ======================================================================= -->
-    <main id="view-sessions" class="card">
-      <h2 class="card-title">
-        <span>🔭</span>
-        <span>Selecciona la sessió a avaluar</span>
-      </h2>
-      <p class="card-subtitle">
-        Pots practicar i comprovar els teus coneixements amb els tests de cada sessió, o realitzar l'<strong>Examen Global de Certificació</strong> per obtenir el diploma oficial del curs.
-      </p>
+    <main id="main-content">
 
-      <div id="sessions-grid" class="sessions-grid">
-        <!-- Renderitzat dinàmicament amb JavaScript des de data/sesiones.json -->
-      </div>
+      <!-- =====================================================================
+           VISTA 0: Control d'Accés per a Alumnes Autoritzats
+           ===================================================================== -->
+      <section id="view-access" class="card" aria-labelledby="access-heading">
+        <h2 id="access-heading" class="card-title" tabindex="-1">
+          <span aria-hidden="true">🔐</span>
+          <span>Accés exclusiu per a alumnes del curs</span>
+        </h2>
+        <p class="card-subtitle">
+          Aquesta plataforma d'avaluació està reservada als alumnes que han completat el curs.
+          Introdueix el teu correu electrònic i la clau d'accés facilitada per Cosmos Mataró.
+        </p>
+
+        <div id="access-checking-banner" class="info-banner hidden" role="status">
+          ⏳ Verificant la teva sessió d'accés...
+        </div>
+
+        <form id="access-form" method="post" aria-labelledby="access-heading" novalidate>
+          <div class="form-group">
+            <label for="access-email" class="form-label">
+              Correu electrònic del curs <span aria-hidden="true">*</span>
+            </label>
+            <span id="access-email-hint" class="form-hint form-hint-top">
+              Utilitza el mateix correu electrònic amb què et vas inscriure al curs.
+            </span>
+            <input
+              type="email"
+              id="access-email"
+              name="email"
+              class="form-input"
+              placeholder="exemple@correu.cat"
+              required
+              autocomplete="username"
+              spellcheck="false"
+              enterkeyhint="next"
+              aria-invalid="false"
+              aria-describedby="access-email-hint"
+              data-error="access-email-error"
+            >
+            <div id="access-email-error" class="field-error-msg" hidden>
+              <span role="img" aria-label="Error">⚠️</span>
+              <span>Introdueix una adreça de correu electrònic vàlida.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="access-key" class="form-label">
+              Clau d'accés <span aria-hidden="true">*</span>
+            </label>
+            <span id="access-key-hint" class="form-hint form-hint-top">
+              Codi personal facilitat per Secretaria o el professorat en completar el curs.
+            </span>
+            <div class="input-action-group">
+              <input
+                type="password"
+                id="access-key"
+                name="access_key"
+                class="form-input"
+                placeholder="Ex: CM-A4B9C2"
+                required
+                pattern=".*\S.*"
+                autocomplete="current-password"
+                autocorrect="off"
+                autocapitalize="none"
+                spellcheck="false"
+                enterkeyhint="done"
+                aria-invalid="false"
+                aria-describedby="access-key-hint"
+                data-error="access-key-error"
+              >
+              <button
+                type="button"
+                id="btn-toggle-key"
+                class="input-toggle-btn"
+                aria-pressed="false"
+                aria-controls="access-key"
+                aria-label="Mostrar la clau d'accés"
+                aria-describedby="toggle-key-warning"
+              >
+                Mostrar
+              </button>
+              <span id="toggle-key-warning" class="visually-hidden">
+                Atenció: això mostrarà la teva clau d'accés a la pantalla.
+              </span>
+            </div>
+            <div id="access-key-error" class="field-error-msg" hidden>
+              <span role="img" aria-label="Error">⚠️</span>
+              <span>Introdueix la teva clau d'accés.</span>
+            </div>
+          </div>
+
+          <div id="access-error-banner" class="form-error-banner hidden" role="alert" tabindex="-1"></div>
+
+          <button type="submit" id="btn-access-submit" class="btn btn-primary btn-full">
+            <span>Accedir a les avaluacions</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </form>
+
+        <p class="access-help-note">
+          No disposes de clau o el teu correu no figura a la llista? Contacta amb el professorat o secretaria de <strong>Cosmos Mataró</strong>.
+        </p>
+      </section>
+
+      <!-- =====================================================================
+           VISTA 1: Selector de Sessions (1 a 4 + Examen Global)
+           ===================================================================== -->
+      <section id="view-sessions" class="card hidden" aria-labelledby="sessions-heading">
+        <h2 id="sessions-heading" class="card-title" tabindex="-1">
+          <span aria-hidden="true">🔭</span>
+          <span>Selecciona la sessió a avaluar</span>
+        </h2>
+        <p class="card-subtitle">
+          Pots practicar i comprovar els teus coneixements amb els tests de cada sessió, o realitzar l'<strong>Examen Global de Certificació</strong> per obtenir el diploma oficial del curs.
+        </p>
+
+        <div id="sessions-grid" class="sessions-grid">
+          <!-- Renderitzat dinàmicament amb JavaScript des de data/sesiones.json -->
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           VISTA 2: Identificació de l'Alumne
+           ===================================================================== -->
+      <section id="view-registration" class="card hidden" aria-labelledby="reg-heading">
+        <button type="button" id="btn-back-to-sessions" class="btn btn-secondary" style="margin-bottom: 20px; font-size: 0.85rem; padding: 6px 14px;">
+          ← Tornar a triar una altra sessió
+        </button>
+
+        <h2 id="reg-heading" class="card-title" tabindex="-1">
+          <span aria-hidden="true">👨‍🚀</span>
+          <span id="reg-session-title">Sessió seleccionada</span>
+        </h2>
+        <p class="card-subtitle">
+          Si us plau, introdueix les teves dades per emetre el teu certificat d'aprofitament i registrar els teus resultats.
+        </p>
+
+        <div class="info-banner">
+          <strong>Pautes de l'avaluació:</strong> Disposes de <strong>20 preguntes</strong>. Pots avançar i retrocedir entre les preguntes tantes vegades com vulguis abans de l'enviament final.
+        </div>
+
+        <form id="student-form" novalidate>
+          <div class="form-group">
+            <label for="student-name" class="form-label">
+              Nom i Cognoms <span aria-hidden="true">*</span>
+            </label>
+            <span id="student-name-hint" class="form-hint form-hint-top">
+              Tal com desitges que figuri al teu certificat.
+            </span>
+            <input
+              type="text"
+              id="student-name"
+              name="student_name"
+              class="form-input"
+              placeholder="Ex: Maria García López"
+              required
+              pattern=".*\S.*"
+              autocomplete="name"
+              enterkeyhint="done"
+              aria-invalid="false"
+              aria-describedby="student-name-hint"
+              data-error="student-name-error"
+            >
+            <div id="student-name-error" class="field-error-msg" hidden>
+              <span role="img" aria-label="Error">⚠️</span>
+              <span>Introdueix el teu nom i cognoms per al certificat.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="student-email" class="form-label" id="student-email-label">Correu electrònic</label>
+            <span id="student-email-hint" class="form-hint form-hint-top">
+              Correu electrònic verificat per a l'accés i el registre de resultats.
+            </span>
+            <input
+              type="email"
+              id="student-email"
+              name="student_email"
+              class="form-input"
+              placeholder="exemple@correu.cat"
+              autocomplete="email"
+              spellcheck="false"
+            >
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" style="margin-top: 10px;">
+            <span>Començar l'Avaluació</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- =====================================================================
+           VISTA 3: Qüestionari en curs (20 preguntes)
+           ===================================================================== -->
+      <section id="view-quiz" class="card hidden" aria-labelledby="quiz-session-title">
+        <!-- Barra superior amb progrés -->
+        <div class="quiz-header">
+          <h2 id="quiz-session-title" tabindex="-1" style="font-size: 0.95rem; font-weight: 700; color: var(--text-main);">
+            Sessió
+          </h2>
+          <div id="quiz-progress-text" class="quiz-progress-text">
+            Pregunta 1 de 20
+          </div>
+        </div>
+
+        <div class="progress-track">
+          <div id="quiz-progress-fill" class="progress-fill"></div>
+        </div>
+
+        <!-- Tira de botons de navegació directa a preguntes (1 a 20) -->
+        <div id="question-nav-strip" class="question-nav-strip">
+          <!-- Renderitzat dinàmicament amb JavaScript -->
+        </div>
+
+        <!-- Caixa de la Pregunta actual -->
+        <div class="question-box">
+          <div id="question-number" class="question-number">Pregunta 1</div>
+          <div id="question-prompt" class="question-prompt">Enunciat de la pregunta...</div>
+        </div>
+
+        <!-- Llista de 4 opcions A, B, C, D -->
+        <div id="options-list" class="options-list">
+          <!-- Renderitzat dinàmicament amb JavaScript -->
+        </div>
+
+        <!-- Accions de Navegació -->
+        <div class="quiz-actions">
+          <button type="button" id="btn-prev" class="btn btn-secondary">
+            <span>← Anterior</span>
+          </button>
+
+          <button type="button" id="btn-next" class="btn btn-primary">
+            <span>Següent →</span>
+          </button>
+
+          <button type="button" id="btn-submit" class="btn btn-success hidden">
+            <span>Finalitzar i Enviar l'Avaluació ✓</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           VISTA 4: Resultats i Correcció
+           ===================================================================== -->
+      <section id="view-results" class="card hidden" aria-labelledby="results-heading">
+        <h2 id="results-heading" class="visually-hidden" tabindex="-1">Resultats de l'avaluació</h2>
+
+        <div class="results-hero">
+          <div class="score-circle">
+            <span id="score-num" class="score-num">0</span>
+            <span class="score-total">de 20 encerts</span>
+          </div>
+
+          <div>
+            <span id="score-badge" class="badge-result">Resultat</span>
+          </div>
+
+          <div class="results-meta">
+            Alumne/a: <strong id="results-student"></strong> · 
+            Sessió: <strong id="results-session"></strong><br>
+            Completat el: <span id="results-date"></span>
+          </div>
+        </div>
+
+        <!-- Estat d'enviament a Google Sheets -->
+        <div id="sync-status" class="sync-status offline" role="status">
+          <!-- Emplenat per app.js -->
+        </div>
+
+        <!-- Banner informatiu / invitació al Diploma i Examen Global -->
+        <div id="cert-invitation-banner" class="cert-invitation-banner hidden">
+          <!-- Generat dinàmicament per app.js -->
+        </div>
+
+        <!-- Botons d'Acció -->
+        <div class="results-actions">
+          <button type="button" id="btn-print-cert" class="btn btn-primary hidden">
+            <span>🎓 Generar / Descarregar Diploma en PDF</span>
+          </button>
+          <button type="button" id="btn-go-global" class="btn btn-primary hidden">
+            <span>🎓 Realitzar l'Examen Global de Certificació</span>
+          </button>
+          <button type="button" id="btn-retry" class="btn btn-secondary">
+            <span>🔄 Repetir aquest test</span>
+          </button>
+          <button type="button" id="btn-restart" class="btn btn-secondary">
+            <span>🪐 Avaluar una altra sessió</span>
+          </button>
+        </div>
+
+        <!-- Desglossament de correcció detallada -->
+        <div class="review-section">
+          <h3 style="font-size: 1.15rem; margin-bottom: 16px; color: var(--accent-cyan); display: flex; align-items: center; gap: 8px;">
+            <span aria-hidden="true">📖</span>
+            <span>Correcció pedagògica detallada (20 preguntes)</span>
+          </h3>
+          
+          <div id="review-list">
+            <!-- Renderitzat dinàmicament -->
+          </div>
+        </div>
+      </section>
+
     </main>
-
-    <!-- =======================================================================
-         VISTA 2: Identificació de l'Alumne
-         ======================================================================= -->
-    <section id="view-registration" class="card hidden">
-      <button type="button" id="btn-back-to-sessions" class="btn btn-secondary" style="margin-bottom: 20px; font-size: 0.85rem; padding: 6px 14px;">
-        ← Tornar a triar una altra sessió
-      </button>
-
-      <h2 class="card-title">
-        <span>👨‍🚀</span>
-        <span id="reg-session-title">Sessió seleccionada</span>
-      </h2>
-      <p class="card-subtitle">
-        Si us plau, introdueix les teves dades per emetre el teu certificat d'aprofitament i registrar els teus resultats.
-      </p>
-
-      <div class="info-banner">
-        <strong>Pautes de l'avaluació:</strong> Disposes de <strong>20 preguntes</strong>. Pots avançar i retrocedir entre les preguntes tantes vegades com vulguis abans de l'enviament final.
-      </div>
-
-      <form id="student-form">
-        <div class="form-group">
-          <label for="student-name" class="form-label">Nom i Cognoms *</label>
-          <input type="text" id="student-name" class="form-input" placeholder="Ex: Maria García López" required autocomplete="name">
-          <div class="form-hint">Tal com desitges que figuri al teu certificat.</div>
-        </div>
-
-        <div class="form-group">
-          <label for="student-email" class="form-label">Correu electrònic (opcional)</label>
-          <input type="email" id="student-email" class="form-input" placeholder="exemple@correu.cat" autocomplete="email">
-          <div class="form-hint">Per rebre informació sobre properes observacions de Cosmos Mataró.</div>
-        </div>
-
-        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px; padding: 14px;">
-          <span>Començar l'Avaluació</span>
-          <span>→</span>
-        </button>
-      </form>
-    </section>
-
-    <!-- =======================================================================
-         VISTA 3: Qüestionari en curs (20 preguntes)
-         ======================================================================= -->
-    <section id="view-quiz" class="card hidden">
-      <!-- Barra superior amb progrés -->
-      <div class="quiz-header">
-        <div id="quiz-session-title" style="font-size: 0.95rem; font-weight: 700; color: var(--text-main);">
-          Sessió
-        </div>
-        <div id="quiz-progress-text" class="quiz-progress-text">
-          Pregunta 1 de 20
-        </div>
-      </div>
-
-      <div class="progress-track">
-        <div id="quiz-progress-fill" class="progress-fill"></div>
-      </div>
-
-      <!-- Tira de botons de navegació directa a preguntes (1 a 20) -->
-      <div id="question-nav-strip" class="question-nav-strip">
-        <!-- Renderitzat dinàmicament amb JavaScript -->
-      </div>
-
-      <!-- Caixa de la Pregunta actual -->
-      <div class="question-box">
-        <div id="question-number" class="question-number">Pregunta 1</div>
-        <div id="question-prompt" class="question-prompt">Enunciat de la pregunta...</div>
-      </div>
-
-      <!-- Llista de 4 opcions A, B, C, D -->
-      <div id="options-list" class="options-list">
-        <!-- Renderitzat dinàmicament amb JavaScript -->
-      </div>
-
-      <!-- Accions de Navegació -->
-      <div class="quiz-actions">
-        <button type="button" id="btn-prev" class="btn btn-secondary">
-          <span>← Anterior</span>
-        </button>
-
-        <button type="button" id="btn-next" class="btn btn-primary">
-          <span>Següent →</span>
-        </button>
-
-        <button type="button" id="btn-submit" class="btn btn-success hidden">
-          <span>Finalitzar i Enviar l'Avaluació ✓</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- =======================================================================
-         VISTA 4: Resultats i Correcció
-         ======================================================================= -->
-    <section id="view-results" class="card hidden">
-      <div class="results-hero">
-        <div class="score-circle">
-          <span id="score-num" class="score-num">0</span>
-          <span class="score-total">de 20 encerts</span>
-        </div>
-
-        <div>
-          <span id="score-badge" class="badge-result">Resultat</span>
-        </div>
-
-        <div class="results-meta">
-          Alumne/a: <strong id="results-student"></strong> · 
-          Sessió: <strong id="results-session"></strong><br>
-          Completat el: <span id="results-date"></span>
-        </div>
-      </div>
-
-      <!-- Estat d'enviament a Google Sheets -->
-      <div id="sync-status" class="sync-status offline">
-        <!-- Emplenat per app.js -->
-      </div>
-
-      <!-- Banner informatiu / invitació al Diploma i Examen Global -->
-      <div id="cert-invitation-banner" class="cert-invitation-banner hidden">
-        <!-- Generat dinàmicament per app.js -->
-      </div>
-
-      <!-- Botons d'Acció -->
-      <div class="results-actions">
-        <button type="button" id="btn-print-cert" class="btn btn-primary hidden">
-          <span>🎓 Generar / Descarregar Diploma en PDF</span>
-        </button>
-        <button type="button" id="btn-go-global" class="btn btn-primary hidden">
-          <span>🎓 Realitzar l'Examen Global de Certificació</span>
-        </button>
-        <button type="button" id="btn-retry" class="btn btn-secondary">
-          <span>🔄 Repetir aquest test</span>
-        </button>
-        <button type="button" id="btn-restart" class="btn btn-secondary">
-          <span>🪐 Avaluar una altra sessió</span>
-        </button>
-      </div>
-
-      <!-- Desglossament de correcció detallada -->
-      <div class="review-section">
-        <h3 style="font-size: 1.15rem; margin-bottom: 16px; color: var(--accent-cyan); display: flex; align-items: center; gap: 8px;">
-          <span>📖</span>
-          <span>Correcció pedagògica detallada (20 preguntes)</span>
-        </h3>
-        
-        <div id="review-list">
-          <!-- Renderitzat dinàmicament -->
-        </div>
-      </div>
-    </section>
 
   </div>
 
