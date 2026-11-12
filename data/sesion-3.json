@@ -102,6 +102,9 @@
     {
       "id": 9,
       "pregunta": "En quina zona del diagrama de Hertzsprung-Russell es troba el Sol?",
+      "imagen": "assets/graficos/diagrama-hr-sol.svg",
+      "imagenAlt": "Diagrama de Hertzsprung-Russell amb temperatura i classes espectrals O B A F G K M a l'eix horitzontal i lluminositat solar a l'eix vertical, amb quatre regions estel·lars sense nom i el Sol (G2V, 1 L☉) situat sobre la banda diagonal central.",
+      "imagenPie": "Posició del Sol al diagrama de Hertzsprung-Russell.",
       "opciones": [
         "A la seqüència principal",
         "Entre les nanes blanques",

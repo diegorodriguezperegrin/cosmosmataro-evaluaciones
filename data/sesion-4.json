@@ -30,6 +30,9 @@
     {
       "id": 3,
       "pregunta": "Quina anomalia en les corbes de rotació de les galàxies espirals va portar a plantejar l'existència de la matèria fosca?",
+      "imagen": "assets/graficos/corba-rotacio-galactica.svg",
+      "imagenAlt": "Gràfica de velocitat orbital (km/s) respecte a la distància al centre galàctic (kpc): la predicció teòrica kepleriana decau més enllà del disc visible, mentre que la corba observada real es manté pràcticament plana al voltant dels 220 km/s.",
+      "imagenPie": "Comparació entre la corba de rotació prevista per Kepler i la velocitat observada en galàxies espirals.",
       "opciones": [
         "Que les estrelles del centre galàctic giren en sentit contrari a les de la perifèria",
         "Que les galàxies espirals es frenen ràpidament fins a aturar la seva rotació",

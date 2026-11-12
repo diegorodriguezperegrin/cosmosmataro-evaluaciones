@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" width="680" height="420" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">Experiment d'Eratòstenes entre Siena i Alexandria</title>
+  <desc id="svg-desc">Esquema geomètric de la Terra rebent raigs solars paral·lels des de la dreta: a Siena el Sol incideix verticalment fins al fons d'un pou sense ombra, mentre que a Alexandria un gnòmon projecta una ombra que forma un angle theta igual a l'angle central entre ambdues ciutats.</desc>
+  <defs>
+    <radialGradient id="space-bg" cx="35%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#13203d"/>
+      <stop offset="100%" stop-color="#070c19"/>
+    </radialGradient>
+    <radialGradient id="earth-grad" cx="55%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1d4ed8" stop-opacity="0.55"/>
+      <stop offset="65%" stop-color="#0f294a" stop-opacity="0.88"/>
+      <stop offset="100%" stop-color="#081326"/>
+    </radialGradient>
+    <linearGradient id="sun-ray" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#fde047" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.65"/>
+    </linearGradient>
+    <marker id="ray-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="680" height="420" rx="14" fill="url(#space-bg)"/>
+
+  <!-- Estrelles subtils -->
+  <g fill="#cbd5e1" opacity="0.45">
+    <circle cx="48" cy="48" r="1.2"/>
+    <circle cx="96" cy="96" r="1"/>
+    <circle cx="62" cy="368" r="1.2"/>
+    <circle cx="385" cy="44" r="1.1"/>
+    <circle cx="520" cy="48" r="1.3"/>
+    <circle cx="430" cy="378" r="1"/>
+  </g>
+
+  <!-- Globus terrestre (centre O = 210, 255, radi R = 135) -->
+  <circle cx="210" cy="255" r="135" fill="url(#earth-grad)" stroke="#38bdf8" stroke-width="1.8" stroke-opacity="0.65"/>
+
+  <!-- Eixos / radis des del centre O cap a Siena (345, 255) i cap a Alexandria (324.5, 183.5) -->
+  <!-- cos(32°) = 0.84805, sin(32°) = 0.52992 -> A = (210 + 114.49, 255 - 71.54) = (324.5, 183.5) -->
+  <line x1="210" y1="255" x2="345" y2="255" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="5 3"/>
+  <line x1="210" y1="255" x2="324.5" y2="183.5" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="5 3"/>
+
+  <!-- Pou vertical a Siena (al llarg del radi horitzontal) -->
+  <rect x="331" y="250" width="14" height="10" fill="#060913" stroke="#38bdf8" stroke-width="1"/>
+
+  <!-- Gnòmon / obelisc a Alexandria (prolongació del radi R=135 fins R+46=181 -> (363.5, 159.1)) -->
+  <line x1="324.5" y1="183.5" x2="363.5" y2="159.1" stroke="#f8fafc" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="324.5" cy="183.5" r="4" fill="#38bdf8"/>
+  <circle cx="345" cy="255" r="4" fill="#38bdf8"/>
+
+  <!-- Arc de distància terrestre d entre Siena i Alexandria -->
+  <path d="M 345 255 A 135 135 0 0 0 324.5 183.5" fill="none" stroke="#38bdf8" stroke-width="4"/>
+
+  <!-- Ombra sobre la superfície vora Alexandria -->
+  <path d="M 324.5 183.5 A 135 135 0 0 0 305.5 159.1" fill="none" stroke="#f43f5e" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Raigs solars paral·lels des de la dreta -->
+  <g stroke="url(#sun-ray)" stroke-width="2" marker-end="url(#ray-arrow)">
+    <!-- Raig superior pel vèrtex del gnòmon (y = 159.1) -->
+    <line x1="635" y1="159.1" x2="313" y2="159.1"/>
+    <!-- Raig intermedi -->
+    <line x1="635" y1="207" x2="346" y2="207"/>
+    <!-- Raig cap al pou de Siena (y = 255) -->
+    <line x1="635" y1="255" x2="349" y2="255"/>
+    <!-- Raig inferior -->
+    <line x1="635" y1="305" x2="344" y2="305"/>
+  </g>
+
+  <!-- Angles iguals (alterns interns): al centre O i a la punta del gnòmon -->
+  <!-- Centre O, radi 38: de (248, 255) a (242.2, 234.9) -->
+  <path d="M 248 255 A 38 38 0 0 0 242.2 234.9" fill="none" stroke="#fbbf24" stroke-width="2.2"/>
+  <text x="256" y="246" fill="#fbbf24" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" font-weight="700">θ = ?</text>
+
+  <!-- Punta del gnòmon (363.5, 159.1), radi 28 entre raig horitzontal esquerra (335.5, 159.1) i gnòmon avall-esquerra (339.8, 173.9) -->
+  <path d="M 335.5 159.1 A 28 28 0 0 0 339.8 173.9" fill="none" stroke="#fbbf24" stroke-width="2.2"/>
+  <text x="325" y="172" text-anchor="end" fill="#fbbf24" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" font-weight="700">θ</text>
+
+  <!-- Centre de la Terra -->
+  <circle cx="210" cy="255" r="4.5" fill="#fbbf24"/>
+  <text x="202" y="274" text-anchor="end" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" font-weight="600">Centre de la Terra (O)</text>
+
+  <!-- Etiqueta Terra -->
+  <text x="152" y="198" text-anchor="middle" fill="#7dd3fc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" font-weight="700">Terra</text>
+
+  <!-- Etiqueta Raigs solars paral·lels -->
+  <text x="530" y="138" text-anchor="middle" fill="#fde047" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" font-weight="700">Raigs solars paral·lels</text>
+  <text x="530" y="153" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11">(Solstici d'estiu, migdia)</text>
+
+  <!-- Caixes informatives -->
+  <!-- Alexandria -->
+  <rect x="242" y="54" width="212" height="44" rx="8" fill="#0f172a" fill-opacity="0.9" stroke="#38bdf8" stroke-width="1"/>
+  <text x="348" y="72" text-anchor="middle" fill="#f8fafc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" font-weight="700">Alexandria</text>
+  <text x="348" y="89" text-anchor="middle" fill="#fda4af" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5">El gnòmon projecta ombra (angle θ)</text>
+  <line x1="355" y1="98" x2="361" y2="152" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="3 2"/>
+
+  <!-- Distància coneguda d -->
+  <rect x="372" y="216" width="146" height="26" rx="6" fill="#082f49" fill-opacity="0.9" stroke="#38bdf8" stroke-width="1"/>
+  <text x="445" y="233" text-anchor="middle" fill="#bae6fd" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" font-weight="600">Distància d (~5.000 estadis)</text>
+  <line x1="372" y1="229" x2="342" y2="222" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="3 2"/>
+
+  <!-- Siena -->
+  <rect x="382" y="328" width="234" height="44" rx="8" fill="#0f172a" fill-opacity="0.9" stroke="#fbbf24" stroke-width="1"/>
+  <text x="499" y="346" text-anchor="middle" fill="#fbbf24" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" font-weight="700">Siena (Assuan)</text>
+  <text x="499" y="363" text-anchor="middle" fill="#e2e8f0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5">Sol al zenit: il·lumina el fons del pou (0°)</text>
+  <line x1="418" y1="328" x2="352" y2="262" stroke="#fbbf24" stroke-width="1.2" stroke-dasharray="3 2"/>
+</svg>

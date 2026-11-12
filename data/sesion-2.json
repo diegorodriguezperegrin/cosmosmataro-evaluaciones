@@ -18,6 +18,9 @@
     {
       "id": 2,
       "pregunta": "Si un observador es troba a Mataró (latitud 41° N), quin criteri de declinació (δ) determina quins objectes no sortiran mai sobre el seu horitzó i quins seran sempre visibles (circumpolars)?",
+      "imagen": "assets/graficos/esfera-celeste-mataro.svg",
+      "imagenAlt": "Esfera celeste vista des de Mataró (41° N): el Pol Nord Celest se situa a 41° d'altura sobre l'horitzó Nord, l'equador celeste (δ = 0°) forma 90° amb l'eix polar, amb la zona circumpolar sempre visible cap al Nord i la zona mai visible sota l'horitzó Sud.",
+      "imagenPie": "Geometria celeste per a la latitud de Mataró (41° N).",
       "opciones": [
         "Mai es veuen amb δ < -23,5°, i són circumpolars amb δ ≥ +23,5°",
         "Mai es veuen amb δ < -49° (41° - 90°), i són circumpolars amb δ ≥ +49° (90° - 41°)",

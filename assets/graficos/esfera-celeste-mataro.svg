@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" width="680" height="420" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">Esfera celeste vista des de Mataró (latitud 41 graus nord)</title>
+  <desc id="svg-desc">Diagrama de l'esfera celeste amb l'horitzó local Nord-Sud, l'observador a Mataró (41° N), el Pol Nord Celest a 41° d'altura sobre el Nord, l'equador celeste perpendicular a 90°, la zona circumpolar sempre visible i la zona sud mai visible.</desc>
+  <defs>
+    <radialGradient id="sky-bg" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#13203d"/>
+      <stop offset="100%" stop-color="#070c19"/>
+    </radialGradient>
+    <radialGradient id="sphere-glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.22"/>
+      <stop offset="70%" stop-color="#0f172a" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#060913" stop-opacity="0.6"/>
+    </radialGradient>
+    <linearGradient id="circumpolar-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.12"/>
+    </linearGradient>
+    <linearGradient id="never-visible-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#e11d48" stop-opacity="0.26"/>
+    </linearGradient>
+    <clipPath id="sphere-clip">
+      <circle cx="340" cy="225" r="165"/>
+    </clipPath>
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="680" height="420" rx="14" fill="url(#sky-bg)"/>
+
+  <!-- Estrelles de fons subtils -->
+  <g fill="#cbd5e1" opacity="0.45">
+    <circle cx="56" cy="54" r="1.2"/>
+    <circle cx="118" cy="92" r="1"/>
+    <circle cx="92" cy="160" r="1.3"/>
+    <circle cx="598" cy="66" r="1.4"/>
+    <circle cx="634" cy="138" r="1"/>
+    <circle cx="562" cy="48" r="1.1"/>
+    <circle cx="145" cy="364" r="1"/>
+    <circle cx="578" cy="355" r="1.2"/>
+  </g>
+
+  <!-- Interior de l'esfera celeste -->
+  <circle cx="340" cy="225" r="165" fill="url(#sphere-glow)"/>
+
+  <!-- Zones dins l'esfera retallades pel cercle -->
+  <g clip-path="url(#sphere-clip)">
+    <!-- Hemisferi sota l'horitzó -->
+    <rect x="170" y="225" width="340" height="175" fill="#04070f" fill-opacity="0.62"/>
+
+    <!-- Zona circumpolar (casquet al voltant del PNC, de CircTop (363, 61.6) a Nord (505, 225)) -->
+    <path d="M 363.0 61.6 A 165 165 0 0 1 505 225 Z" fill="url(#circumpolar-fill)"/>
+
+    <!-- Zona mai visible (casquet al voltant del PSC, de Sud (175, 225) a NevBot (317, 388.4)) -->
+    <path d="M 175 225 A 165 165 0 0 0 317.0 388.4 Z" fill="url(#never-visible-fill)"/>
+  </g>
+
+  <!-- Contorn de l'esfera celeste -->
+  <circle cx="340" cy="225" r="165" fill="none" stroke="#64748b" stroke-width="1.5" stroke-opacity="0.7"/>
+
+  <!-- Eix vertical Zenit - Nadir -->
+  <line x1="340" y1="54" x2="340" y2="394" stroke="#475569" stroke-width="1.2" stroke-dasharray="3 4"/>
+
+  <!-- Equador celeste (δ = 0°), perpendicular a l'eix polar -->
+  <line x1="231.8" y1="100.5" x2="448.2" y2="349.5" stroke="#a855f7" stroke-width="2" stroke-dasharray="6 4"/>
+
+  <!-- Límits de declinació (paral·lels circumpolar i mai visible) -->
+  <line x1="363.0" y1="61.6" x2="505" y2="225" stroke="#38bdf8" stroke-width="2" stroke-dasharray="5 3"/>
+  <line x1="175" y1="225" x2="317.0" y2="388.4" stroke="#fb7185" stroke-width="2" stroke-dasharray="5 3"/>
+
+  <!-- Eix polar celeste (PSC <-> PNC) -->
+  <line x1="215.5" y1="333.2" x2="464.5" y2="116.8" stroke="#fbbf24" stroke-width="2.2"/>
+
+  <!-- Marca de 90° entre eix polar i equador celeste -->
+  <!-- Vectors unitaris des de (340,225): cap a PNC (0.755, -0.656), cap a EqS (-0.656, -0.755) -->
+  <path d="M 349.1 217.1 L 341.2 208.0 L 332.1 215.9" fill="none" stroke="#c084fc" stroke-width="1.5"/>
+
+  <!-- Arc d'angle d'altura del Pol Nord Celest (41°) des del Nord -->
+  <path d="M 400 225 A 60 60 0 0 0 385.3 185.6" fill="none" stroke="#fbbf24" stroke-width="2"/>
+  <text x="411" y="207" fill="#fbbf24" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="15" font-weight="700">41°</text>
+
+  <!-- Horitzó local (Sud - Observador - Nord) -->
+  <line x1="158" y1="225" x2="522" y2="225" stroke="#e2e8f0" stroke-width="2.5"/>
+
+  <!-- Punts clau -->
+  <!-- Observador (Mataró) -->
+  <circle cx="340" cy="225" r="5" fill="#f8fafc" stroke="#38bdf8" stroke-width="2"/>
+  <!-- Pol Nord Celest (Polaris) -->
+  <circle cx="464.5" cy="116.8" r="5.5" fill="#fbbf24" stroke="#0f172a" stroke-width="1.5"/>
+  <!-- Pol Sud Celest -->
+  <circle cx="215.5" cy="333.2" r="4" fill="#94a3b8" stroke="#0f172a" stroke-width="1.5"/>
+
+  <!-- Etiquetes principals -->
+  <!-- Zenit / Nadir -->
+  <text x="340" y="42" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" font-weight="600">Zenit</text>
+  <text x="340" y="410" text-anchor="middle" fill="#64748b" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" font-weight="600">Nadir</text>
+
+  <!-- Sud i Nord a l'horitzó -->
+  <text x="150" y="229" text-anchor="end" fill="#e2e8f0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" font-weight="700">Sud (S)</text>
+  <text x="530" y="229" text-anchor="start" fill="#e2e8f0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" font-weight="700">Nord (N)</text>
+
+  <!-- Etiqueta Observador -->
+  <rect x="268" y="234" width="144" height="24" rx="6" fill="#0b1224" fill-opacity="0.94" stroke="#334155" stroke-width="1"/>
+  <text x="340" y="250" text-anchor="middle" fill="#f8fafc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" font-weight="600">Mataró (lat. 41° N)</text>
+
+  <!-- Etiqueta Pol Nord Celest -->
+  <text x="476" y="109" text-anchor="start" fill="#fbbf24" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" font-weight="700">Pol Nord Celest</text>
+  <text x="476" y="125" text-anchor="start" fill="#fde68a" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12">(Polaris, δ = +90°)</text>
+
+  <!-- Etiqueta Pol Sud Celest -->
+  <text x="206" y="344" text-anchor="end" fill="#94a3b8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" font-weight="600">Pol Sud Celest</text>
+  <text x="206" y="359" text-anchor="end" fill="#64748b" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11">(δ = −90°)</text>
+
+  <!-- Etiqueta Equador celeste -->
+  <text x="223" y="92" text-anchor="end" fill="#c084fc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" font-weight="700">Equador celeste</text>
+  <text x="223" y="108" text-anchor="end" fill="#d8b4fe" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12">(δ = 0°)</text>
+
+  <!-- Etiqueta Zona circumpolar -->
+  <rect x="498" y="150" width="166" height="44" rx="8" fill="#082f49" fill-opacity="0.9" stroke="#38bdf8" stroke-width="1"/>
+  <text x="581" y="168" text-anchor="middle" fill="#7dd3fc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" font-weight="700">Zona circumpolar</text>
+  <text x="581" y="185" text-anchor="middle" fill="#e0f2fe" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12">Sempre visible (δ ≥ ?)</text>
+  <line x1="498" y1="164" x2="450" y2="136" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="3 2"/>
+
+  <!-- Etiqueta Zona mai visible -->
+  <rect x="18" y="268" width="164" height="44" rx="8" fill="#4c0519" fill-opacity="0.86" stroke="#fb7185" stroke-width="1"/>
+  <text x="100" y="286" text-anchor="middle" fill="#fda4af" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12.5" font-weight="700">Zona mai visible</text>
+  <text x="100" y="303" text-anchor="middle" fill="#ffe4e6" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12">Sota l'horitzó (δ &lt; ?)</text>
+  <line x1="182" y1="292" x2="228" y2="314" stroke="#fb7185" stroke-width="1.2" stroke-dasharray="3 2"/>
+
+  <!-- Rètol sota l'horitzó -->
+  <text x="444" y="278" text-anchor="middle" fill="#64748b" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="11.5" font-style="italic">Sota l'horitzó</text>
+</svg>

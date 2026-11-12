@@ -84,6 +84,7 @@
     questionNavStrip: document.getElementById("question-nav-strip"),
     questionNumber: document.getElementById("question-number"),
     questionPrompt: document.getElementById("question-prompt"),
+    questionMedia: document.getElementById("question-media"),
     optionsList: document.getElementById("options-list"),
     btnPrev: document.getElementById("btn-prev"),
     btnNext: document.getElementById("btn-next"),
@@ -943,6 +944,25 @@
     elements.questionNumber.textContent = `Pregunta ${currentNum}`;
     elements.questionPrompt.textContent = q.pregunta;
 
+    // Renderizar gráfico opcional de la pregunta
+    if (elements.questionMedia) {
+      if (q.imagen) {
+        elements.questionMedia.innerHTML = buildMediaFigureHtml({
+          src: q.imagen,
+          alt: q.imagenAlt || q.pregunta,
+          caption: q.imagenPie || "",
+          width: q.imagenAncho || 680,
+          height: q.imagenAlto || 420,
+          figureClass: "question-figure",
+          lazy: false
+        });
+        elements.questionMedia.classList.remove("hidden");
+      } else {
+        elements.questionMedia.innerHTML = "";
+        elements.questionMedia.classList.add("hidden");
+      }
+    }
+
     // Renderizar opciones A, B, C, D
     const letters = ["A", "B", "C", "D"];
     const currentSelected = state.answers[q.id];
@@ -1029,6 +1049,14 @@
       reviewDetails.push({
         id: q.id,
         pregunta: q.pregunta,
+        imagen: q.imagen || "",
+        imagenAlt: q.imagenAlt || "",
+        imagenPie: q.imagenPie || "",
+        imagenExplicacion: q.imagenExplicacion || "",
+        imagenExplicacionAlt: q.imagenExplicacionAlt || "",
+        imagenExplicacionPie: q.imagenExplicacionPie || "",
+        imagenAncho: q.imagenAncho || 680,
+        imagenAlto: q.imagenAlto || 420,
         opciones: q.opciones,
         correcta: q.correcta,
         seleccionada: selected !== undefined ? selected : -1,
@@ -1174,6 +1202,15 @@
           <div class="review-question">
             Pregunta ${idx + 1}: ${escapeHtml(item.pregunta)}
           </div>
+          ${(item.imagenExplicacion || item.imagen) ? buildMediaFigureHtml({
+            src: item.imagenExplicacion || item.imagen,
+            alt: (item.imagenExplicacion ? item.imagenExplicacionAlt : item.imagenAlt) || item.pregunta,
+            caption: item.imagenExplicacion ? (item.imagenExplicacionPie || "") : (item.imagenPie || ""),
+            width: item.imagenAncho || 680,
+            height: item.imagenAlto || 420,
+            figureClass: "review-figure",
+            lazy: true
+          }) : ""}
           <div class="review-answers">
             ${!isCorrect ? `
               <div class="review-ans user-choice-wrong">
@@ -1622,6 +1659,23 @@
       arr[j] = temp;
     }
     return arr;
+  }
+
+  function buildMediaFigureHtml({ src, alt, caption, width, height, figureClass, lazy }) {
+    const cleanSrc = typeof src === "string" ? src.trim() : "";
+    if (!cleanSrc || /^(javascript|data|vbscript):/i.test(cleanSrc)) return "";
+    const w = Number.isFinite(Number(width)) && Number(width) > 0 ? Number(width) : 680;
+    const h = Number.isFinite(Number(height)) && Number(height) > 0 ? Number(height) : 420;
+    const lazyAttr = lazy ? ' loading="lazy"' : "";
+    const captionHtml = caption
+      ? `<figcaption class="question-figcaption">${escapeHtml(caption)}</figcaption>`
+      : "";
+    return `
+      <figure class="${escapeHtml(figureClass || "question-figure")}">
+        <img src="${escapeHtml(cleanSrc)}" alt="${escapeHtml(alt)}" width="${w}" height="${h}" decoding="async"${lazyAttr}>
+        ${captionHtml}
+      </figure>
+    `;
   }
 
   // Utilidad para escapar texto HTML

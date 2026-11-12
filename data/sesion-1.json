@@ -114,6 +114,9 @@
     {
       "id": 10,
       "pregunta": "Com va aconseguir Eratòstenes de Cirene (~240 aC) calcular per primera vegada la circumferència i el radi de la Terra amb gran precisió?",
+      "imagen": "assets/graficos/eratostenes-terra.svg",
+      "imagenAlt": "Esquema de l'experiment d'Eratòstenes amb raigs solars paral·lels que arriben des de la dreta: a Siena el Sol il·lumina verticalment el fons d'un pou sense fer ombra, mentre que a Alexandria un gnòmon projecta una ombra amb angle theta igual a l'angle central entre les dues ciutats.",
+      "imagenPie": "Geometria del mètode d'Eratòstenes entre Siena i Alexandria.",
       "opciones": [
         "Cronometrant el pas d'un cometa simultàniament des de dues ciutats costaneres",
         "Comparant l'angle d'ombra d'un gnòmon a Alexandria (~7,2°, 1/50 de cercle) amb el Sol al zenit a Siena durant el solstici d'estiu",
