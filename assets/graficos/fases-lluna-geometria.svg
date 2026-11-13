@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" width="680" height="420" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">Geometria de les fases de la Lluna</title>
+  <desc id="svg-desc">Esquema geomètric que demostra que la meitat de la Lluna sempre està il·luminada pel Sol a l'espai i que les fases sorgeixen exclusivament de la fracció visible de la cara il·luminada segons la posició de la Lluna a la seva òrbita al voltant de la Terra, sense cap intervenció de l'ombra terrestre.</desc>
+  <defs>
+    <radialGradient id="space-bg" cx="40%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#111d38"/>
+      <stop offset="100%" stop-color="#060913"/>
+    </radialGradient>
+    <radialGradient id="earth-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="65%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#075985"/>
+    </radialGradient>
+    <marker id="sun-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#fde047"/>
+    </marker>
+  </defs>
+
+  <!-- Fons -->
+  <rect width="680" height="420" rx="14" fill="url(#space-bg)"/>
+
+  <!-- Títol superior subtil -->
+  <text x="32" y="30" fill="#94a3b8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">GEOMETRIA DE LES FASES LUNARS · REALITAT A L'ESPAI VS. VISIÓ DES DE LA TERRA</text>
+
+  <!-- RAIGS SOLARS PARAL·LELS DES DE LA DRETA -->
+  <g stroke="#fde047" stroke-width="1.8" marker-end="url(#sun-arrow)">
+    <line x1="655" y1="90" x2="525" y2="90"/>
+    <line x1="655" y1="150" x2="525" y2="150"/>
+    <line x1="655" y1="210" x2="525" y2="210"/>
+    <line x1="655" y1="270" x2="525" y2="270"/>
+    <line x1="655" y1="330" x2="525" y2="330"/>
+  </g>
+  <rect x="532" y="188" width="136" height="44" rx="6" fill="#0f172a" fill-opacity="0.92" stroke="#fbbf24" stroke-width="1"/>
+  <text x="600" y="206" text-anchor="middle" fill="#fde047" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Llum Solar</text>
+  <text x="600" y="222" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5">Raigs paral·lels (Sol)</text>
+
+  <!-- Òrbita lunar al voltant de la Terra (Centre O = 275, 210, R = 115) -->
+  <circle cx="275" cy="210" r="115" fill="none" stroke="#475569" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="275" y="85" text-anchor="middle" fill="#94a3b8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10">Òrbita lunar (sentit antihorari)</text>
+
+  <!-- Fletxa de sentit orbital lunar -->
+  <path d="M 275 95 A 115 115 0 0 0 250 98" fill="none" stroke="#38bdf8" stroke-width="1.8"/>
+  <polygon points="247,98 255,94 254,103" fill="#38bdf8"/>
+
+  <!-- TERRA AL CENTRE (x=275, y=210, R=24) -->
+  <circle cx="275" cy="210" r="24" fill="url(#earth-glow)" stroke="#bae6fd" stroke-width="1.5"/>
+  <!-- Meitat de la Terra en ombra (esquerra) -->
+  <path d="M 275 186 A 24 24 0 0 0 275 234 Z" fill="#060913" fill-opacity="0.8"/>
+  <text x="275" y="214" text-anchor="middle" fill="#ffffff" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">Terra</text>
+
+  <!-- 8 POSICIONS DE LA LLUNA A L'ÒRBITA (radi = 13 px) -->
+  <!-- A totes elles: Meitat dreta IL·LUMINADA (#f8fafc), Meitat esquerra FOSCA (#0f172a) -->
+  <!-- 1. Lluna Nova (x = 390, y = 210) -->
+  <g transform="translate(390, 210)">
+    <circle cx="0" cy="0" r="11" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <path d="M 0 -11 A 11 11 0 0 1 0 11 Z" fill="#f8fafc"/>
+  </g>
+  <!-- Visió des de la Terra (Lluna Nova) -->
+  <circle cx="445" cy="210" r="15" fill="#060913" stroke="#94a3b8" stroke-width="1.4"/>
+  <text x="445" y="238" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600">Nova</text>
+
+  <!-- 2. Creixent Còncava (x = 356, y = 129) -->
+  <g transform="translate(356, 129)">
+    <circle cx="0" cy="0" r="11" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <path d="M 0 -11 A 11 11 0 0 1 0 11 Z" fill="#f8fafc"/>
+  </g>
+  <!-- Visió des de la Terra (Creixent) -->
+  <g transform="translate(425, 105)">
+    <circle cx="0" cy="0" r="15" fill="#060913" stroke="#94a3b8" stroke-width="1.4"/>
+    <path d="M 0 -15 A 15 15 0 0 1 0 15 A 8 15 0 0 0 0 -15 Z" fill="#f8fafc"/>
+    <text x="0" y="27" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Creixent</text>
+  </g>
+
+  <!-- 3. Quart Creixent (x = 275, y = 95) -->
+  <g transform="translate(275, 95)">
+    <circle cx="0" cy="0" r="11" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <path d="M 0 -11 A 11 11 0 0 1 0 11 Z" fill="#f8fafc"/>
+  </g>
+  <!-- Visió des de la Terra (Quart Creixent) -->
+  <g transform="translate(275, 45)">
+    <circle cx="0" cy="0" r="15" fill="#060913" stroke="#94a3b8" stroke-width="1.4"/>
+    <path d="M 0 -15 A 15 15 0 0 1 0 15 Z" fill="#f8fafc"/>
+    <text x="0" y="-19" text-anchor="middle" fill="#fde047" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700">Quart Creixent</text>
+  </g>
+
+  <!-- 4. Creixent Gibosa (x = 194, y = 129) -->
+  <g transform="translate(194, 129)">
+    <circle cx="0" cy="0" r="11" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <path d="M 0 -11 A 11 11 0 0 1 0 11 Z" fill="#f8fafc"/>
+  </g>
+  <!-- Visió des de la Terra (Creixent Gibosa) -->
+  <g transform="translate(130, 105)">
+    <circle cx="0" cy="0" r="15" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+    <path d="M 0 -15 A 15 15 0 0 0 0 15 A 8 15 0 0 1 0 -15 Z" fill="#060913"/>
+    <text x="0" y="27" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Gibosa</text>
+  </g>
+
+  <!-- 5. Lluna Plena (x = 160, y = 210) -->
+  <g transform="translate(160, 210)">
+    <circle cx="0" cy="0" r="11" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <path d="M 0 -11 A 11 11 0 0 1 0 11 Z" fill="#f8fafc"/>
+  </g>
+  <!-- Visió des de la Terra (Lluna Plena) -->
+  <g transform="translate(100, 210)">
+    <circle cx="0" cy="0" r="15" fill="#f8fafc" stroke="#fde047" stroke-width="1.8"/>
+    <text x="0" y="27" text-anchor="middle" fill="#fde047" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700">Plena</text>
+  </g>
+
+  <!-- 6. Minvant Gibosa (x = 194, y = 291) -->
+  <g transform="translate(194, 291)">
+    <circle cx="0" cy="0" r="11" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <path d="M 0 -11 A 11 11 0 0 1 0 11 Z" fill="#f8fafc"/>
+  </g>
+  <!-- Visió des de la Terra (Minvant Gibosa) -->
+  <g transform="translate(130, 315)">
+    <circle cx="0" cy="0" r="15" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4"/>
+    <path d="M 0 -15 A 15 15 0 0 1 0 15 A 8 15 0 0 0 0 -15 Z" fill="#060913"/>
+    <text x="0" y="27" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Gibosa</text>
+  </g>
+
+  <!-- 7. Quart Minvant (x = 275, y = 325) -->
+  <g transform="translate(275, 325)">
+    <circle cx="0" cy="0" r="11" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <path d="M 0 -11 A 11 11 0 0 1 0 11 Z" fill="#f8fafc"/>
+  </g>
+  <!-- Visió des de la Terra (Quart Minvant) -->
+  <g transform="translate(275, 375)">
+    <circle cx="0" cy="0" r="15" fill="#060913" stroke="#94a3b8" stroke-width="1.4"/>
+    <path d="M 0 -11 A 15 15 0 0 0 0 15 Z" fill="#f8fafc"/>
+    <text x="0" y="26" text-anchor="middle" fill="#7dd3fc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700">Quart Minvant</text>
+  </g>
+
+  <!-- 8. Minvant Còncava (x = 356, y = 291) -->
+  <g transform="translate(356, 291)">
+    <circle cx="0" cy="0" r="11" fill="#0f172a" stroke="#64748b" stroke-width="1"/>
+    <path d="M 0 -11 A 11 11 0 0 1 0 11 Z" fill="#f8fafc"/>
+  </g>
+  <!-- Visió des de la Terra (Minvant) -->
+  <g transform="translate(425, 315)">
+    <circle cx="0" cy="0" r="15" fill="#060913" stroke="#94a3b8" stroke-width="1.4"/>
+    <path d="M 0 -15 A 15 15 0 0 0 0 15 A 8 15 0 0 1 0 -15 Z" fill="#f8fafc"/>
+    <text x="0" y="27" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Minvant</text>
+  </g>
+
+  <!-- TARGETA DIDÀCTICA INFORMATIVA INFERIOR ESQUERRA -->
+  <rect x="35" y="340" width="195" height="66" rx="8" fill="#0f172a" fill-opacity="0.95" stroke="#38bdf8" stroke-width="1"/>
+  <text x="45" y="357" fill="#38bdf8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700">Principi físic clau:</text>
+  <text x="45" y="372" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5">La Lluna té SEMPRE el 50%</text>
+  <text x="45" y="386" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5">il·luminat. La fase és la porció</text>
+  <text x="45" y="399" fill="#fde047" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600">visible des de la Terra.</text>
+</svg>

@@ -165,6 +165,9 @@
     {
       "id": 14,
       "pregunta": "Com explica el model heliocèntric de Nicolau Copèrnic (1543) el moviment de retrogradació dels planetes exteriors com Mart, Júpiter o Saturn?",
+      "imagen": "assets/graficos/retrogradacio-planetes.svg",
+      "imagenAlt": "Esquema heliocèntric del moviment de retrogradació aparent: la Terra en una òrbita interior més ràpida avança a Mart en oposició, projectant les línies de visió cap a les estrelles fixes i formant un bucle aparent d'est a oest.",
+      "imagenPie": "Perspectiva heliocèntrica del moviment de retrogradació dels planetes exteriors.",
       "opciones": [
         "Els planetes canvien físicament el sentit de la seva marxa per la fricció amb l'èter celeste",
         "És una il·lusió de perspectiva que es produeix quan la Terra, que orbita més ràpidament, avança el planeta exterior en oposició",

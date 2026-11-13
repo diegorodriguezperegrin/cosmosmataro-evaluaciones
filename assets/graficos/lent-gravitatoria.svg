@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" width="680" height="420" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">Lent gravitatòria i deformació de l'espaitemps</title>
+  <desc id="svg-desc">Diagrama físic d'una lent gravitatòria segons la Relativitat General d'Einstein: la immensa gravetat d'una galàxia massiva intermèdia corba la trajectòria de la llum provinent d'un quàsar distant, fent que un observador a la Terra percebi imatges múltiples desdoblades com la cèlebre Creu d'Einstein.</desc>
+  <defs>
+    <radialGradient id="lens-bg" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#111d38"/>
+      <stop offset="100%" stop-color="#060913"/>
+    </radialGradient>
+    <radialGradient id="quasar-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="35%" stop-color="#38bdf8"/>
+      <stop offset="70%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="galaxy-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="40%" stop-color="#fbbf24"/>
+      <stop offset="75%" stop-color="#b45309" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#78350f" stop-opacity="0"/>
+    </radialGradient>
+    <marker id="arrow-ray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 2 L 8 5 L 0 8 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <!-- Fons -->
+  <rect width="680" height="420" rx="14" fill="url(#lens-bg)"/>
+
+  <!-- Títol superior -->
+  <text x="32" y="30" fill="#f8fafc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="700">Lent Gravitatòria · Desviació de la llum per la massa</text>
+  <text x="32" y="46" fill="#94a3b8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10.5">La deformació de l'espaitemps generada per un objecte massiu actua com una lent convergent còsmica</text>
+
+  <!-- MALLA DE CURVATURA DE L'ESPAITEMPS AL VOLTANT DE LA GALÀXIA DEFLECTORA (centre x = 310, y = 210) -->
+  <g stroke="#1e293b" stroke-width="1" stroke-opacity="0.7">
+    <!-- Corbes de deformació concèntriques còniques -->
+    <ellipse cx="310" cy="210" rx="110" ry="85" fill="none"/>
+    <ellipse cx="310" cy="210" rx="75" ry="58" fill="none"/>
+    <ellipse cx="310" cy="210" rx="45" ry="35" fill="none"/>
+    <!-- Línies radials de la malla deformada -->
+    <path d="M 200 210 Q 280 205 310 210 Q 340 215 420 210" fill="none"/>
+    <path d="M 310 125 Q 305 180 310 210 Q 315 240 310 295" fill="none"/>
+  </g>
+
+  <!-- FONT DISTANT (QUÀSAR REAL a x = 560, y = 210) -->
+  <circle cx="560" cy="210" r="28" fill="url(#quasar-glow)"/>
+  <circle cx="560" cy="210" r="8" fill="#ffffff" stroke="#38bdf8" stroke-width="2"/>
+  <text x="560" y="235" text-anchor="middle" fill="#bae6fd" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Font distant</text>
+  <text x="560" y="249" text-anchor="middle" fill="#94a3b8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5">(Quàsar llunyà)</text>
+
+  <!-- LENT INTERMÈDIA (GALÀXIA DEFLECTORA a x = 310, y = 210) -->
+  <circle cx="310" cy="210" r="38" fill="url(#galaxy-glow)"/>
+  <circle cx="310" cy="210" r="9" fill="#fef08a" stroke="#d97706" stroke-width="1.8"/>
+  <text x="310" y="242" text-anchor="middle" fill="#fde047" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Galàxia deflectora</text>
+  <text x="310" y="256" text-anchor="middle" fill="#fbbf24" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5">Massa que deforma l'espai</text>
+
+  <!-- OBSERVADOR A LA TERRA (x = 75, y = 210) -->
+  <!-- Icona planeta / telescopi -->
+  <circle cx="75" cy="210" r="16" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5"/>
+  <path d="M 75 194 A 16 16 0 0 0 75 226 Z" fill="#0369a1"/>
+  <text x="75" y="238" text-anchor="middle" fill="#ffffff" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Terra</text>
+  <text x="75" y="252" text-anchor="middle" fill="#94a3b8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5">Observador</text>
+
+  <!-- RAIGS REALS DE LLUM CURVATS PER LA GRAVETAT (d'origen daurat-cian) -->
+  <!-- Raig superior: surt de (560, 210), puja cap a (310, 115) vorejant la galàxia, i convergeix a la Terra (75, 210) -->
+  <path d="M 560 210 C 470 145, 385 110, 310 115 C 220 120, 135 175, 75 210" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+  <!-- Fletxa sobre el raig superior -->
+  <polygon points="180,165 170,163 174,171" fill="#38bdf8"/>
+
+  <!-- Raig inferior: surt de (560, 210), baixa cap a (310, 305) vorejant la galàxia, i convergeix a la Terra (75, 210) -->
+  <path d="M 560 210 C 470 275, 385 310, 310 305 C 220 300, 135 245, 75 210" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+  <!-- Fletxa sobre el raig inferior -->
+  <polygon points="180,255 174,249 170,257" fill="#38bdf8"/>
+
+  <!-- LÍNIES APARENTS DE VISIÓ DES DE LA TERRA (línies rectes discontínues cap al cel distant) -->
+  <!-- Imatge aparent superior (75, 210 -> tangent que arriba a 535, 75) -->
+  <line x1="75" y1="210" x2="535" y2="75" stroke="#f43f5e" stroke-width="1.8" stroke-dasharray="4 3" stroke-opacity="0.85"/>
+  <circle cx="535" cy="75" r="14" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1.5"/>
+  <circle cx="535" cy="75" r="6" fill="#ffffff"/>
+  <text x="535" y="55" text-anchor="middle" fill="#fda4af" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700">Imatge aparent A</text>
+
+  <!-- Imatge aparent inferior (75, 210 -> tangent que arriba a 535, 345) -->
+  <line x1="75" y1="210" x2="535" y2="345" stroke="#f43f5e" stroke-width="1.8" stroke-dasharray="4 3" stroke-opacity="0.85"/>
+  <circle cx="535" cy="345" r="14" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1.5"/>
+  <circle cx="535" cy="345" r="6" fill="#ffffff"/>
+  <text x="535" y="375" text-anchor="middle" fill="#fda4af" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700">Imatge aparent B</text>
+
+  <!-- INSET SUPERIOR CENTRAL: LA CREU D'EINSTEIN (Q2237+0305) -->
+  <rect x="235" y="52" width="150" height="66" rx="8" fill="#0b1120" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="310" y="68" text-anchor="middle" fill="#7dd3fc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">Exemple: Creu d'Einstein</text>
+  <!-- Galàxia al mig -->
+  <circle cx="310" cy="94" r="5" fill="#fde047" stroke="#b45309" stroke-width="1"/>
+  <!-- 4 Imatges del mateix quàsar en creu simètrica -->
+  <circle cx="310" cy="79" r="3.5" fill="#ffffff"/>
+  <circle cx="310" cy="109" r="3.5" fill="#ffffff"/>
+  <circle cx="295" cy="94" r="3.5" fill="#ffffff"/>
+  <circle cx="325" cy="94" r="3.5" fill="#ffffff"/>
+  <text x="310" y="114" text-anchor="middle" fill="#94a3b8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="8">4 imatges d'1 sol quàsar</text>
+
+  <!-- CAIXA DIDÀCTICA INFERIOR -->
+  <rect x="35" y="340" width="220" height="54" rx="6" fill="#0f172a" fill-opacity="0.95" stroke="#334155" stroke-width="1"/>
+  <text x="45" y="358" fill="#38bdf8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700">Relativitat General (1915):</text>
+  <text x="45" y="373" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5">La massa corba l'espaitemps.</text>
+  <text x="45" y="386" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5">La llum segueix les geodèsiques corbes.</text>
+</svg>

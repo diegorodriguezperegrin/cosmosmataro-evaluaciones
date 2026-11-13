@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" width="680" height="420" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">L'Equació de temps i l'analema solar</title>
+  <desc id="svg-desc">Gràfica anual de l'Equació de temps que desglossa la diferència entre el temps solar veritable i el temps solar mitjà en els seus dos components fonamentals (excentricitat de l'òrbita terrestre i obliqüitat de 23,5 graus), acompanyada del traçat de l'analema en forma de 8 al cel.</desc>
+  <defs>
+    <radialGradient id="eot-bg" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#111d38"/>
+      <stop offset="100%" stop-color="#060913"/>
+    </radialGradient>
+    <linearGradient id="eot-curve-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fons -->
+  <rect width="680" height="420" rx="14" fill="url(#eot-bg)"/>
+
+  <!-- PANELL ESQUERRA: GRÀFICA DE L'EQUACIÓ DE TEMPS (x: 40..460, y: 35..385) -->
+  <rect x="40" y="32" width="420" height="356" rx="10" fill="#090f1f" stroke="#334155" stroke-width="1.2"/>
+  
+  <text x="56" y="55" fill="#f8fafc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">Equació de Temps (E = Temps Veritable - Temps Mitjà)</text>
+  <text x="56" y="72" fill="#94a3b8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11">Diferència en minuts entre el rellotge de sol i el rellotge de 24 h</text>
+
+  <!-- Quadrícula i eixos: Àrea del gràfic: x = 85..440, y = 85..345 (y_mid = 215 per a 0 minuts) -->
+  <!-- Escala Y: de +20 min (y=95) a -20 min (y=335). Factor: 6 px per minut. y = 215 - (minuts * 6) -->
+  <!-- Escala X: 12 mesos (x=85 a 440 -> amplada 355 px -> ~29.6 px/mes) -->
+  <g stroke="#1e293b" stroke-width="1">
+    <!-- Horitzontals: +15m (y=125), +10m (y=155), +5m (y=185), 0m (y=215), -5m (y=245), -10m (y=275), -15m (y=305) -->
+    <line x1="85" y1="125" x2="440" y2="125"/>
+    <line x1="85" y1="155" x2="440" y2="155"/>
+    <line x1="85" y1="185" x2="440" y2="185"/>
+    <line x1="85" y1="245" x2="440" y2="245"/>
+    <line x1="85" y1="275" x2="440" y2="275"/>
+    <line x1="85" y1="305" x2="440" y2="305"/>
+  </g>
+
+  <!-- Eix 0 central destacat -->
+  <line x1="85" y1="215" x2="440" y2="215" stroke="#64748b" stroke-width="1.8"/>
+
+  <!-- Etiquetes Y (minuts) -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" text-anchor="end" fill="#94a3b8">
+    <text x="80" y="129">+15 m</text>
+    <text x="80" y="159">+10 m</text>
+    <text x="80" y="189">+5 m</text>
+    <text x="80" y="219" fill="#f8fafc">0 m</text>
+    <text x="80" y="249">-5 m</text>
+    <text x="80" y="279">-10 m</text>
+    <text x="80" y="309">-15 m</text>
+  </g>
+
+  <!-- Línies verticals de mesos i etiquetes X -->
+  <!-- Gen (85), Feb(114.6), Mar(144.2), Abr(173.8), Mai(203.4), Jun(233), Jul(262.6), Ag(292.2), Set(321.8), Oct(351.4), Nov(381), Des(410.6) -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5" text-anchor="middle" fill="#94a3b8">
+    <text x="100" y="360">G</text>
+    <text x="130" y="360">F</text>
+    <text x="159" y="360">M</text>
+    <text x="188" y="360">A</text>
+    <text x="218" y="360">M</text>
+    <text x="248" y="360">J</text>
+    <text x="277" y="360">J</text>
+    <text x="307" y="360">A</text>
+    <text x="336" y="360">S</text>
+    <text x="366" y="360">O</text>
+    <text x="396" y="360">N</text>
+    <text x="425" y="360">D</text>
+  </g>
+
+  <!-- Curva 1: Component d'obliqüitat (període de 6 mesos, màx ~ 9.8m -> ~59px d'amplitud) -->
+  <!-- Dotted purple -->
+  <path d="M 85 215 C 100 160, 130 160, 159 215 C 188 270, 218 270, 248 215 C 277 160, 307 160, 336 215 C 366 270, 396 270, 425 215 L 440 195" fill="none" stroke="#c084fc" stroke-width="1.8" stroke-dasharray="4 3"/>
+
+  <!-- Curva 2: Component d'excentricitat kepleriana (període anual, màx ~ 7.6m -> ~45px d'amplitud) -->
+  <!-- Dotted amber -->
+  <path d="M 85 235 C 130 260, 188 245, 248 215 C 307 185, 366 170, 425 210 L 440 220" fill="none" stroke="#fbbf24" stroke-width="1.8" stroke-dasharray="4 3"/>
+
+  <!-- Curva 3: EQUACIÓ DE TEMPS TOTAL RESULTANT (blau cian sòlid destacat) -->
+  <!-- Gener(-3m -> y=233) -> Febrer(-14.2m -> y=300) -> 15 Abr(0m -> y=215) -> Mai(+3.8m -> y=192) -> Jun(0m -> y=215) -> 26 Jul(-6.4m -> y=253) -> Set(0m -> y=215) -> 3 Nov(+16.4m -> y=117) -> Des(0m -> y=215) -->
+  <path d="M 85 233 
+           C 105 270, 118 300, 130 300 
+           C 145 300, 170 235, 188 215 
+           C 200 200, 210 192, 222 192 
+           C 234 192, 242 205, 248 215 
+           C 258 235, 268 253, 280 253 
+           C 295 253, 315 228, 336 215 
+           C 355 198, 382 117, 398 117 
+           C 412 117, 425 185, 435 215 
+           L 440 230" 
+        fill="none" stroke="url(#eot-curve-glow)" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Punts clau assenyalats a la corba resultant -->
+  <!-- Màxim Febrer (-14.2 min) -->
+  <circle cx="130" cy="300" r="4.5" fill="#f43f5e" stroke="#ffffff" stroke-width="1.5"/>
+  <text x="130" y="322" text-anchor="middle" fill="#fda4af" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">-14,2 min</text>
+
+  <!-- Màxim Novembre (+16.4 min) -->
+  <circle cx="398" cy="117" r="4.5" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5"/>
+  <text x="398" y="107" text-anchor="middle" fill="#7dd3fc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">+16,4 min</text>
+
+  <!-- Llegenda inferior del gràfic -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5">
+    <line x1="85" y1="375" x2="105" y2="375" stroke="#38bdf8" stroke-width="3"/>
+    <text x="110" y="378" fill="#f8fafc" font-weight="600">Total (Resultant)</text>
+
+    <line x1="205" y1="375" x2="225" y2="375" stroke="#c084fc" stroke-width="2" stroke-dasharray="3 2"/>
+    <text x="230" y="378" fill="#c084fc">Obliqüitat (23,5°)</text>
+
+    <line x1="330" y1="375" x2="350" y2="375" stroke="#fbbf24" stroke-width="2" stroke-dasharray="3 2"/>
+    <text x="355" y="378" fill="#fbbf24">Excentricitat (Kepler)</text>
+  </g>
+
+  <!-- PANELL DRETA: L'ANALEMA SOLAR AL CEL (x: 475..645, y: 32..385) -->
+  <rect x="475" y="32" width="170" height="356" rx="10" fill="#090f1f" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.6"/>
+
+  <text x="560" y="55" text-anchor="middle" fill="#f8fafc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">Analema Solar</text>
+  <text x="560" y="70" text-anchor="middle" fill="#94a3b8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10.5">Figura de 8 al cel durant 1 any</text>
+
+  <!-- Volta de cel nocturn per a l'analema -->
+  <rect x="487" y="80" width="146" height="235" rx="8" fill="#050811" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- Eix de declinació celeste vertical -->
+  <line x1="560" y1="90" x2="560" y2="305" stroke="#334155" stroke-width="1" stroke-dasharray="2 3"/>
+
+  <!-- Trazat de l'Analema en 8 asimètric (Solstici d'estiu dalt, bucle superior petit, creuament, bucle inferior més gran amb solstici d'hivern baix) -->
+  <path d="M 560 102 
+           C 580 115, 592 145, 580 170 
+           C 572 188, 550 205, 540 220 
+           C 525 242, 520 270, 540 292 
+           C 555 305, 575 302, 588 285 
+           C 602 265, 595 238, 575 220 
+           C 560 205, 545 188, 542 165 
+           C 538 140, 548 115, 560 102 Z" 
+        fill="none" stroke="#fbbf24" stroke-width="2.2" stroke-opacity="0.9"/>
+
+  <!-- Punts destacats sobre l'analema -->
+  <!-- Solstici d'Estiu (dalt, +23.5° declinació) -->
+  <circle cx="560" cy="102" r="6" fill="#fde047" stroke="#b45309" stroke-width="1.5"/>
+  <text x="560" y="94" text-anchor="middle" fill="#fde047" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700">21 Juny (+23,5°)</text>
+
+  <!-- Creuament d'Equinoccis (centre, 0° declinació) -->
+  <circle cx="558" cy="208" r="4.5" fill="#38bdf8"/>
+  <text x="495" y="208" fill="#7dd3fc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Equinoccis (0°)</text>
+
+  <!-- Solstici d'Hivern (baix, -23.5° declinació) -->
+  <circle cx="560" cy="298" r="6" fill="#38bdf8" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="560" y="312" text-anchor="middle" fill="#7dd3fc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700">21 Desembre (-23,5°)</text>
+
+  <!-- Explicació inferior del panell dret -->
+  <rect x="487" y="324" width="146" height="52" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="560" y="340" text-anchor="middle" fill="#fbbf24" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">2 Fenòmens combinats:</text>
+  <text x="560" y="354" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5">1. Obliqüitat eix (23,5°)</text>
+  <text x="560" y="367" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5">2. Òrbita el·líptica (Kepler)</text>
+</svg>

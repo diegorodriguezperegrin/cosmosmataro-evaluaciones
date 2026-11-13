@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 420" width="680" height="420" role="img" aria-labelledby="svg-title svg-desc">
+  <title id="svg-title">Moviment de retrogradació aparent segons el model heliocèntric</title>
+  <desc id="svg-desc">Explicació geomètrica de Copèrnic: la Terra té una velocitat orbital més ràpida que Mart. Quan l'avança en oposició, la línia visual projectada sobre el fons d'estrelles fixes traça una il·lusió òptica en forma de bucle de retrogradació d'est a oest.</desc>
+  <defs>
+    <radialGradient id="space-bg" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#111d38"/>
+      <stop offset="100%" stop-color="#060913"/>
+    </radialGradient>
+    <radialGradient id="sun-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="25%" stop-color="#fef08a"/>
+      <stop offset="60%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Fons espacial -->
+  <rect width="680" height="420" rx="14" fill="url(#space-bg)"/>
+
+  <!-- Estrelles de fons subtils -->
+  <g fill="#94a3b8" opacity="0.4">
+    <circle cx="35" cy="40" r="1.1"/>
+    <circle cx="85" cy="90" r="0.9"/>
+    <circle cx="585" cy="50" r="1.2"/>
+    <circle cx="635" cy="110" r="0.8"/>
+    <circle cx="45" cy="280" r="1.3"/>
+    <circle cx="640" cy="340" r="1.1"/>
+  </g>
+
+  <!-- Franja superior: Fons d'estrelles fixes i volta celeste -->
+  <rect x="50" y="32" width="580" height="66" rx="8" fill="#090f1d" stroke="#334155" stroke-width="1.2"/>
+  <text x="64" y="50" fill="#94a3b8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">VOLTA CELESTE · FONS D'ESTRELLES FIXES</text>
+
+  <!-- Línia de la trajectòria aparent amb el bucle de retrogradació (d'Est a Oest al mig) -->
+  <!-- 1: (150, 72), 2: (265, 62), 3: (340, 78), 4: (415, 62), 5: (530, 72) -->
+  <path d="M 120 72 L 230 72 C 275 72 315 54 360 54 C 400 54 415 82 340 82 C 265 82 280 54 320 54 C 365 54 405 72 450 72 L 560 72" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.25"/>
+
+  <!-- Trazat del bucle aparent: Punts 1, 2, 3, 4, 5 -->
+  <!-- Trajectòria: 1(x=150,y=72) directe -> 2(x=290,y=62) frenada -> 3(x=340,y=82) RETROGRADACIÓ MÀXIMA EN OPOSICIÓ -> 4(x=390,y=62) represa -> 5(x=530,y=72) directe -->
+  <path d="M 140 70 Q 240 68 285 64 Q 315 62 340 78 Q 365 62 395 64 Q 440 68 540 70" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Punts i etiquetes sobre la volta celeste -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">
+    <!-- Punt 1 -->
+    <circle cx="170" cy="69" r="4.5" fill="#38bdf8"/>
+    <text x="170" y="57" text-anchor="middle" fill="#7dd3fc">1</text>
+
+    <!-- Punt 2 -->
+    <circle cx="280" cy="65" r="4.5" fill="#38bdf8"/>
+    <text x="280" y="53" text-anchor="middle" fill="#7dd3fc">2</text>
+
+    <!-- Punt 3 (Oposició) -->
+    <circle cx="340" cy="77" r="5.5" fill="#fbbf24" stroke="#f43f5e" stroke-width="1.8"/>
+    <text x="340" y="94" text-anchor="middle" fill="#fbbf24">3 (Oposició)</text>
+
+    <!-- Punt 4 -->
+    <circle cx="400" cy="65" r="4.5" fill="#38bdf8"/>
+    <text x="400" y="53" text-anchor="middle" fill="#7dd3fc">4</text>
+
+    <!-- Punt 5 -->
+    <circle cx="510" cy="69" r="4.5" fill="#38bdf8"/>
+    <text x="510" y="57" text-anchor="middle" fill="#7dd3fc">5</text>
+  </g>
+
+  <!-- Fletxa indicadora del sentit del bucle (retrogradació) -->
+  <path d="M 370 79 L 348 81" stroke="#f43f5e" stroke-width="2" marker-end="none"/>
+  <polygon points="345,81 352,77 352,85" fill="#f43f5e"/>
+  <text x="475" y="93" fill="#fda4af" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600">← Retrogradació aparente (Est → Oest)</text>
+
+  <!-- ZONA DEL SISTEMA SOLAR HELIOCÈNTRIC (Sol a x=340, y=365) -->
+  <!-- Òrbita de Mart (R = 195) -->
+  <path d="M 145 365 A 195 195 0 0 1 535 365" fill="none" stroke="#f97316" stroke-width="1.8" stroke-dasharray="5 4" stroke-opacity="0.7"/>
+  <text x="110" y="325" fill="#fb923c" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">Òrbita de Mart (més lenta)</text>
+
+  <!-- Òrbita de la Terra (R = 120) -->
+  <path d="M 220 365 A 120 120 0 0 1 460 365" fill="none" stroke="#38bdf8" stroke-width="1.8" stroke-dasharray="5 4" stroke-opacity="0.8"/>
+  <text x="145" y="380" fill="#7dd3fc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">Òrbita de la Terra (més ràpida)</text>
+
+  <!-- Posicions de Mart (M1, M2, M3, M4, M5) -->
+  <!-- Angles respecte a la vertical: M1: -28°, M2: -14°, M3: 0°, M4: +14°, M5: +28° -->
+  <!-- M1: (340 - 195*sin(28°), 365 - 195*cos(28°)) = (340 - 91.5, 365 - 172.2) = (248.5, 192.8) -->
+  <!-- M2: (340 - 195*sin(14°), 365 - 195*cos(14°)) = (340 - 47.2, 365 - 189.2) = (292.8, 175.8) -->
+  <!-- M3: (340, 365 - 195) = (340, 170) -->
+  <!-- M4: (340 + 47.2, 175.8) = (387.2, 175.8) -->
+  <!-- M5: (340 + 91.5, 192.8) = (431.5, 192.8) -->
+
+  <!-- Posicions de la Terra (T1, T2, T3, T4, T5): velocitat angular major -->
+  <!-- Angles: T1: -52°, T2: -26°, T3: 0°, T4: +26°, T5: +52° -->
+  <!-- T1: (340 - 120*sin(52°), 365 - 120*cos(52°)) = (340 - 94.6, 365 - 73.9) = (245.4, 291.1) -->
+  <!-- T2: (340 - 120*sin(26°), 365 - 120*cos(26°)) = (340 - 52.6, 365 - 107.9) = (287.4, 257.1) -->
+  <!-- T3: (340, 365 - 120) = (340, 245) -->
+  <!-- T4: (340 + 52.6, 257.1) = (392.6, 257.1) -->
+  <!-- T5: (340 + 94.6, 291.1) = (434.6, 291.1) -->
+
+  <!-- Línies visuals des de la Terra travessant Mart fins a la volta celeste -->
+  <g stroke-width="1.2" stroke-dasharray="3 3">
+    <!-- Visual 1 -->
+    <line x1="245.4" y1="291.1" x2="170" y2="69" stroke="#94a3b8" stroke-opacity="0.6"/>
+    <!-- Visual 2 -->
+    <line x1="287.4" y1="257.1" x2="280" y2="65" stroke="#94a3b8" stroke-opacity="0.6"/>
+    <!-- Visual 3 (Oposició - alineament central) -->
+    <line x1="340" y1="245" x2="340" y2="77" stroke="#fbbf24" stroke-width="2" stroke-opacity="0.95"/>
+    <!-- Visual 4 -->
+    <line x1="392.6" y1="257.1" x2="400" y2="65" stroke="#94a3b8" stroke-opacity="0.6"/>
+    <!-- Visual 5 -->
+    <line x1="434.6" y1="291.1" x2="510" y2="69" stroke="#94a3b8" stroke-opacity="0.6"/>
+  </g>
+
+  <!-- Punts de Mart (color vermell-taronja) -->
+  <g fill="#ea580c" stroke="#fed7aa" stroke-width="1.5">
+    <circle cx="248.5" cy="192.8" r="5"/>
+    <circle cx="292.8" cy="175.8" r="5"/>
+    <circle cx="340" cy="170" r="6.5" fill="#f97316" stroke="#fbbf24" stroke-width="2"/>
+    <circle cx="387.2" cy="175.8" r="5"/>
+    <circle cx="431.5" cy="192.8" r="5"/>
+  </g>
+  <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#fdba74">
+    <text x="238" y="190">M₁</text>
+    <text x="282" y="172">M₂</text>
+    <text x="340" y="158" text-anchor="middle">M₃ (Mart)</text>
+    <text x="398" y="172">M₄</text>
+    <text x="442" y="190">M₅</text>
+  </g>
+
+  <!-- Punts de la Terra (blau cel) -->
+  <g fill="#0284c7" stroke="#e0f2fe" stroke-width="1.5">
+    <circle cx="245.4" cy="291.1" r="5"/>
+    <circle cx="287.4" cy="257.1" r="5"/>
+    <circle cx="340" cy="245" r="6.5" fill="#38bdf8" stroke="#ffffff" stroke-width="2"/>
+    <circle cx="392.6" cy="257.1" r="5"/>
+    <circle cx="434.6" cy="291.1" r="5"/>
+  </g>
+  <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700" fill="#bae6fd">
+    <text x="234" y="306">T₁</text>
+    <text x="276" y="272">T₂</text>
+    <text x="340" y="235" text-anchor="middle">T₃ (Terra)</text>
+    <text x="404" y="272">T₄</text>
+    <text x="444" y="306">T₅</text>
+  </g>
+
+  <!-- Fletxes de sentit orbital (antihorari / prograd) -->
+  <path d="M 270 265 Q 300 252 325 248" fill="none" stroke="#38bdf8" stroke-width="1.8"/>
+  <polygon points="328,247 319,244 321,252" fill="#38bdf8"/>
+  <path d="M 275 182 Q 305 174 328 171" fill="none" stroke="#f97316" stroke-width="1.8"/>
+  <polygon points="331,171 322,168 324,176" fill="#f97316"/>
+
+  <!-- Sol al centre inferior -->
+  <circle cx="340" cy="365" r="32" fill="url(#sun-glow)"/>
+  <circle cx="340" cy="365" r="14" fill="#fbbf24" stroke="#fef08a" stroke-width="2"/>
+  <text x="340" y="370" text-anchor="middle" fill="#0f172a" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800">SOL</text>
+
+  <!-- Caixa didàctica explicativa -->
+  <rect x="445" y="340" width="220" height="66" rx="8" fill="#0f172a" fill-opacity="0.92" stroke="#38bdf8" stroke-width="1"/>
+  <text x="457" y="358" fill="#38bdf8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700">Il·lusió òptica per perspectiva</text>
+  <text x="457" y="376" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10.5">La Terra avança Mart en oposició (3).</text>
+  <text x="457" y="393" fill="#cbd5e1" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="10.5">Cap planeta frena ni retrocedeix físicament.</text>
+</svg>
