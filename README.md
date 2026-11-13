@@ -7,6 +7,7 @@ Aplicación web interactiva diseñada para la evaluación continua de los alumno
 ## 🌟 Características Principales
 
 - **4 Sesiones Formativas + Examen Global**: 20 preguntas con 4 opciones por cada sesión (80 preguntas en total) más un **Examen Global de Certificación** que combina 5 preguntas aleatorias y equilibradas de cada módulo.
+- **Cuestionario Optativo de Calidad y Satisfacción del Curso**: Encuesta con 10 preguntas de valoración (extensión, dificultad, herramientas pedagógicas, profesorado, atención a dudas, prácticas de observación, materiales, organización, expectativas y recomendación global) más un campo abierto de comentarios y propuestas de mejora. Se registra en su propia pestaña dedicada `Qualitat` en Google Sheets.
 - **Doble Nivel Pedagógico**:
   - Las sesiones 1 a 4 funcionan como autoevaluación continua y formativa con corrección y explicaciones didácticas.
   - El **Examen Global de Certificación** da acceso exclusivo al **Certificado Oficial d'Aprofitament** en PDF al alcanzar un mínimo del 60% (12 aciertos).
@@ -39,7 +40,8 @@ cosmosmataro-evaluaciones/
 │   ├── sesion-1.json           # 20 preguntas: Història de l'astronomia
 │   ├── sesion-2.json           # 20 preguntas: Sistemes de referència, Temps i Espai, i Mecànica celeste
 │   ├── sesion-3.json           # 20 preguntas: Instrumentación y observación
-│   └── sesion-4.json           # 20 preguntas: Origen i destí: Cosmologia
+│   ├── sesion-4.json           # 20 preguntas: Origen i destí: Cosmologia
+│   └── qualitat.json           # 10 preguntas de valoración de calidad + comentarios
 ├── google-apps-script/
 │   └── Code.gs                 # Script para vincular automáticamente con Google Sheets
 ├── README.md                   # Esta guía
@@ -121,6 +123,8 @@ Si en tu Google Sites tienes una página dedicada a cada sesión, puedes incrust
 - **Página Sesión 2:** `https://TU_USUARIO.github.io/cosmosmataro-evaluaciones/?sesion=2`
 - **Página Sesión 3:** `https://TU_USUARIO.github.io/cosmosmataro-evaluaciones/?sesion=3`
 - **Página Sesión 4:** `https://TU_USUARIO.github.io/cosmosmataro-evaluaciones/?sesion=4`
+- **Página Examen Global:** `https://TU_USUARIO.github.io/cosmosmataro-evaluaciones/?sesion=global`
+- **Página Cuestionario de Calidad:** `https://TU_USUARIO.github.io/cosmosmataro-evaluaciones/?sesion=qualitat`
 
 ---
 
@@ -145,7 +149,7 @@ Para que solo los alumnos que han completado el curso puedan acceder (mediante c
    - **`Nombre`** *(opcional)*: Si lo rellenas, se autocompletará en el formulario del diploma.
    - **`Activo`** *(opcional)*: Déjalo en blanco o pon `Sí` para permitir el acceso; escribe `No` para revocar el acceso a un alumno concreto.
    - **`Último acceso`** *(automático)*: Se actualiza con la fecha/hora cada vez que el alumno entra correctamente.
-3. Los resultados de los exámenes se seguirán guardando en tu otra pestaña de resultados (por ejemplo `Hoja 1` o `Resultados`).
+3. Los resultados de los exámenes se guardan en la pestaña `Resultados` (o la primera hoja disponible), y las respuestas de la **Enquesta de Qualitat** se guardan automáticamente en su propia pestaña dedicada `Qualitat` (puedes crearla con el menú **Cosmos Mataró > Preparar pestaña "Qualitat" (Enquesta)** o dejar que el script la cree automáticamente al recibir la primera encuesta).
 
 > **Nota**: Si en algún momento necesitas abrir la plataforma temporalmente sin pedir clave, cambia `REQUIRE_ACCESS_KEY: false` en `js/config.js`.
 

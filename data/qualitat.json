@@ -1,0 +1,118 @@
+{
+  "sesionId": "qualitat",
+  "esQualitat": true,
+  "titulo": "Enquesta de Qualitat del Curs",
+  "descripcion": "Valoració de la qualitat pedagògica, temari, eines docents, professorat i suggeriments per a futures edicions del Curs d'Iniciació a l'Astronomia.",
+  "preguntas": [
+    {
+      "id": 1,
+      "categoria": "extensio",
+      "pregunta": "Com valores l'extensió i la durada dels continguts tractats al llarg de les sessions?",
+      "opciones": [
+        "Molt adequada i ben dosificada al llarg de les sessions",
+        "Adequada en general, tot i que algun tema requeria més temps",
+        "Excessivament llarga o amb massa contingut condensat",
+        "Massa curta o superficial, m'hauria agradat més temps per tema"
+      ]
+    },
+    {
+      "id": 2,
+      "categoria": "dificultat",
+      "pregunta": "Quin nivell de dificultat i ritme d'aprenentatge has percebut?",
+      "opciones": [
+        "Molt equilibrat: accessible per iniciar-se i alhora científicament rigorós",
+        "Assequible, amb algun concepte teòric puntual més complex",
+        "Massa complex o amb un ritme massa ràpid per a un curs d'iniciació",
+        "Massa bàsic o elemental, m'hauria agradat més profunditat teòrica"
+      ]
+    },
+    {
+      "id": 3,
+      "categoria": "eines_pedagogiques",
+      "pregunta": "Com valores la idoneïtat de les eines pedagògiques utilitzades (presentacions, simuladors celestes, audiovisuals, etc.)?",
+      "opciones": [
+        "Excel·lents: recursos visuals i didàctics molt clars, moderns i motivadors",
+        "Bones: eines útils que han facilitat la comprensió dels conceptes",
+        "Acceptables, però s'haurien de modernitzar o aprofitar millor",
+        "Escasses o poc profitoses per al seguiment de les classes"
+      ]
+    },
+    {
+      "id": 4,
+      "categoria": "professorat_preparacio",
+      "pregunta": "Com valores la preparació, el domini de la matèria i la capacitat didàctica del professorat?",
+      "opciones": [
+        "Excel·lent: gran domini científic, entusiasme i explicacions molt clares",
+        "Molt bona: professorat competent, ben preparat i comunicatiu",
+        "Correcta, amb cert marge de millora en l'estructura d'algunes explicacions",
+        "Millorable: mancava claredat o coordinació en les sessions"
+      ]
+    },
+    {
+      "id": 5,
+      "categoria": "professorat_dubtes",
+      "pregunta": "Com ha estat l'atenció als dubtes dels alumnes i el foment de la participació a classe?",
+      "opciones": [
+        "Molt propera i atenta: s'han resolt sempre tots els dubtes amb claredat",
+        "Bona: s'ha donat espai a les preguntes i s'han respost satisfactòriament",
+        "Regular: a vegades no hi havia prou temps per aprofundir en les consultes",
+        "Insuficient: poca interacció o resolució incompleta dels dubtes plantejats"
+      ]
+    },
+    {
+      "id": 6,
+      "categoria": "practiques_observacio",
+      "pregunta": "Com valores les sessions pràctiques d'observació del cel i l'ús dels telescopis?",
+      "opciones": [
+        "Molt profitoses i engrescadores: clau per connectar la teoria amb l'observació real",
+        "Bones i adequades per familiaritzar-se amb l'instrumental bàsic",
+        "Acceptables, però m'hauria agradat disposar de més temps o dies d'observació",
+        "Poc profitoses o insuficients per aprendre a orientar-se o observar amb telescopi"
+      ]
+    },
+    {
+      "id": 7,
+      "categoria": "material_suport",
+      "pregunta": "Com consideres el material de suport, apunts, enllaços i documentació facilitada?",
+      "opciones": [
+        "Molt complet, estructurat i de gran valor per continuar aprenent",
+        "Adequat i suficient per repassar els conceptes fonamentals del curs",
+        "Una mica esquemàtic o breu, m'hauria calgut més material de consulta",
+        "Escàs o de poc aprofitament posterior"
+      ]
+    },
+    {
+      "id": 8,
+      "categoria": "organitzacio",
+      "pregunta": "Com valores l'organització general del curs (calendari, puntualitat, comunicació i espai)?",
+      "opciones": [
+        "Impecable: puntualitat, bona informació prèvia i espais confortables",
+        "Bona: funcionament general correcte i sense incidències remarcables",
+        "Millorable en la planificació de dates, avisos o condicions de l'espai",
+        "Deficient: hi ha hagut mancances d'organització o coordinació"
+      ]
+    },
+    {
+      "id": 9,
+      "categoria": "expectatives",
+      "pregunta": "En quina mesura el curs ha complert les expectatives que tenies en inscriure't-hi?",
+      "opciones": [
+        "Ha superat amb escreix les meves expectatives inicials",
+        "Ha complert plenament allò que esperava aprendre",
+        "Ha complert només parcialment les meves expectatives",
+        "No ha complert les meves expectatives"
+      ]
+    },
+    {
+      "id": 10,
+      "categoria": "recomanacio_global",
+      "pregunta": "Quina és la teva valoració global i fins a quin punt recomanaries aquest curs a altres persones?",
+      "opciones": [
+        "Excel·lent: el recomanaria amb total entusiasme a qualsevol persona interessada",
+        "Molt bona: és un curs altament recomanable per iniciar-se a l'astronomia",
+        "Bona amb reserves: el recomanaria depenent de l'interès concret de la persona",
+        "No el recomanaria en el seu format actual"
+      ]
+    }
+  ]
+}

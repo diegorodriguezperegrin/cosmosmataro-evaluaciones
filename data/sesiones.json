@@ -37,6 +37,14 @@
       "titulo": "Examen Global de Certificació",
       "descripcion": "Avaluació completa del Curs d'Iniciació a l'Astronomia: 20 preguntes equilibrades (5 de cadascuna de les 4 sessions). Superar aquesta prova (mínim 60%) atorga el Certificat Oficial d'Aprofitament.",
       "icono": "award"
+    },
+    {
+      "id": "qualitat",
+      "esQualitat": true,
+      "titulo": "Enquesta de Qualitat del Curs",
+      "descripcion": "Qüestionari d'opinió i valoració optativa (10 preguntes + comentaris): extensió, dificultat, eines docents, professorat i suggeriments de millora.",
+      "archivo": "data/qualitat.json",
+      "icono": "sparkles"
     }
   ]
 }

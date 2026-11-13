@@ -165,14 +165,14 @@
         </button>
 
         <h2 id="reg-heading" class="card-title" tabindex="-1">
-          <span aria-hidden="true">👨‍🚀</span>
+          <span aria-hidden="true" id="reg-icon">👨‍🚀</span>
           <span id="reg-session-title">Sessió seleccionada</span>
         </h2>
-        <p class="card-subtitle">
+        <p id="reg-subtitle" class="card-subtitle">
           Si us plau, introdueix les teves dades per emetre el teu certificat d'aprofitament i registrar els teus resultats.
         </p>
 
-        <div class="info-banner">
+        <div id="reg-info-banner" class="info-banner">
           <strong>Pautes de l'avaluació:</strong> Disposes de <strong>20 preguntes</strong>. Pots avançar i retrocedir entre les preguntes tantes vegades com vulguis abans de l'enviament final.
         </div>
 
@@ -220,8 +220,8 @@
             >
           </div>
 
-          <button type="submit" class="btn btn-primary btn-full" style="margin-top: 10px;">
-            <span>Començar l'Avaluació</span>
+          <button type="submit" id="btn-start-quiz" class="btn btn-primary btn-full" style="margin-top: 10px;">
+            <span id="btn-start-quiz-text">Començar l'Avaluació</span>
             <span aria-hidden="true">→</span>
           </button>
         </form>
@@ -262,6 +262,24 @@
           <!-- Renderitzat dinàmicament amb JavaScript -->
         </div>
 
+        <!-- Caixa de comentaris per a l'enquesta de qualitat -->
+        <div id="quality-comments-step" class="quality-comments-step hidden">
+          <div class="quality-comments-step-inner">
+            <label for="quality-comments-text" class="form-label">
+              Comentaris, punts forts i propostes de millora (opcional)
+            </label>
+            <span class="form-hint form-hint-top">
+              Explica'ns què és el que més t'ha agradat del curs, aspectes que podríem millorar o temes astronòmics que t'agradaria aprofundir en futures activitats.
+            </span>
+            <textarea
+              id="quality-comments-text"
+              class="form-textarea"
+              rows="6"
+              placeholder="Escriu aquí les teves observacions o suggeriments de millora..."
+            ></textarea>
+          </div>
+        </div>
+
         <!-- Accions de Navegació -->
         <div class="quiz-actions">
           <button type="button" id="btn-prev" class="btn btn-secondary">
@@ -285,9 +303,9 @@
         <h2 id="results-heading" class="visually-hidden" tabindex="-1">Resultats de l'avaluació</h2>
 
         <div class="results-hero">
-          <div class="score-circle">
+          <div class="score-circle" id="score-circle-container">
             <span id="score-num" class="score-num">0</span>
-            <span class="score-total">de 20 encerts</span>
+            <span class="score-total" id="score-total-label">de 20 encerts</span>
           </div>
 
           <div>
@@ -330,8 +348,8 @@
         <!-- Desglossament de correcció detallada -->
         <div class="review-section">
           <h3 style="font-size: 1.15rem; margin-bottom: 16px; color: var(--accent-cyan); display: flex; align-items: center; gap: 8px;">
-            <span aria-hidden="true">📖</span>
-            <span>Correcció pedagògica detallada (20 preguntes)</span>
+            <span aria-hidden="true" id="review-icon">📖</span>
+            <span id="review-title">Correcció pedagògica detallada (20 preguntes)</span>
           </h3>
           
           <div id="review-list">

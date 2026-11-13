@@ -29,6 +29,7 @@
     },
     currentQuestionIndex: 0,
     answers: {}, // { [questionId]: optionIndex }
+    feedbackComments: "",
     results: null
   };
 
@@ -70,11 +71,16 @@
     
     // Registro
     regSessionTitle: document.getElementById("reg-session-title"),
+    regSubtitle: document.getElementById("reg-subtitle"),
+    regInfoBanner: document.getElementById("reg-info-banner"),
+    regIcon: document.getElementById("reg-icon"),
     regForm: document.getElementById("student-form"),
     studentName: document.getElementById("student-name"),
     studentEmail: document.getElementById("student-email"),
     studentEmailLabel: document.getElementById("student-email-label"),
     studentEmailHint: document.getElementById("student-email-hint"),
+    btnStartQuiz: document.getElementById("btn-start-quiz"),
+    btnStartQuizText: document.getElementById("btn-start-quiz-text"),
     btnBackToSessions: document.getElementById("btn-back-to-sessions"),
     
     // Quiz
@@ -86,6 +92,8 @@
     questionPrompt: document.getElementById("question-prompt"),
     questionMedia: document.getElementById("question-media"),
     optionsList: document.getElementById("options-list"),
+    qualityCommentsStep: document.getElementById("quality-comments-step"),
+    qualityCommentsText: document.getElementById("quality-comments-text"),
     btnPrev: document.getElementById("btn-prev"),
     btnNext: document.getElementById("btn-next"),
     btnSubmit: document.getElementById("btn-submit"),
@@ -97,13 +105,17 @@
     btnModalConfirm: document.getElementById("btn-modal-confirm"),
     
     // Resultados
+    scoreCircleContainer: document.getElementById("score-circle-container"),
     scoreNum: document.getElementById("score-num"),
+    scoreTotalLabel: document.getElementById("score-total-label"),
     scoreBadge: document.getElementById("score-badge"),
     resultsStudent: document.getElementById("results-student"),
     resultsSession: document.getElementById("results-session"),
     resultsDate: document.getElementById("results-date"),
     syncStatus: document.getElementById("sync-status"),
     certInvitationBanner: document.getElementById("cert-invitation-banner"),
+    reviewTitle: document.getElementById("review-title"),
+    reviewIcon: document.getElementById("review-icon"),
     reviewList: document.getElementById("review-list"),
     btnPrintCert: document.getElementById("btn-print-cert"),
     btnGoGlobal: document.getElementById("btn-go-global"),
@@ -537,8 +549,9 @@
   function renderSessionsGrid() {
     if (!state.sessionsData || !state.sessionsData.sesiones) return;
     
-    const normalSessions = state.sessionsData.sesiones.filter(s => !s.esGlobal);
+    const normalSessions = state.sessionsData.sesiones.filter(s => !s.esGlobal && !s.esQualitat && s.id !== "qualitat");
     const globalSession = state.sessionsData.sesiones.find(s => s.esGlobal);
+    const qualitySession = state.sessionsData.sesiones.find(s => s.esQualitat || s.id === "qualitat");
 
     let html = normalSessions.map(s => `
       <div class="session-item" data-session-id="${s.id}">
@@ -569,6 +582,23 @@
       `;
     }
 
+    if (qualitySession) {
+      html += `
+        <div class="session-item session-item-quality" data-session-id="${qualitySession.id}">
+          <div class="session-badge">
+            <span>⭐</span>
+            <span>OPTATIVA · ENQUESTA DE QUALITAT DEL CURS</span>
+          </div>
+          <div class="session-title">${escapeHtml(qualitySession.titulo)}</div>
+          <div class="session-desc">${escapeHtml(qualitySession.descripcion)}</div>
+          <div class="session-action">
+            <span>Emplenar l'enquesta de qualitat (10 preguntes + comentaris)</span>
+            <span>→</span>
+          </div>
+        </div>
+      `;
+    }
+
     elements.sessionsGrid.innerHTML = html;
 
     elements.sessionsGrid.querySelectorAll(".session-item").forEach(item => {
@@ -588,6 +618,10 @@
 
     if (sesionParam === "global" || sesionParam === "final" || sesionParam === "5" || sesionParam === "examen") {
       return "global";
+    }
+
+    if (sesionParam === "qualitat" || sesionParam === "calidad" || sesionParam === "encuesta" || sesionParam === "enquesta" || sesionParam === "feedback" || sesionParam === "quality") {
+      return "qualitat";
     }
 
     const id = parseInt(sesionParam, 10);
@@ -638,21 +672,43 @@
       String(s.id) === String(sessionId) || 
       (sessionId === 5 && s.esGlobal) || 
       (sessionId === "global" && s.esGlobal) ||
-      (sessionId === "final" && s.esGlobal)
+      (sessionId === "final" && s.esGlobal) ||
+      ((sessionId === "qualitat" || sessionId === "calidad" || sessionId === "encuesta" || sessionId === "enquesta" || sessionId === "quality") && (s.esQualitat || s.id === "qualitat"))
     );
     if (!session) return;
 
     state.currentSession = session;
+    const isQuality = Boolean(session.esQualitat || session.id === "qualitat");
 
     if (session.esGlobal) {
       elements.headerBadge.textContent = "🎓 Examen Global";
       elements.headerBadge.className = "header-badge badge-global";
+    } else if (isQuality) {
+      elements.headerBadge.textContent = "⭐ Enquesta de Qualitat";
+      elements.headerBadge.className = "header-badge badge-quality";
     } else {
       elements.headerBadge.textContent = `Sessió ${session.id}`;
       elements.headerBadge.className = "header-badge";
     }
     elements.headerBadge.classList.remove("hidden");
     elements.regSessionTitle.textContent = session.titulo;
+
+    if (elements.regIcon) {
+      elements.regIcon.textContent = isQuality ? "⭐" : (session.esGlobal ? "🎓" : "👨‍🚀");
+    }
+    if (elements.regSubtitle) {
+      elements.regSubtitle.textContent = isQuality
+        ? "La teva opinió ens ajuda a millorar el curs. Si us plau, confirma les teves dades per associar la teva valoració."
+        : "Si us plau, introdueix les teves dades per emetre el teu certificat d'aprofitament i registrar els teus resultats.";
+    }
+    if (elements.regInfoBanner) {
+      elements.regInfoBanner.innerHTML = isQuality
+        ? "<strong>Pautes de l'enquesta:</strong> Disposes de <strong>10 preguntes</strong> de valoració (amb 4 opcions a escollir) i un <strong>camp lliure de comentaris</strong>. Pots avançar i retrocedir tantes vegades com vulguis abans de l'enviament final."
+        : "<strong>Pautes de l'avaluació:</strong> Disposes de <strong>20 preguntes</strong>. Pots avançar i retrocedir entre les preguntes tantes vegades com vulguis abans de l'enviament final.";
+    }
+    if (elements.btnStartQuizText) {
+      elements.btnStartQuizText.textContent = isQuality ? "Començar l'Enquesta de Qualitat" : "Començar l'Avaluació";
+    }
 
     // Preservar datos del alumne / autoomplir des de l'accés verificat
     if (elements.studentName) {
@@ -682,6 +738,13 @@
           };
         }
         buildGlobalQuestions();
+      } else if (isQuality) {
+        const resp = await fetch(session.archivo || "data/qualitat.json");
+        if (!resp.ok) throw new Error(`No s'ha pogut carregar ${session.archivo || "data/qualitat.json"}`);
+        const data = await resp.json();
+        state.rawQuestions = data.preguntas || [];
+        state.questions = [...state.rawQuestions]; // Ordre lògic sense barallar
+        state.feedbackComments = "";
       } else {
         const resp = await fetch(session.archivo);
         if (!resp.ok) throw new Error(`No s'ha pogut carregar ${session.archivo}`);
@@ -812,7 +875,9 @@
     });
 
     elements.btnNext.addEventListener("click", () => {
-      if (state.currentQuestionIndex < state.questions.length - 1) {
+      const isQuality = Boolean(state.currentSession && (state.currentSession.esQualitat || state.currentSession.id === "qualitat"));
+      const maxIndex = isQuality ? state.questions.length : state.questions.length - 1;
+      if (state.currentQuestionIndex < maxIndex) {
         state.currentQuestionIndex++;
         renderCurrentQuestion();
       }
@@ -821,6 +886,13 @@
     elements.btnSubmit.addEventListener("click", () => {
       handleQuizSubmissionAttempt();
     });
+
+    // Comentaris de l'enquesta de qualitat
+    if (elements.qualityCommentsText) {
+      elements.qualityCommentsText.addEventListener("input", (e) => {
+        state.feedbackComments = e.target.value;
+      });
+    }
 
     // Modal de preguntas sin responder
     elements.btnModalReview.addEventListener("click", () => {
@@ -866,15 +938,19 @@
     // Atajos de teclado (1-4 para opciones, flechas para navegar)
     window.addEventListener("keydown", (e) => {
       if (views.quiz.classList.contains("hidden")) return;
+      if (e.target && (e.target.tagName === "TEXTAREA" || e.target.tagName === "INPUT")) return;
 
       const key = e.key;
-      if (["1", "2", "3", "4"].includes(key)) {
+      const isQuality = Boolean(state.currentSession && (state.currentSession.esQualitat || state.currentSession.id === "qualitat"));
+      const maxIndex = isQuality ? state.questions.length : state.questions.length - 1;
+
+      if (["1", "2", "3", "4"].includes(key) && state.currentQuestionIndex < state.questions.length) {
         const optionIndex = parseInt(key, 10) - 1;
         selectOption(optionIndex);
       } else if (key === "ArrowLeft" && state.currentQuestionIndex > 0) {
         state.currentQuestionIndex--;
         renderCurrentQuestion();
-      } else if (key === "ArrowRight" && state.currentQuestionIndex < state.questions.length - 1) {
+      } else if (key === "ArrowRight" && state.currentQuestionIndex < maxIndex) {
         state.currentQuestionIndex++;
         renderCurrentQuestion();
       }
@@ -887,6 +963,8 @@
       switchView("access");
       return;
     }
+
+    const isQuality = Boolean(state.currentSession && (state.currentSession.esQualitat || state.currentSession.id === "qualitat"));
 
     // Si és l'examen global, assegurar la reserva i extreure 5 preguntes noves de cada sessió barallades
     if (state.currentSession && state.currentSession.esGlobal) {
@@ -905,6 +983,12 @@
         };
       }
       buildGlobalQuestions();
+    } else if (isQuality) {
+      state.questions = [...state.rawQuestions];
+      state.feedbackComments = "";
+      if (elements.qualityCommentsText) {
+        elements.qualityCommentsText.value = "";
+      }
     } else if (typeof CONFIG !== "undefined" && CONFIG.SHUFFLE_QUESTIONS !== false && state.rawQuestions.length > 0) {
       state.questions = shuffleArray([...state.rawQuestions]);
     } else if (state.rawQuestions.length > 0) {
@@ -920,9 +1004,11 @@
     switchView("quiz");
   }
 
-  // Renderizar la barra de navegación de píldoras (1..20)
+  // Renderizar la barra de navegación de píldoras (1..20 o 1..10 + comentaris)
   function renderNavStrip() {
-    elements.questionNavStrip.innerHTML = state.questions.map((q, idx) => {
+    const isQuality = Boolean(state.currentSession && (state.currentSession.esQualitat || state.currentSession.id === "qualitat"));
+
+    let html = state.questions.map((q, idx) => {
       const num = idx + 1;
       const isAnswered = state.answers[q.id] !== undefined;
       const isCurrent = idx === state.currentQuestionIndex;
@@ -934,6 +1020,17 @@
       return `<button type="button" class="${classes}" data-index="${idx}">${num}</button>`;
     }).join("");
 
+    if (isQuality) {
+      const isCurrent = state.currentQuestionIndex === state.questions.length;
+      const hasComment = Boolean(state.feedbackComments && state.feedbackComments.trim().length > 0);
+      let classes = "nav-pill pill-comments";
+      if (isCurrent) classes += " current";
+      else if (hasComment) classes += " answered";
+      html += `<button type="button" class="${classes}" data-index="${state.questions.length}" title="Comentaris i propostes">💬 Comentaris</button>`;
+    }
+
+    elements.questionNavStrip.innerHTML = html;
+
     elements.questionNavStrip.querySelectorAll(".nav-pill").forEach(btn => {
       btn.addEventListener("click", () => {
         state.currentQuestionIndex = parseInt(btn.getAttribute("data-index"), 10);
@@ -942,17 +1039,54 @@
     });
   }
 
-  // Renderizar la pregunta actual
+  // Renderizar la pregunta actual o el paso de comentarios
   function renderCurrentQuestion() {
+    const isQuality = Boolean(state.currentSession && (state.currentSession.esQualitat || state.currentSession.id === "qualitat"));
+    const totalQuestions = state.questions.length;
+    const totalSteps = isQuality ? totalQuestions + 1 : totalQuestions;
+
+    // ¿Estamos en el paso final de comentarios de calidad?
+    if (isQuality && state.currentQuestionIndex === totalQuestions) {
+      elements.optionsList.classList.add("hidden");
+      if (elements.questionMedia) elements.questionMedia.classList.add("hidden");
+
+      if (elements.qualityCommentsStep) {
+        elements.qualityCommentsStep.classList.remove("hidden");
+        if (elements.qualityCommentsText) {
+          elements.qualityCommentsText.value = state.feedbackComments || "";
+        }
+      }
+
+      elements.quizProgressText.textContent = "Comentaris i suggeriments (Pas final)";
+      elements.quizProgressFill.style.width = "100%";
+
+      elements.questionNumber.textContent = "💬 Comentaris i propostes de millora";
+      elements.questionPrompt.textContent = "Aquest espai és opcional. Pots indicar aspectes que t'han agradat especialment, crítiques constructives o propostes per a properes edicions del curs:";
+
+      elements.btnPrev.disabled = false;
+      elements.btnPrev.style.visibility = "visible";
+      elements.btnPrev.querySelector("span").textContent = `← Pregunta ${totalQuestions}`;
+      elements.btnNext.classList.add("hidden");
+      elements.btnSubmit.classList.remove("hidden");
+      elements.btnSubmit.querySelector("span").textContent = "Finalitzar i Enviar l'Enquesta ✓";
+
+      renderNavStrip();
+      return;
+    }
+
+    if (elements.qualityCommentsStep) {
+      elements.qualityCommentsStep.classList.add("hidden");
+    }
+    elements.optionsList.classList.remove("hidden");
+
     const q = state.questions[state.currentQuestionIndex];
     if (!q) return;
 
-    const total = state.questions.length;
     const currentNum = state.currentQuestionIndex + 1;
 
     // Actualizar progreso
-    elements.quizProgressText.textContent = `Pregunta ${currentNum} de ${total}`;
-    const percentProgress = (currentNum / total) * 100;
+    elements.quizProgressText.textContent = `Pregunta ${currentNum} de ${totalQuestions}`;
+    const percentProgress = (currentNum / totalSteps) * 100;
     elements.quizProgressFill.style.width = `${percentProgress}%`;
 
     elements.questionNumber.textContent = `Pregunta ${currentNum}`;
@@ -1001,13 +1135,28 @@
     // Actualizar botones prev/next/submit
     elements.btnPrev.disabled = state.currentQuestionIndex === 0;
     elements.btnPrev.style.visibility = state.currentQuestionIndex === 0 ? "hidden" : "visible";
+    elements.btnPrev.querySelector("span").textContent = "← Anterior";
 
-    if (state.currentQuestionIndex === total - 1) {
-      elements.btnNext.classList.add("hidden");
-      elements.btnSubmit.classList.remove("hidden");
+    if (isQuality) {
+      if (state.currentQuestionIndex === totalQuestions - 1) {
+        elements.btnNext.classList.remove("hidden");
+        elements.btnNext.querySelector("span").textContent = "Següent (Comentaris) →";
+        elements.btnSubmit.classList.add("hidden");
+      } else {
+        elements.btnNext.classList.remove("hidden");
+        elements.btnNext.querySelector("span").textContent = "Següent →";
+        elements.btnSubmit.classList.add("hidden");
+      }
     } else {
-      elements.btnNext.classList.remove("hidden");
-      elements.btnSubmit.classList.add("hidden");
+      if (state.currentQuestionIndex === totalQuestions - 1) {
+        elements.btnNext.classList.add("hidden");
+        elements.btnSubmit.classList.remove("hidden");
+        elements.btnSubmit.querySelector("span").textContent = "Finalitzar i Enviar l'Avaluació ✓";
+      } else {
+        elements.btnNext.classList.remove("hidden");
+        elements.btnNext.querySelector("span").textContent = "Següent →";
+        elements.btnSubmit.classList.add("hidden");
+      }
     }
 
     renderNavStrip();
@@ -1021,15 +1170,17 @@
     state.answers[q.id] = optionIndex;
     renderCurrentQuestion();
 
-    // Avance automático a la siguiente pregunta tras 300ms para una experiencia muy fluida
-    if (state.currentQuestionIndex < state.questions.length - 1) {
+    const isQuality = Boolean(state.currentSession && (state.currentSession.esQualitat || state.currentSession.id === "qualitat"));
+    const totalSteps = isQuality ? state.questions.length + 1 : state.questions.length;
+
+    // Avance automático a la siguiente pregunta tras 250ms para una experiencia muy fluida
+    if (state.currentQuestionIndex < totalSteps - 1) {
       setTimeout(() => {
         state.currentQuestionIndex++;
         renderCurrentQuestion();
       }, 250);
     }
   }
-
   // Intento de envío
   function handleQuizSubmissionAttempt() {
     const total = state.questions.length;
@@ -1048,6 +1199,54 @@
   async function finalizeAndScoreQuiz() {
     if (isAccessRequired() && !state.auth.isAuthenticated) {
       switchView("access");
+      return;
+    }
+
+    const isQuality = Boolean(state.currentSession && (state.currentSession.esQualitat || state.currentSession.id === "qualitat"));
+
+    if (isQuality) {
+      if (elements.qualityCommentsText) {
+        state.feedbackComments = elements.qualityCommentsText.value.trim();
+      }
+
+      const total = state.questions.length;
+      const reviewDetails = [];
+      const letters = ["A", "B", "C", "D"];
+
+      state.questions.forEach(q => {
+        const selected = state.answers[q.id];
+        const respuestaTexto = (selected !== undefined && q.opciones && q.opciones[selected]) ? q.opciones[selected] : "";
+        const letra = (selected !== undefined && letters[selected]) ? letters[selected] : "";
+
+        reviewDetails.push({
+          id: q.id,
+          categoria: q.categoria || "",
+          pregunta: q.pregunta,
+          opciones: q.opciones,
+          seleccionada: selected !== undefined ? selected : -1,
+          respuestaTexto,
+          letra
+        });
+      });
+
+      state.results = {
+        isQuality: true,
+        score: Object.keys(state.answers).length,
+        total,
+        comments: state.feedbackComments || "",
+        reviewDetails,
+        date: new Date().toLocaleDateString("ca-ES", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        })
+      };
+
+      renderResultsView();
+      switchView("results");
+      await submitResultsToGoogleSheets();
       return;
     }
 
@@ -1120,8 +1319,102 @@
   // Renderizar la vista de resultados
   function renderResultsView() {
     const res = state.results;
-    const isGlobal = !!(state.currentSession && state.currentSession.esGlobal);
-    const passed = res.calificacion !== "fail";
+    const isQuality = Boolean(res && res.isQuality);
+    const isGlobal = !!(!isQuality && state.currentSession && state.currentSession.esGlobal);
+    const passed = !isQuality && res.calificacion !== "fail";
+
+    if (isQuality) {
+      if (elements.scoreCircleContainer) elements.scoreCircleContainer.className = "score-circle is-quality";
+      elements.scoreNum.textContent = "⭐";
+      if (elements.scoreTotalLabel) elements.scoreTotalLabel.textContent = "Valoració completada";
+
+      elements.scoreBadge.textContent = "Enquesta registrada";
+      elements.scoreBadge.className = "badge-result badge-quality-success";
+
+      elements.resultsStudent.textContent = state.student.name || "Alumne/a";
+      elements.resultsSession.textContent = state.currentSession.titulo;
+      elements.resultsDate.textContent = res.date;
+
+      elements.btnPrintCert.classList.add("hidden");
+      if (elements.btnGoGlobal) elements.btnGoGlobal.classList.add("hidden");
+
+      if (elements.btnRetry && elements.btnRetry.querySelector("span")) {
+        elements.btnRetry.querySelector("span").textContent = "🔄 Modificar la meva valoració";
+      }
+      if (elements.btnRestart && elements.btnRestart.querySelector("span")) {
+        elements.btnRestart.querySelector("span").textContent = "🪐 Tornar al menú de sessions";
+      }
+
+      if (elements.certInvitationBanner) {
+        elements.certInvitationBanner.className = "cert-invitation-banner is-quality-pass";
+        elements.certInvitationBanner.innerHTML = `
+          <strong>🌟 Moltes gràcies per la teva col·laboració, ${escapeHtml(state.student.name || "alumne/a")}!</strong><br>
+          Hem registrat correctament la teva valoració i els teus suggeriments. La teva opinió és molt valuosa per a l'Agrupació Astronòmica Cosmos Mataró i ens permetrà continuar millorant el contingut, el professorat i l'experiència formativa en properes edicions del curs.
+        `;
+        elements.certInvitationBanner.classList.remove("hidden");
+      }
+
+      if (elements.reviewIcon) elements.reviewIcon.textContent = "⭐";
+      if (elements.reviewTitle) elements.reviewTitle.textContent = "Resum de la teva valoració (10 preguntes + comentaris)";
+
+      const letters = ["A", "B", "C", "D"];
+      let reviewHtml = res.reviewDetails.map((item, idx) => {
+        const userChose = item.respuestaTexto || (item.seleccionada !== -1 ? item.opciones[item.seleccionada] : "Sense respondre");
+        const letter = item.letra || (item.seleccionada !== -1 ? letters[item.seleccionada] : "—");
+
+        return `
+          <div class="quality-review-item">
+            <div class="quality-review-header">
+              <span class="quality-review-qnum">Pregunta ${idx + 1}</span>
+              <span class="quality-review-badge">Valoració registrada</span>
+            </div>
+            <div class="quality-review-prompt">${escapeHtml(item.pregunta)}</div>
+            <div class="quality-review-choice">
+              <span class="badge-opt-letter">${letter}</span>
+              <span>${escapeHtml(userChose)}</span>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      if (res.comments && res.comments.trim().length > 0) {
+        reviewHtml += `
+          <div class="quality-comments-summary-card">
+            <div class="quality-comments-title">
+              <span aria-hidden="true">💬</span>
+              <strong>Els teus comentaris i propostes de millora:</strong>
+            </div>
+            <div class="quality-comments-body">${escapeHtml(res.comments)}</div>
+          </div>
+        `;
+      } else {
+        reviewHtml += `
+          <div class="quality-comments-summary-card">
+            <div class="quality-comments-title">
+              <span aria-hidden="true">💬</span>
+              <strong>Comentaris addicionals:</strong>
+            </div>
+            <div class="quality-comments-body"><em>No s'han aportat comentaris addicionals.</em></div>
+          </div>
+        `;
+      }
+
+      elements.reviewList.innerHTML = reviewHtml;
+      return;
+    }
+
+    // Comportamiento normal para sesiones astronómicas (1 a 4 y Examen Global)
+    if (elements.scoreCircleContainer) elements.scoreCircleContainer.className = "score-circle";
+    if (elements.scoreTotalLabel) elements.scoreTotalLabel.textContent = `de ${res.total} encerts`;
+    if (elements.reviewIcon) elements.reviewIcon.textContent = "📖";
+    if (elements.reviewTitle) elements.reviewTitle.textContent = `Correcció pedagògica detallada (${res.total} preguntes)`;
+
+    if (elements.btnRetry && elements.btnRetry.querySelector("span")) {
+      elements.btnRetry.querySelector("span").textContent = "🔄 Repetir aquest test";
+    }
+    if (elements.btnRestart && elements.btnRestart.querySelector("span")) {
+      elements.btnRestart.querySelector("span").textContent = "🪐 Avaluar una altra sessió";
+    }
 
     elements.scoreNum.textContent = res.score;
     elements.scoreBadge.textContent = res.badgeText;
@@ -1588,23 +1881,41 @@
   // Envío a Google Sheets mediante Google Apps Script
   async function submitResultsToGoogleSheets() {
     const webhookUrl = CONFIG.GOOGLE_SHEETS_WEBHOOK_URL;
+    const isQuality = Boolean(state.results && state.results.isQuality);
 
     if (!webhookUrl || webhookUrl.trim() === "" || webhookUrl.includes("PEGAR_AQUI")) {
       elements.syncStatus.className = "sync-status offline";
       elements.syncStatus.innerHTML = `
         <span>ℹ️</span>
-        <span>Avaluació completada localment.</span>
+        <span>${isQuality ? "Enquesta completada localment." : "Avaluació completada localment."}</span>
       `;
       return;
     }
 
     elements.syncStatus.className = "sync-status saving";
-    elements.syncStatus.innerHTML = `
-      <span>⏳</span>
-      <span>Desant resultats al registre de Cosmos Mataró...</span>
-    `;
+    elements.syncStatus.innerHTML = isQuality
+      ? `<span>⏳</span><span>Desant la teva valoració i comentaris al registre de Cosmos Mataró...</span>`
+      : `<span>⏳</span><span>Desant resultats al registre de Cosmos Mataró...</span>`;
 
-    const payload = {
+    const payload = isQuality ? {
+      action: "submit_quality_survey",
+      authEmail: state.auth.email || state.student.email,
+      clave: state.auth.clave || "",
+      nombre: state.student.name,
+      email: state.student.email || state.auth.email,
+      sesionId: "qualitat",
+      sesionTitulo: state.currentSession.titulo || "Enquesta de Qualitat del Curs",
+      comentarios: state.results.comments || state.feedbackComments || "",
+      respuestas: state.results.reviewDetails.map(r => ({
+        id: r.id,
+        categoria: r.categoria,
+        pregunta: r.pregunta,
+        seleccionada: r.seleccionada,
+        letra: r.letra,
+        texto: r.respuestaTexto,
+        textoCompleto: r.letra ? `${r.letra}) ${r.respuestaTexto}` : r.respuestaTexto
+      }))
+    } : {
       action: "submit_result",
       authEmail: state.auth.email || state.student.email,
       clave: state.auth.clave || "",
@@ -1642,24 +1953,22 @@
       const result = await response.json();
       if (result && result.status === "success") {
         elements.syncStatus.className = "sync-status success";
-        elements.syncStatus.innerHTML = `
-          <span>✓</span>
-          <span>Resultats registrats amb èxit a la secretaria de Cosmos Mataró!</span>
-        `;
+        elements.syncStatus.innerHTML = isQuality
+          ? `<span>✓</span><span>Valoració i comentaris registrats amb èxit a Cosmos Mataró!</span>`
+          : `<span>✓</span><span>Resultats registrats amb èxit a la secretaria de Cosmos Mataró!</span>`;
       } else {
         elements.syncStatus.className = "sync-status offline";
         elements.syncStatus.innerHTML = `
           <span>⚠️</span>
-          <span>${escapeHtml((result && result.message) || "No s'han pogut desar els resultats al registre.")}</span>
+          <span>${escapeHtml((result && result.message) || "No s'han pogut desar les dades al registre.")}</span>
         `;
       }
     } catch (err) {
       console.error("Error en registrar a Google Sheets:", err);
       elements.syncStatus.className = "sync-status offline";
-      elements.syncStatus.innerHTML = `
-        <span>⚠️</span>
-        <span>No s'ha pogut connectar amb Google Sheets en aquest moment. L'avaluació continua sent vàlida.</span>
-      `;
+      elements.syncStatus.innerHTML = isQuality
+        ? `<span>⚠️</span><span>No s'ha pogut connectar amb Google Sheets en aquest moment. La teva valoració s'ha completat localment.</span>`
+        : `<span>⚠️</span><span>No s'ha pogut connectar amb Google Sheets en aquest moment. L'avaluació continua sent vàlida.</span>`;
     }
   }
 

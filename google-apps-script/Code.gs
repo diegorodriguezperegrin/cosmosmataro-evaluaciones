@@ -24,6 +24,8 @@ var ACCESS_CONFIG = {
   ACCESS_SHEET_NAME: "Alumnos",
   ACCESS_SHEET_ALIASES: ["alumnos", "alumnes", "claves", "claus", "acceso", "acces"],
   RESULTS_DEFAULT_SHEET_NAME: "Resultados",
+  QUALITY_SHEET_NAME: "Qualitat",
+  QUALITY_SHEET_ALIASES: ["qualitat", "calidad", "enquesta", "encuesta", "valoracio", "valoracions", "opiniones", "opinio"],
   REQUIRE_ACCESS_KEY: true,      // Exige email + clave válida para validar y para guardar resultados
   CASE_SENSITIVE_KEYS: false,    // false = ignora mayúsculas/minúsculas en la clave (recomendado)
   KEY_PREFIX: "CM-",             // Prefijo al generar claves automáticas desde el menú
@@ -38,6 +40,7 @@ function onOpen() {
     SpreadsheetApp.getUi()
       .createMenu("Cosmos Mataró")
       .addItem('Preparar pestaña "Alumnos"', "prepararPestanaAlumnos")
+      .addItem('Preparar pestaña "Qualitat" (Enquesta)', "prepararPestanaQualitat")
       .addItem("Generar claves para alumnos sin clave", "generarClavesFaltantes")
       .addToUi();
   } catch (err) {
@@ -59,6 +62,26 @@ function prepararPestanaAlumnos() {
     var msg = existed
       ? 'La pestaña "' + sheet.getName() + '" ya está lista. Asegúrate de mantener las columnas Email y Clave.'
       : 'Se ha creado la pestaña "' + sheet.getName() + '". Añade los correos de los alumnos que han completado el curso y sus claves.';
+    SpreadsheetApp.getUi().alert("Cosmos Mataró", msg, SpreadsheetApp.getUi().ButtonSet.OK);
+  } catch (err) {
+    // Ejecución sin UI
+  }
+}
+
+/**
+ * Crea o verifica la pestaña "Qualitat" para registrar las valoraciones y comentarios.
+ */
+function prepararPestanaQualitat() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var existed = Boolean(findQualitySheet_(ss));
+  var sheet = getOrCreateQualitySheet_(ss);
+
+  ss.setActiveSheet(sheet);
+
+  try {
+    var msg = existed
+      ? 'La pestaña "' + sheet.getName() + '" ya está lista para recoger valoraciones.'
+      : 'Se ha creado la pestaña "' + sheet.getName() + '" con las columnas para las 10 preguntas y el campo de comentarios.';
     SpreadsheetApp.getUi().alert("Cosmos Mataró", msg, SpreadsheetApp.getUi().ButtonSet.OK);
   } catch (err) {
     // Ejecución sin UI
@@ -162,7 +185,66 @@ function doPost(e) {
     }
 
     // =========================================================================
-    // ACCIÓN 2: Guardar resultados de la evaluación en la hoja de Resultados
+    // ACCIÓN 2: Guardar encuesta de calidad del curso (pestaña "Qualitat")
+    // =========================================================================
+    if (action === "submit_quality_survey" || data.tipo === "qualitat" || data.sesionId === "qualitat") {
+      var verifiedEmail = "";
+      if (ACCESS_CONFIG.REQUIRE_ACCESS_KEY) {
+        var authEmail = data.authEmail || data.email || "";
+        var authKey = data.clave || data.accessKey || "";
+        var authCheck = verifyStudentCredentials_(ss, authEmail, authKey);
+
+        if (!authCheck.authorized) {
+          return jsonResponse_({
+            status: "error",
+            code: "unauthorized",
+            message: "Accés no autoritzat per registrar l'enquesta de qualitat."
+          });
+        }
+        verifiedEmail = authCheck.email;
+      }
+
+      var qSheet = getOrCreateQualitySheet_(ss);
+      var timestamp = new Date();
+      var nombre = String(data.nombre || "Anònim").trim();
+      var email = String(data.email || verifiedEmail || "").trim();
+      var comentarios = String(data.comentarios || data.comentaris || "").trim();
+
+      // Mapear respuestas P1 a P10
+      var pValues = [];
+      var answersMap = {};
+      if (data.respuestas && Array.isArray(data.respuestas)) {
+        data.respuestas.forEach(function(r) {
+          var val = "";
+          if (r.textoCompleto) {
+            val = r.textoCompleto;
+          } else if (r.letra && r.texto) {
+            val = r.letra + ") " + r.texto;
+          } else if (r.texto) {
+            val = r.texto;
+          } else if (r.seleccionada !== undefined && r.seleccionada !== -1) {
+            var letter = ["A", "B", "C", "D"][r.seleccionada] || "";
+            val = letter ? (letter + ") " + (r.opcionTexto || "")) : ("Opció " + (r.seleccionada + 1));
+          }
+          answersMap[r.id] = val;
+        });
+      }
+
+      for (var qIdx = 1; qIdx <= 10; qIdx++) {
+        pValues.push(answersMap[qIdx] || answersMap["q" + qIdx] || "");
+      }
+
+      qSheet.appendRow([timestamp, nombre, email].concat(pValues).concat([comentarios]));
+
+      return jsonResponse_({
+        status: "success",
+        message: "Enquesta de qualitat desada correctament a Cosmos Mataró",
+        timestamp: timestamp
+      });
+    }
+
+    // =========================================================================
+    // ACCIÓN 3: Guardar resultados de la evaluación en la hoja de Resultados
     // =========================================================================
     var verifiedEmail = "";
     if (ACCESS_CONFIG.REQUIRE_ACCESS_KEY) {
@@ -349,10 +431,72 @@ function getOrCreateAccessSheet_(ss) {
   return sheet;
 }
 
-function getResultsSheet_(ss) {
+function isQualitySheetName_(name) {
+  var norm = normalizeText_(name);
+  return ACCESS_CONFIG.QUALITY_SHEET_ALIASES.indexOf(norm) !== -1;
+}
+
+function findQualitySheet_(ss) {
+  var exact = ss.getSheetByName(ACCESS_CONFIG.QUALITY_SHEET_NAME);
+  if (exact) return exact;
+
   var sheets = ss.getSheets();
   for (var i = 0; i < sheets.length; i++) {
-    if (!isAccessSheetName_(sheets[i].getName())) {
+    if (isQualitySheetName_(sheets[i].getName())) {
+      return sheets[i];
+    }
+  }
+  return null;
+}
+
+function getOrCreateQualitySheet_(ss) {
+  var existing = findQualitySheet_(ss);
+  if (existing) return existing;
+
+  var sheet = ss.insertSheet(ACCESS_CONFIG.QUALITY_SHEET_NAME);
+  sheet.appendRow([
+    "Marca temporal",
+    "Nom de l'Alumne",
+    "Email",
+    "P1: Extensió",
+    "P2: Dificultat",
+    "P3: Eines pedagògiques",
+    "P4: Professorat",
+    "P5: Atenció a dubtes",
+    "P6: Pràctiques i telescopis",
+    "P7: Material de suport",
+    "P8: Organització",
+    "P9: Expectatives",
+    "P10: Valoració global",
+    "Comentaris i propostes de millora"
+  ]);
+
+  var headerRange = sheet.getRange(1, 1, 1, 14);
+  headerRange.setBackground("#0f172a");
+  headerRange.setFontColor("#38bdf8");
+  headerRange.setFontWeight("bold");
+  headerRange.setHorizontalAlignment("center");
+  sheet.setFrozenRows(1);
+
+  sheet.setColumnWidth(1, 160);
+  sheet.setColumnWidth(2, 220);
+  sheet.setColumnWidth(3, 240);
+  for (var c = 4; c <= 13; c++) {
+    sheet.setColumnWidth(c, 240);
+  }
+  sheet.setColumnWidth(14, 420);
+
+  return sheet;
+}
+
+function getResultsSheet_(ss) {
+  var exact = ss.getSheetByName(ACCESS_CONFIG.RESULTS_DEFAULT_SHEET_NAME);
+  if (exact) return exact;
+
+  var sheets = ss.getSheets();
+  for (var i = 0; i < sheets.length; i++) {
+    var name = sheets[i].getName();
+    if (!isAccessSheetName_(name) && !isQualitySheetName_(name)) {
       return sheets[i];
     }
   }
