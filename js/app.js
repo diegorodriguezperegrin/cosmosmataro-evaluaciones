@@ -785,7 +785,7 @@
     });
 
     // Envío del formulario de registro del alumno
-    elements.regForm.addEventListener("submit", (e) => {
+    elements.regForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       if (!FormValidation.validateForm(elements.regForm)) {
@@ -800,7 +800,7 @@
       state.student.name = name;
       state.student.email = email;
 
-      startQuiz();
+      await startQuiz();
     });
 
     // Navegación del cuestionario
@@ -852,8 +852,8 @@
 
     // Repetir el mateix test (amb preguntes barallades)
     if (elements.btnRetry) {
-      elements.btnRetry.addEventListener("click", () => {
-        startQuiz();
+      elements.btnRetry.addEventListener("click", async () => {
+        await startQuiz();
       });
     }
 
@@ -881,15 +881,29 @@
     });
   }
 
-  // Iniciar la evaluación
-  function startQuiz() {
+  // Iniciar la evaluación (re-baralla sempre l'ordre de les preguntes a cada intent)
+  async function startQuiz() {
     if (isAccessRequired() && !state.auth.isAuthenticated) {
       switchView("access");
       return;
     }
 
-    // Si és l'examen global, re-extreure 5 preguntes noves de cada sessió i barallar-les a cada intent
-    if (state.currentSession && state.currentSession.esGlobal && state.allSessionsPool) {
+    // Si és l'examen global, assegurar la reserva i extreure 5 preguntes noves de cada sessió barallades
+    if (state.currentSession && state.currentSession.esGlobal) {
+      if (!state.allSessionsPool) {
+        const [d1, d2, d3, d4] = await Promise.all([
+          fetch("data/sesion-1.json").then(r => { if (!r.ok) throw new Error("sesion-1.json"); return r.json(); }),
+          fetch("data/sesion-2.json").then(r => { if (!r.ok) throw new Error("sesion-2.json"); return r.json(); }),
+          fetch("data/sesion-3.json").then(r => { if (!r.ok) throw new Error("sesion-3.json"); return r.json(); }),
+          fetch("data/sesion-4.json").then(r => { if (!r.ok) throw new Error("sesion-4.json"); return r.json(); })
+        ]);
+        state.allSessionsPool = {
+          s1: d1.preguntas || [],
+          s2: d2.preguntas || [],
+          s3: d3.preguntas || [],
+          s4: d4.preguntas || []
+        };
+      }
       buildGlobalQuestions();
     } else if (typeof CONFIG !== "undefined" && CONFIG.SHUFFLE_QUESTIONS !== false && state.rawQuestions.length > 0) {
       state.questions = shuffleArray([...state.rawQuestions]);
