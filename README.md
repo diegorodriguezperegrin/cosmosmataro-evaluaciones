@@ -1,6 +1,6 @@
 # Cosmos Mataró · Evaluaciones del Curso de Iniciación a la Astronomía
 
-Aplicación web interactiva diseñada para la evaluación continua de los alumnos del **Curso de Iniciación a la Astronomía** de la **Agrupació Astronòmica Cosmos Mataró**, optimizada para integrarse directamente dentro de **Google Sites** y desplegarse gratuitamente en **GitHub Pages**.
+Aplicación web interactiva diseñada para la evaluación continua de los alumnos del **Curso de Iniciación a la Astronomía** de **Cosmos, grup d'astronomia de Mataró**, optimizada para integrarse directamente dentro de **Google Sites** y desplegarse gratuitamente en **GitHub Pages**.
 
 ---
 

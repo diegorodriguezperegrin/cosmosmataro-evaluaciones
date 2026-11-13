@@ -1349,7 +1349,7 @@
         elements.certInvitationBanner.className = "cert-invitation-banner is-quality-pass";
         elements.certInvitationBanner.innerHTML = `
           <strong>🌟 Moltes gràcies per la teva col·laboració, ${escapeHtml(state.student.name || "alumne/a")}!</strong><br>
-          Hem registrat correctament la teva valoració i els teus suggeriments. La teva opinió és molt valuosa per a l'Agrupació Astronòmica Cosmos Mataró i ens permetrà continuar millorant el contingut, el professorat i l'experiència formativa en properes edicions del curs.
+          Hem registrat correctament la teva valoració i els teus suggeriments. La teva opinió és molt valuosa per a Cosmos, grup d'astronomia de Mataró i ens permetrà continuar millorant el contingut, el professorat i l'experiència formativa en properes edicions del curs.
         `;
         elements.certInvitationBanner.classList.remove("hidden");
       }
