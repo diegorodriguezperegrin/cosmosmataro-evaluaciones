@@ -7,6 +7,12 @@
   "use strict";
 
   const AUTH_STORAGE_KEY = "cosmos_mataro_eval_auth_v1";
+  const DATA_CACHE_BUST = "20261113c";
+
+  function fetchJson(url) {
+    const bUrl = url.includes("?") ? `${url}&v=${DATA_CACHE_BUST}` : `${url}?v=${DATA_CACHE_BUST}`;
+    return fetch(bUrl);
+  }
 
   // Estado global de la aplicación
   const state = {
@@ -531,7 +537,7 @@
   // Cargar metadatos de las sesiones
   async function loadSessionsData() {
     try {
-      const response = await fetch("data/sesiones.json");
+      const response = await fetchJson("data/sesiones.json");
       if (!response.ok) throw new Error("Error al cargar data/sesiones.json");
       state.sessionsData = await response.json();
       renderSessionsGrid();
@@ -725,10 +731,10 @@
         // Cargar en paralelo las 4 sesiones si aún no están en memoria
         if (!state.allSessionsPool) {
           const [d1, d2, d3, d4] = await Promise.all([
-            fetch("data/sesion-1.json").then(r => { if (!r.ok) throw new Error("sesion-1.json"); return r.json(); }),
-            fetch("data/sesion-2.json").then(r => { if (!r.ok) throw new Error("sesion-2.json"); return r.json(); }),
-            fetch("data/sesion-3.json").then(r => { if (!r.ok) throw new Error("sesion-3.json"); return r.json(); }),
-            fetch("data/sesion-4.json").then(r => { if (!r.ok) throw new Error("sesion-4.json"); return r.json(); })
+            fetchJson("data/sesion-1.json").then(r => { if (!r.ok) throw new Error("sesion-1.json"); return r.json(); }),
+            fetchJson("data/sesion-2.json").then(r => { if (!r.ok) throw new Error("sesion-2.json"); return r.json(); }),
+            fetchJson("data/sesion-3.json").then(r => { if (!r.ok) throw new Error("sesion-3.json"); return r.json(); }),
+            fetchJson("data/sesion-4.json").then(r => { if (!r.ok) throw new Error("sesion-4.json"); return r.json(); })
           ]);
           state.allSessionsPool = {
             s1: d1.preguntas || [],
@@ -739,14 +745,14 @@
         }
         buildGlobalQuestions();
       } else if (isQuality) {
-        const resp = await fetch(session.archivo || "data/qualitat.json");
+        const resp = await fetchJson(session.archivo || "data/qualitat.json");
         if (!resp.ok) throw new Error(`No s'ha pogut carregar ${session.archivo || "data/qualitat.json"}`);
         const data = await resp.json();
         state.rawQuestions = data.preguntas || [];
         state.questions = [...state.rawQuestions]; // Ordre lògic sense barallar
         state.feedbackComments = "";
       } else {
-        const resp = await fetch(session.archivo);
+        const resp = await fetchJson(session.archivo);
         if (!resp.ok) throw new Error(`No s'ha pogut carregar ${session.archivo}`);
         const data = await resp.json();
         state.rawQuestions = data.preguntas || [];
@@ -970,10 +976,10 @@
     if (state.currentSession && state.currentSession.esGlobal) {
       if (!state.allSessionsPool) {
         const [d1, d2, d3, d4] = await Promise.all([
-          fetch("data/sesion-1.json").then(r => { if (!r.ok) throw new Error("sesion-1.json"); return r.json(); }),
-          fetch("data/sesion-2.json").then(r => { if (!r.ok) throw new Error("sesion-2.json"); return r.json(); }),
-          fetch("data/sesion-3.json").then(r => { if (!r.ok) throw new Error("sesion-3.json"); return r.json(); }),
-          fetch("data/sesion-4.json").then(r => { if (!r.ok) throw new Error("sesion-4.json"); return r.json(); })
+          fetchJson("data/sesion-1.json").then(r => { if (!r.ok) throw new Error("sesion-1.json"); return r.json(); }),
+          fetchJson("data/sesion-2.json").then(r => { if (!r.ok) throw new Error("sesion-2.json"); return r.json(); }),
+          fetchJson("data/sesion-3.json").then(r => { if (!r.ok) throw new Error("sesion-3.json"); return r.json(); }),
+          fetchJson("data/sesion-4.json").then(r => { if (!r.ok) throw new Error("sesion-4.json"); return r.json(); })
         ]);
         state.allSessionsPool = {
           s1: d1.preguntas || [],

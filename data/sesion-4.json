@@ -30,9 +30,9 @@
     {
       "id": 3,
       "pregunta": "Quina anomalia en les corbes de rotació de les galàxies espirals va portar a plantejar l'existència de la matèria fosca?",
-      "imagen": "assets/graficos/corba-rotacio-galactica.svg",
-      "imagenAlt": "Gràfica de velocitat orbital (km/s) respecte a la distància al centre galàctic (kpc): la predicció teòrica kepleriana decau més enllà del disc visible, mentre que la corba observada real es manté pràcticament plana al voltant dels 220 km/s.",
-      "imagenPie": "Comparació entre la corba de rotació prevista per Kepler i la velocitat observada en galàxies espirals.",
+      "imagenExplicacion": "assets/graficos/corba-rotacio-galactica.svg",
+      "imagenExplicacionAlt": "Gràfica de velocitat orbital (km/s) respecte a la distància al centre galàctic (kpc): la predicció teòrica kepleriana decau més enllà del disc visible, mentre que la corba observada real es manté pràcticament plana al voltant dels 220 km/s.",
+      "imagenExplicacionPie": "Comparació entre la corba de rotació prevista per Kepler i la velocitat observada en galàxies espirals.",
       "opciones": [
         "Que les estrelles del centre galàctic giren en sentit contrari a les de la perifèria",
         "Que les galàxies espirals es frenen ràpidament fins a aturar la seva rotació",
@@ -69,9 +69,9 @@
     {
       "id": 6,
       "pregunta": "Segons el model cosmològic estàndard actual (ΛCDM), quina és la composició aproximada de l'Univers?",
-      "imagen": "assets/graficos/composicio-univers-lcdm.svg",
-      "imagenAlt": "Diagrama de sectors de la composició del cosmos segons el model ΛCDM: 68% energia fosca, 27% matèria fosca i 5% matèria ordinària, desglossant que només un 0,5% forma estrelles i planetes.",
-      "imagenPie": "Composició de l'Univers segons el model cosmològic estàndard ΛCDM (missió Planck).",
+      "imagenExplicacion": "assets/graficos/composicio-univers-lcdm.svg",
+      "imagenExplicacionAlt": "Diagrama de sectors de la composició del cosmos segons el model ΛCDM: 68% energia fosca, 27% matèria fosca i 5% matèria ordinària, desglossant que només un 0,5% forma estrelles i planetes.",
+      "imagenExplicacionPie": "Composició de l'Univers segons el model cosmològic estàndard ΛCDM (missió Planck).",
       "opciones": [
         "95% de matèria ordinària, 4% de matèria fosca i 1% d'energia fosca",
         "68% d'energia fosca, 27% de matèria fosca i només un 5% de matèria ordinària (bariònica)",
@@ -216,9 +216,9 @@
     {
       "id": 18,
       "pregunta": "Què és una lent gravitatòria (com la famosa «Creu d'Einstein» o els arcs en cúmuls de galàxies)?",
-      "imagen": "assets/graficos/lent-gravitatoria.svg",
-      "imagenAlt": "Diagrama de lent gravitatòria: la llum d'un quàsar llunyà es corba en passar per l'espaitemps deformat per una galàxia massiva intermèdia, creant imatges desdoblades com la Creu d'Einstein.",
-      "imagenPie": "Desviació gravitatòria de la llum i formació d'imatges múltiples (Creu d'Einstein).",
+      "imagenExplicacion": "assets/graficos/lent-gravitatoria.svg",
+      "imagenExplicacionAlt": "Diagrama de lent gravitatòria: la llum d'un quàsar llunyà es corba en passar per l'espaitemps deformat per una galàxia massiva intermèdia, creant imatges desdoblades com la Creu d'Einstein.",
+      "imagenExplicacionPie": "Desviació gravitatòria de la llum i formació d'imatges múltiples (Creu d'Einstein).",
       "opciones": [
         "Un filtre de polarització instal·lat als grans telescopis terrestres",
         "La desviació i amplificació de la llum d'un objecte distant en corbar-se l'espaitemps per l'enorme massa d'una galàxia o cúmul intermedi",

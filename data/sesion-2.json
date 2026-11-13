@@ -81,9 +81,9 @@
     {
       "id": 7,
       "pregunta": "Quins dos fenòmens astronòmics combinats provoquen l'anomenada «Equació de temps», és a dir, la diferència entre el temps solar veritable (rellotge de sol) i el temps solar mitjà (rellotge de polsera de 24 hores uniformes)?",
-      "imagen": "assets/graficos/equacio-temps-analema.svg",
-      "imagenAlt": "Gràfica de l'Equació de temps mostrant la diferència en minuts entre el temps solar veritable i el mitjà al llarg dels 12 mesos, amb les components d'obliqüitat i excentricitat, i la figura de l'analema en 8 al cel.",
-      "imagenPie": "Components de l'Equació de temps al llarg de l'any i l'analema solar.",
+      "imagenExplicacion": "assets/graficos/equacio-temps-analema.svg",
+      "imagenExplicacionAlt": "Gràfica de l'Equació de temps mostrant la diferència en minuts entre el temps solar veritable i el mitjà al llarg dels 12 mesos, amb les components d'obliqüitat i excentricitat, i la figura de l'analema en 8 al cel.",
+      "imagenExplicacionPie": "Components de l'Equació de temps al llarg de l'any i l'analema solar.",
       "opciones": [
         "L'excentricitat de l'òrbita de la Terra (Kepler) i l'obliqüitat de l'eclíptica (23,5°)",
         "L'atracció gravitatòria de Júpiter i les fases de la Lluna",

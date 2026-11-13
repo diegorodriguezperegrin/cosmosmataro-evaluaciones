@@ -42,9 +42,9 @@
     {
       "id": 4,
       "pregunta": "Per què la Lluna té fases?",
-      "imagen": "assets/graficos/fases-lluna-geometria.svg",
-      "imagenAlt": "Esquema geomètric de les fases lunars mostrant les 8 posicions de la Lluna amb el 50% sempre il·luminat pel Sol a l'espai, i la fase resultant vista des de la Terra.",
-      "imagenPie": "Geometria orbital de les fases lunars: meitat il·luminada pel Sol vs. perspectiva des de la Terra.",
+      "imagenExplicacion": "assets/graficos/fases-lluna-geometria.svg",
+      "imagenExplicacionAlt": "Esquema geomètric de les fases lunars mostrant les 8 posicions de la Lluna amb el 50% sempre il·luminat pel Sol a l'espai, i la fase resultant vista des de la Terra.",
+      "imagenExplicacionPie": "Geometria orbital de les fases lunars: meitat il·luminada pel Sol vs. perspectiva des de la Terra.",
       "opciones": [
         "Perquè l'ombra de la Terra en tapa una part",
         "Perquè els núvols en tapen una part",
@@ -228,9 +228,9 @@
     {
       "id": 19,
       "pregunta": "Quin tipus de telescopi concentra la llum només amb miralls?",
-      "imagen": "assets/graficos/esquema-telescopi-newton.svg",
-      "imagenAlt": "Secció òptica d'un telescopi reflector Newtonià: mirall primari còncau parabòlic al fons, mirall secundari pla diagonal a 45 graus i sortida del feix enfocat cap a l'ocular lateral superior.",
-      "imagenPie": "Traçat de raigs i disposició de miralls en un telescopi reflector Newtonià.",
+      "imagenExplicacion": "assets/graficos/esquema-telescopi-newton.svg",
+      "imagenExplicacionAlt": "Secció òptica d'un telescopi reflector Newtonià: mirall primari còncau parabòlic al fons, mirall secundari pla diagonal a 45 graus i sortida del feix enfocat cap a l'ocular lateral superior.",
+      "imagenExplicacionPie": "Traçat de raigs i disposició de miralls en un telescopi reflector Newtonià.",
       "opciones": [
         "El refractor",
         "El reflector newtonià",
