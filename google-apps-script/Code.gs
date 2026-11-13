@@ -24,8 +24,8 @@ var ACCESS_CONFIG = {
   ACCESS_SHEET_NAME: "Alumnos",
   ACCESS_SHEET_ALIASES: ["alumnos", "alumnes", "claves", "claus", "acceso", "acces"],
   RESULTS_DEFAULT_SHEET_NAME: "Resultados",
-  QUALITY_SHEET_NAME: "Qualitat",
-  QUALITY_SHEET_ALIASES: ["qualitat", "calidad", "enquesta", "encuesta", "valoracio", "valoracions", "opiniones", "opinio"],
+  QUALITY_SHEET_NAME: "Calidad",
+  QUALITY_SHEET_ALIASES: ["calidad", "qualitat", "enquesta", "encuesta", "valoracio", "valoracions", "opiniones", "opinio", "valoraciones"],
   REQUIRE_ACCESS_KEY: true,      // Exige email + clave válida para validar y para guardar resultados
   CASE_SENSITIVE_KEYS: false,    // false = ignora mayúsculas/minúsculas en la clave (recomendado)
   KEY_PREFIX: "CM-",             // Prefijo al generar claves automáticas desde el menú
@@ -40,7 +40,7 @@ function onOpen() {
     SpreadsheetApp.getUi()
       .createMenu("Cosmos Mataró")
       .addItem('Preparar pestaña "Alumnos"', "prepararPestanaAlumnos")
-      .addItem('Preparar pestaña "Qualitat" (Enquesta)', "prepararPestanaQualitat")
+      .addItem('Preparar pestaña "Calidad" (Encuesta)', "prepararPestanaCalidad")
       .addItem("Generar claves para alumnos sin clave", "generarClavesFaltantes")
       .addToUi();
   } catch (err) {
@@ -69,9 +69,9 @@ function prepararPestanaAlumnos() {
 }
 
 /**
- * Crea o verifica la pestaña "Qualitat" para registrar las valoraciones y comentarios.
+ * Crea o verifica la pestaña "Calidad" para registrar las valoraciones y comentarios.
  */
-function prepararPestanaQualitat() {
+function prepararPestanaCalidad() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var existed = Boolean(findQualitySheet_(ss));
   var sheet = getOrCreateQualitySheet_(ss);
@@ -86,6 +86,10 @@ function prepararPestanaQualitat() {
   } catch (err) {
     // Ejecución sin UI
   }
+}
+
+function prepararPestanaQualitat() {
+  prepararPestanaCalidad();
 }
 
 /**
@@ -456,19 +460,19 @@ function getOrCreateQualitySheet_(ss) {
   var sheet = ss.insertSheet(ACCESS_CONFIG.QUALITY_SHEET_NAME);
   sheet.appendRow([
     "Marca temporal",
-    "Nom de l'Alumne",
+    "Nombre del Alumno",
     "Email",
-    "P1: Extensió",
-    "P2: Dificultat",
-    "P3: Eines pedagògiques",
-    "P4: Professorat",
-    "P5: Atenció a dubtes",
-    "P6: Pràctiques i telescopis",
-    "P7: Material de suport",
-    "P8: Organització",
-    "P9: Expectatives",
-    "P10: Valoració global",
-    "Comentaris i propostes de millora"
+    "P1: Extensión",
+    "P2: Dificultad",
+    "P3: Herramientas pedagógicas",
+    "P4: Profesorado",
+    "P5: Atención a dudas",
+    "P6: Prácticas y telescopios",
+    "P7: Material de apoyo",
+    "P8: Organización",
+    "P9: Expectativas",
+    "P10: Valoración global",
+    "Comentarios y propuestas de mejora"
   ]);
 
   var headerRange = sheet.getRange(1, 1, 1, 14);
